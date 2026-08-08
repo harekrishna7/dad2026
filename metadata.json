@@ -1,6 +1,0 @@
-{
-  "name": "DADsync AI Cloud Infrastructure",
-  "description": "Powering Northeast India’s AI Future with enterprise-grade 3D AI infrastructure.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
