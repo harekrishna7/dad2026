@@ -53,7 +53,7 @@
 }
 
 /* ---------- Reset & base ---------- */
-, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-sans);
@@ -207,7 +207,7 @@ h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
 .hero-image img { width: 100%; height: 420px; object-fit: cover; }
 .hero-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--background) 80%, transparent)); }
 
-/* ---------- Stat cards ---------- */
+/* ---------- Stat cards (VISIBLE BY DEFAULT â€” fix #3) ---------- */
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .stat-card {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -257,7 +257,7 @@ h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
 .split-media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
 .split-media img { width: 100%; height: 460px; object-fit: cover; }
 
-/* ---------- Highlight rows ---------- */
+/* ---------- Highlight rows (investment highlights â€” populated) ---------- */
 .hl-card {
   display: flex; gap: 22px; background: var(--card);
   border: 1px solid var(--border); border-radius: var(--radius);
@@ -289,7 +289,7 @@ h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
 .fin-row:last-child { border-bottom: none; }
 .fin-row b { font-weight: 700; }
 
-/* ---------- Timeline ---------- */
+/* ---------- Timeline (roadmap) ---------- */
 .timeline { position: relative; max-width: 760px; margin: 0 auto; padding-left: 34px; }
 .timeline::before {
   content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
@@ -445,13 +445,14 @@ h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
 .footer-bottom a { color: var(--muted-foreground); }
 .footer-bottom a:hover { color: var(--primary); }
 
-/* ---------- Scroll reveal (enhancement only) */
+/* ---------- Scroll reveal (enhancement only â€” content visible by default, fix #3) ---------- */
 .reveal { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
 @media (prefers-reduced-motion: no-preference) {
   .reveal { opacity: 1; }
   .reveal.pre { opacity: 1; }
 }
 html.js .reveal.pre { opacity: 1; transform: none; }
+/* When JS is active we still keep content visible; animation only adds a subtle rise */
 html.js .reveal.in-view { opacity: 1; transform: none; }
 .reveal { will-change: opacity, transform; }
 
@@ -535,7 +536,7 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
   .kicker .dot, .hero-badge .live { animation: none; }
 }
 
-/* ---------- Header: collapse nav earlier < = 1200px ---------- */
+/* ---------- Header: collapse nav earlier (8 links + CTA) ---------- */
 @media (max-width: 1200px) {
   .main-nav { display: none; }
   .menu-toggle { display: grid; }
@@ -655,6 +656,8 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 }
 
 /* ---------- v9 Connection page ---------- */
+
+/* Concept-only disclaimer banner */
 .disclaimer-banner {
   background: color-mix(in srgb, var(--amber) 12%, var(--background));
   border-bottom: 1px solid color-mix(in srgb, var(--amber) 35%, var(--border));
@@ -666,4 +669,100 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 .disclaimer-banner p { font-size: .88rem; color: var(--muted-foreground); line-height: 1.55; }
 .disclaimer-banner b { color: var(--foreground); }
 
-/* V¥Í¥½¸ÍÑ…Ñ•µ•¹Ð…É€¨¼(¹Ù¥Í¥½¸µ…Éì(€‰…­É½Õ¹èÙ…È ´µ…É¤ì‰½É‘•Èè€ÅÁàÍ½±¥Ù…È ´µ‰½É‘•È¤ì‰½É‘•ÈµÉ…‘¥ÕÌèÙ…È ´µÉ…‘¥ÕÌµ±œ¤ì(€Á…‘‘¥¹œè€ÐÑÁà€ÐáÁàì‘¥ÍÁ±…äè™±•àì…Àè€ÈÑÁàì…±¥¸µ¥Ñ•µÌè™±•àµÍÑ…ÉÐì(€‰½àµÍ¡…‘½ÜèÙ…È ´µÍ¡…‘½Üµµ¤ìµ…àµÝ¥‘Ñ è€äÀÁÁàìµ…É¥¸è€À…ÕÑ¼ì)ô(¹Ù¥Í¥½¸µ…ÉÍÙœìÝ¥‘Ñ è€ÐÑÁàì¡•¥¡Ðè€ÐÑÁàì½±½ÈèÙ…È ´µÁÉ¥µ…Éä¤ì™±•àµÍ¡É¥¹¬è€Àìµ…É¥¸µÑ½Àè€ÑÁàìô(¹Ù¥Í¥½¸µ…ÉÀì™½¹ÐµÍ¥é”è€Ä¸ÈáÉ•´ì±¥¹”µ¡•¥¡Ðè€Ä¸Øì™½¹ÐµÝ•¥¡Ðè€ÔÀÀì½±½ÈèÙ…È ´µ™½É•É½Õ¹¤ìô)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØÐÁÁà¤ì€¹Ù¥Í¥½¸µ…Éì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ìÁ…‘‘¥¹œè€ÈáÁà€ÈÑÁàìô€¹Ù¥Í¥½¸µ…ÉÀì™½¹ÐµÍ¥é”è€Ä¸ÀáÉ•´ìôô((¼¨½¹¹•Ñ¥Ù¥Ñä™±½Ü‘¥…É…´€¨¼(¹½¹¸µ™±½Üì(€‰…­É½Õ¹èÙ…È ´µ…É¤ì‰½É‘•Èè€ÅÁàÍ½±¥Ù…È ´µ‰½É‘•È¤ì‰½É‘•ÈµÉ…‘¥ÕÌèÙ…È ´µÉ…‘¥ÕÌµ±œ¤ì(€‰½àµÍ¡…‘½ÜèÙ…È ´µÍ¡…‘½Üµµ¤ìÁ…‘‘¥¹œè€ÐÁÁà€ÌÉÁàì‘¥ÍÁ±…äè™±•àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì…Àè€ÈÙÁàì(€…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì)ô(¹½¹¸µÉ½Üì‘¥ÍÁ±…äè™±•àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì©ÕÍÑ¥™äµ½¹Ñ•¹Ðè•¹Ñ•Èì™±•àµÝÉ…ÀèÝÉ…Àì…Àè€ÄÉÁàìÝ¥‘Ñ è€ÄÀÀ”ìô(¹½¹¸µÉ½Ü´µ¡…¥¸ì…Àè€ÄÁÁàìô(¹½¹¸µ…ÉÉ½Üì(€Ý¥‘Ñ è€ÌÑÁàì¡•¥¡Ðè€ÉÁàì‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…Éä¤ìÁ½Í¥Ñ¥½¸èÉ•±…Ñ¥Ù”ì½Á…¥Ñäè€¸àÔì™±•àµÍ¡É¥¹¬è€Àì)ô(¹½¹¸µ…ÉÉ½Üèé…™Ñ•Èì(€½¹Ñ•¹Ðè€ˆˆìÁ½Í¥Ñ¥½¸è…‰Í½±ÕÑ”ìÉ¥¡Ðè€ÀìÑ½Àè€´ÑÁàì(€‰½É‘•Èè€ÕÁàÍ½±¥ÑÉ…¹ÍÁ…É•¹Ðì‰½É‘•Èµ±•™Ðè€áÁàÍ½±¥Ù…È ´µÁÉ¥µ…Éä¤ì‰½É‘•ÈµÑ½ÀµÝ¥‘Ñ è€ÑÁàì‰½É‘•Èµ‰½ÑÑ½´µÝ¥‘Ñ è€ÑÁàì)ô(¹½¹¸µ…ÉÉ½Ü´µ‘½Ý¸ìÝ¥‘Ñ è€ÉÁàì¡•¥¡Ðè€ÌÁÁàìô(¹½¹¸µ…ÉÉ½Ü´µ‘½Ý¸èé…™Ñ•Èì±•™Ðè€´ÑÁàìÑ½Àè…ÕÑ¼ì‰½ÑÑ½´è€Àì‰½É‘•Èè€ÕÁàÍ½±¥ÑÉ…¹ÍÁ…É•¹Ðì‰½É‘•ÈµÑ½Àè€áÁàÍ½±¥Ù…È ´µÁÉ¥µ…Éä¤ì‰½É‘•Èµ±•™ÐµÝ¥‘Ñ è€ÑÁàì‰½É‘•ÈµÉ¥¡ÐµÝ¥‘Ñ è€ÑÁàìô(¹½¹¸µ¹½‘”ì(€‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…ÉäµÍ½™Ð¤ì½±½ÈèÙ…È ´µ™½É•É½Õ¹¤ì‰½É‘•Èè€ÅÁàÍ½±¥½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µÁÉ¥µ…Éä¤€ÌÀ”°Ù…È ´µ‰½É‘•È¤¤ì(€‰½É‘•ÈµÉ…‘¥ÕÌè€ÄÑÁàìÁ…‘‘¥¹œè€ÄÉÁà€ÄáÁàì™½¹ÐµÝ•¥¡Ðè€ØÀÀì™½¹ÐµÍ¥é”è€¸äÕÉ•´ì(€‘¥ÍÁ±…äè™±•àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€ÉÁàìÑ•áÐµ…±¥¸è•¹Ñ•Èìµ¥¸µÝ¥‘Ñ è€ÄÈÁÁàì)ô(¹½¹¸µ¹½‘”Íµ…±°ì™½¹ÐµÝ•¥¡Ðè€ÐÀÀì™½¹ÐµÍ¥é”è€¸ÜÉÉ•´ì½±½ÈèÙ…È ´µµÕÑ•µ™½É•É½Õ¹¤ìô(¹½¹¸µ¹½‘”µÑ…œì(€™½¹ÐµÍ¥é”è€¸ØÉÉ•´ì™½¹ÐµÝ•¥¡Ðè€ÜÀÀì±•ÑÑ•ÈµÍÁ…¥¹œè€¸Àá•´ìÑ•áÐµÑÉ…¹Í™½É´èÕÁÁ•É…Í”ì(€‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…Éä¤ì½±½Èè€™™˜ì‰½É‘•ÈµÉ…‘¥ÕÌè€ääåÁàìÁ…‘‘¥¹œè€ÉÁà€åÁàìµ…É¥¸µ‰½ÑÑ½´è€ÑÁàì)ô(¹½¹¸µ¹½‘”µÑ…œ´µ…µ‰•Èì‰…­É½Õ¹èÙ…È ´µ…µ‰•È¤ìô(¹½¹¸µ¹½‘”µÑ…œ´µÉ••¸ì‰…­É½Õ¹èÙ…È ´µÉ••¸¤ìô(¹½¹¸µ¹½‘”´µÍµ…±°ìµ¥¸µÝ¥‘Ñ è€ÄÀáÁàìÁ…‘‘¥¹œè€ÄÁÁà€ÄÑÁàì™½¹ÐµÍ¥é”è€¸àÙÉ•´ìô(¹½¹¸µ¹½‘”´µ‰É…¹ ì‰½É‘•Èµ½±½Èè½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µ…µ‰•È¤€ÔÔ”°Ù…È ´µ‰½É‘•È¤¤ì‰…­É½Õ¹è½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µ…µ‰•È¤€ÄÀ”°Ù…È ´µ‰…­É½Õ¹¤¤ìô(¹½¹¸µ¹½‘”´µ¡Õˆì(€‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…Éä¤ì½±½Èè€™™˜ì‰½É‘•Èµ½±½ÈèÙ…È ´µÁÉ¥µ…Éä¤ìÁ…‘‘¥¹œè€ÄáÁà€ÌÁÁàì(€™±•àµ‘¥É•Ñ¥½¸èÉ½Üì…Àè€ÄÉÁàì™½¹ÐµÍ¥é”è€Ä¸ÀÕÉ•´ì‰½àµÍ¡…‘½ÜèÙ…È ´µÍ¡…‘½Üµµ¤ì)ô(¹½¹¸µ¹½‘”´µ¡ÕˆÍÙœìÝ¥‘Ñ è€ÈÉÁàì¡•¥¡Ðè€ÈÉÁàì™±•àµÍ¡É¥¹¬è€Àìô(¹½¹¸µ¹½‘”´µ¡ÕˆÍµ…±°ì½±½ÈèÉ‰„ ÈÔÔ°ÈÔÔ°ÈÔÔ°¸àÈ¤ìô(¹½¹¸µ¹½‘”´µ½±±…ˆì‰…­É½Õ¹èÙ…È ´µÉ••¸µÍ½™Ð¤ì‰½É‘•Èµ½±½Èè½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µÉ••¸¤€ÌÔ”°Ù…È ´µ‰½É‘•È¤¤ìµ¥¸µÝ¥‘Ñ è€ÄÀáÁàìô(¹½¹¸µ…Ñ•Ý…äì‘¥ÍÁ±…äè™±•àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€ÙÁàìÝ¥‘Ñ è€ÄÀÀ”ìô(¹½¹¸µ‰É…¹ ì‘¥ÍÁ±…äè™±•àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€ÄÑÁàìô(¹½¹¸µ‰É…¹ µ¥¸ì‘¥ÍÁ±…äè™±•àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€ÄÁÁàìô(¹½¹¸µÉ½Ü´µ¡Õˆì…Àè€ÄÑÁàìô(¹½¹¸µ™…¸ì‘¥ÍÁ±…äè™±•àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì©ÕÍÑ¥™äµ½¹Ñ•¹Ðè•¹Ñ•Èì™±•àµÝÉ…ÀèÝÉ…Àì…Àè€ÄÉÁàìÝ¥‘Ñ è€ÄÀÀ”ìô(¹½¹¸µ½±±…ˆìÝ¥‘Ñ è€ÄÀÀ”ì‘¥ÍÁ±…äè™±•àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì…Àè€ÄÑÁàì‰½É‘•ÈµÑ½Àè€ÅÁà‘…Í¡•Ù…È ´µ‰½É‘•È¤ìÁ…‘‘¥¹œµÑ½Àè€ÈÑÁàìô(¹½¹¸µ½±±…ˆµ±…‰•°ì™½¹ÐµÍ¥é”è€¸ÜÉÉ•´ì™½¹ÐµÝ•¥¡Ðè€ÜÀÀì±•ÑÑ•ÈµÍÁ…¥¹œè€¸ÄÉ•´ìÑ•áÐµÑÉ…¹Í™½É´èÕÁÁ•É…Í”ì½±½ÈèÙ…È ´µµÕÑ•µ™½É•É½Õ¹¤ìô(¹½¹¸µ½±±…ˆµÉ½Üì‘¥ÍÁ±…äè™±•àì…±¥¸µ¥Ñ•µÌè•¹Ñ•Èì©ÕÍÑ¥™äµ½¹Ñ•¹Ðè•¹Ñ•Èì™±•àµÝÉ…ÀèÝÉ…Àì…Àè€ÄÉÁàìô(¹½¹¸µ…ÁÑ¥½¸ìµ…É¥¸µÑ½Àè€ÈÁÁàì™½¹ÐµÍ¥é”è€¸àÑÉ•´ìô)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØÐÁÁà¤ì€¹½¹¸µ™±½ÜìÁ…‘‘¥¹œè€ÈÑÁà€ÄÙÁàìô€¹½¹¸µ…ÉÉ½ÜìÝ¥‘Ñ è€ÈÉÁàìôô((¼¨=‰©•Ñ¥Ù”€¼‰•¹•™¥ÐÉ¥‘Ì€¨¼(¹½‰¨µÉ¥ìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹ÌèÉ•Á•…Ð Ð°€Å™È¤ìô)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ÄÀÈÑÁà¤ì€¹½‰¨µÉ¥ìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹ÌèÉ•Á•…Ð È°€Å™È¤ìôô)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØÐÁÁà¤ì€¹½‰¨µÉ¥ìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè€Å™Èìôô(¹‰•¹•™¥ÐµÉ¥€¹™•…ÑÕÉ”µ…ÉìÑ•áÐµ…±¥¸è±•™Ðìô(¹‰•¹•™¥ÐµÉ¥€¹™•…ÑÕÉ”µ¥½¸ìµ…É¥¸µ‰½ÑÑ½´è€ÄÑÁàìô((¼¨AÉ¥¹¥Á±”±¥ÍÐÑÝ¼µ½±Õµ¸€¨¼)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØÐÁÁà¤ì€¹ÁÉ¥¹¥Á±”µÉ¥ìÉ¥µÑ•µÁ±…Ñ”µ½±Õµ¹Ìè€Å™Èìôô((¼¨I•¥½¹ÌÑ…‰±”€¨¼(¹É•¥½¸µÑ…‰±”µÝÉ…Àì½Ù•É™±½Üµàè…ÕÑ¼ì‰½É‘•Èè€ÅÁàÍ½±¥Ù…È ´µ‰½É‘•È¤ì‰½É‘•ÈµÉ…‘¥ÕÌèÙ…È ´µÉ…‘¥ÕÌµ±œ¤ì‰½àµÍ¡…‘½ÜèÙ…È ´µÍ¡…‘½Üµµ¤ì‰…­É½Õ¹èÙ…È ´µ…É¤ìô(¹É•¥½¸µÑ…‰±”ìÝ¥‘Ñ è€ÄÀÀ”ì‰½É‘•Èµ½±±…ÁÍ”è½±±…ÁÍ”ìµ¥¸µÝ¥‘Ñ è€ÐàÁÁàìô(¹É•¥½¸µÑ…‰±”Ñ °€¹É•¥½¸µÑ…‰±”ÑìÁ…‘‘¥¹œè€ÄÙÁà€ÈÉÁàìÑ•áÐµ…±¥¸è±•™Ðì‰½É‘•Èµ‰½ÑÑ½´è€ÅÁàÍ½±¥Ù…È ´µ‰½É‘•È¤ì™½¹ÐµÍ¥é”è€¸äÙÉ•´ìô(¹É•¥½¸µÑ…‰±”Ñ¡•…Ñ ì(€‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…Éä¤ì½±½Èè€™™˜ì™½¹ÐµÝ•¥¡Ðè€ØÀÀì™½¹ÐµÍ¥é”è€¸àÉÉ•´ì(€±•ÑÑ•ÈµÍÁ…¥¹œè€¸ÀÙ•´ìÑ•áÐµÑÉ…¹Í™½É´èÕÁÁ•É…Í”ì)ô(¹É•¥½¸µÑ…‰±”Ñ‰½‘äÑÈé±…ÍÐµ¡¥±Ñ °€¹É•¥½¸µÑ…‰±”Ñ‰½‘äÑÈé±…ÍÐµ¡¥±Ñì‰½É‘•Èµ‰½ÑÑ½´è¹½¹”ìô(¹É•¥½¸µÑ…‰±”Ñ‰½‘äÑÈé¹Ñ µ¡¥±¡•Ù•¸¤ì‰…­É½Õ¹èÙ…È ´µµÕÑ•¤ìô(¹É•¥½¸µÑ…‰±”Ñ‰½‘äÑ ì™½¹ÐµÝ•¥¡Ðè€ØÀÀì½±½ÈèÙ…È ´µ™½É•É½Õ¹¤ìÝ¥‘Ñ è€ÐÈ”ìô(¹É•¥½¸µÑ…‰±”Ñ‰½‘äÑì½±½ÈèÙ…È ´µµÕÑ•µ™½É•É½Õ¹¤ìô(¹É•¥½¸µ¹½Ñ”ìµ…É¥¸µÑ½Àè€ÄáÁàì™½¹ÐµÍ¥é”è€¸àÑÉ•´ì½±½ÈèÙ…È ´µµÕÑ•µ™½É•É½Õ¹¤ì™½¹ÐµÍÑå±”è¥Ñ…±¥Œìô((¼¨%¹Ù•ÍÑ½È¹½Ñ”‰½à€¨¼(¹¹½Ñ”µ‰½àì(€‘¥ÍÁ±…äè™±•àì…Àè€ÈÁÁàì…±¥¸µ¥Ñ•µÌè™±•àµÍÑ…ÉÐì(€‰…­É½Õ¹èÙ…È ´µÁÉ¥µ…ÉäµÍ½™Ð¤ì‰½É‘•Èè€ÅÁàÍ½±¥½±½Èµµ¥à¡¥¸ÍÉˆ°Ù…È ´µÁÉ¥µ…Éä¤€ÌÀ”°Ù…È ´µ‰½É‘•È¤¤ì(€‰½É‘•Èµ±•™Ðè€ÑÁàÍ½±¥Ù…È ´µÁÉ¥µ…Éä¤ì‰½É‘•ÈµÉ…‘¥ÕÌèÙ…È ´µÉ…‘¥ÕÌ¤ìÁ…‘‘¥¹œè€ÌÉÁà€ÌÙÁàìµ…àµÝ¥‘Ñ è€àØÁÁàìµ…É¥¸è€À…ÕÑ¼ì)ô(¹¹½Ñ”µ‰½à€øÍÙœìÝ¥‘Ñ è€ÈÙÁàì¡•¥¡Ðè€ÈÙÁàì½±½ÈèÙ…È ´µÁÉ¥µ…Éä¤ì™±•àµÍ¡É¥¹¬è€Àìµ…É¥¸µÑ½Àè€ÍÁàìô(¹¹½Ñ”µ‰½à€¹Ñ…œìµ…É¥¸µ‰½ÑÑ½´è€ÄÉÁàì‘¥ÍÁ±…äè¥¹±¥¹”µ™±•àìô(¹¹½Ñ”µ‰½àÀì½±½ÈèÙ…È ´µµÕÑ•µ™½É•É½Õ¹¤ì±¥¹”µ¡•¥¡Ðè€Ä¸Øì™½¹ÐµÍ¥é”è€¸äáÉ•´ìô)µ•‘¥„€¡µ…àµÝ¥‘Ñ è€ØÐÁÁà¤ì€¹¹½Ñ”µ‰½àì™±•àµ‘¥É•Ñ¥½¸è½±Õµ¸ìÁ…‘‘¥¹œè€ÈÑÁà€ÈÁÁàìôô((¼¨•™•¹Í¥Ù”É•ÍÁ½¹Í¥Ù”Í…™•Õ…É€¡ØÄÈ¤€¨¼)¥µœ°ÍÙœ°¥™É…µ”°Ù¥‘•¼°…¹Ù…Ììµ…àµÝ¥‘Ñ è€ÄÀÀ”ì¡•¥¡Ðè…ÕÑ¼ìô)Ñ…‰±”ìµ…àµÝ¥‘Ñ è€ÄÀÀ”ìô(¹É•¥½¸µÑ…‰±”°ÁÉ”°½‘”°€¹½¹¸µ™±½Üì½Ù•É™±½Üµàè…ÕÑ¼ìô
+/* Vision statement card */
+.vision-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 44px 48px; display: flex; gap: 24px; align-items: flex-start;
+  box-shadow: var(--shadow-md); max-width: 900px; margin: 0 auto;
+}
+.vision-card svg { width: 44px; height: 44px; color: var(--primary); flex-shrink: 0; margin-top: 4px; }
+.vision-card p { font-size: 1.28rem; line-height: 1.6; font-weight: 500; color: var(--foreground); }
+@media (max-width: 640px) { .vision-card { flex-direction: column; padding: 28px 24px; } .vision-card p { font-size: 1.08rem; } }
+
+/* ===== Connectivity flow diagram ===== */
+.conn-flow {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); padding: 40px 32px; display: flex; flex-direction: column; gap: 26px;
+  align-items: center;
+}
+.conn-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; width: 100%; }
+.conn-row--chain { gap: 10px; }
+.conn-arrow {
+  width: 34px; height: 2px; background: var(--primary); position: relative; opacity: .85; flex-shrink: 0;
+}
+.conn-arrow::after {
+  content: ""; position: absolute; right: 0; top: -4px;
+  border: 5px solid transparent; border-left: 8px solid var(--primary); border-top-width: 4px; border-bottom-width: 4px;
+}
+.conn-arrow--down { width: 2px; height: 30px; }
+.conn-arrow--down::after { left: -4px; top: auto; bottom: 0; border: 5px solid transparent; border-top: 8px solid var(--primary); border-left-width: 4px; border-right-width: 4px; }
+.conn-node {
+  background: var(--primary-soft); color: var(--foreground); border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-radius: 14px; padding: 12px 18px; font-weight: 600; font-size: .95rem;
+  display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; min-width: 120px;
+}
+.conn-node small { font-weight: 400; font-size: .72rem; color: var(--muted-foreground); }
+.conn-node-tag {
+  font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: var(--primary); color: #fff; border-radius: 999px; padding: 2px 9px; margin-bottom: 4px;
+}
+.conn-node-tag--amber { background: var(--amber); }
+.conn-node-tag--green { background: var(--green); }
+.conn-node--small { min-width: 108px; padding: 10px 14px; font-size: .86rem; }
+.conn-node--branch { border-color: color-mix(in srgb, var(--amber) 55%, var(--border)); background: color-mix(in srgb, var(--amber) 10%, var(--background)); }
+.conn-node--hub {
+  background: var(--primary); color: #fff; border-color: var(--primary); padding: 18px 30px;
+  flex-direction: row; gap: 12px; font-size: 1.05rem; box-shadow: var(--shadow-md);
+}
+.conn-node--hub svg { width: 22px; height: 22px; flex-shrink: 0; }
+.conn-node--hub small { color: rgba(255,255,255,.82); }
+.conn-node--collab { background: var(--green-soft); border-color: color-mix(in srgb, var(--green) 35%, var(--border)); min-width: 108px; }
+.conn-gateway { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; }
+.conn-branch { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.conn-branch-in { display: flex; align-items: center; gap: 10px; }
+.conn-row--hub { gap: 14px; }
+.conn-fan { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; width: 100%; }
+.conn-collab { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; border-top: 1px dashed var(--border); padding-top: 24px; }
+.conn-collab-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-foreground); }
+.conn-collab-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.conn-caption { margin-top: 20px; font-size: .84rem; }
+@media (max-width: 640px) { .conn-flow { padding: 24px 16px; } .conn-arrow { width: 22px; } }
+
+/* Objective / benefit grids â€” tighter cards */
+.obj-grid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) { .obj-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .obj-grid { grid-template-columns: 1fr; } }
+.benefit-grid .feature-card { text-align: left; }
+.benefit-grid .feature-icon { margin-bottom: 14px; }
+
+/* Principle list two-column */
+@media (max-width: 640px) { .principle-grid { grid-template-columns: 1fr; } }
+
+/* ===== Regions table ===== */
+.region-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); background: var(--card); }
+.region-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.region-table th, .region-table td { padding: 16px 22px; text-align: left; border-bottom: 1px solid var(--border); font-size: .96rem; }
+.region-table thead th {
+  background: var(--primary); color: #fff; font-weight: 600; font-size: .82rem;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.region-table tbody tr:last-child th, .region-table tbody tr:last-child td { border-bottom: none; }
+.region-table tbody tr:nth-child(even) { background: var(--muted); }
+.region-table tbody th { font-weight: 600; color: var(--foreground); width: 42%; }
+.region-table tbody td { color: var(--muted-foreground); }
+.region-note { margin-top: 18px; font-size: .84rem; color: var(--muted-foreground); font-style: italic; }
+
+/* Investor note box */
+.note-box {
+  display: flex; gap: 20px; align-items: flex-start;
+  background: var(--primary-soft); border: 1px solid color-mix(in srgb, var(--primary) 30%, var(--border));
+  border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 32px 36px; max-width: 860px; margin: 0 auto;
+}
+.note-box > svg { width: 26px; height: 26px; color: var(--primary); flex-shrink: 0; margin-top: 3px; }
+.note-box .tag { margin-bottom: 12px; display: inline-flex; }
+.note-box p { color: var(--muted-foreground); line-height: 1.6; font-size: .98rem; }
+@media (max-width: 640px) { .note-box { flex-direction: column; padding: 24px 20px; } }
+/* ---------- Defensive responsive safeguard (v12) ---------- */
+img, svg, iframe, video, canvas { max-width: 100%; height: auto; }
+table { max-width: 100%; }
+.region-table, pre, code, .conn-flow { overflow-x: auto; }
