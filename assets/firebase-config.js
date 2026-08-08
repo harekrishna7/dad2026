@@ -2,18 +2,18 @@
    DADsync — Firebase configuration (contact form backend)
    ============================================================
    Live Firebase project: dadsync2026-7e20f
-   -------------------------------------------------------------------
+   ------------------------------------------------------------
    Submissions from the Contact page are written to the Firestore
    collection named "contacts", one document per submission, with
    fields:
      first_name, last_name, email, interest, message, created_at
-   -------------------------------------------------------------------
+   ------------------------------------------------------------
    NOTE: The Firebase SDKs (v9 compat) are loaded in contact.html
    from the gstatic CDN. This file must load BEFORE app.js so the
    window.DADSYNC_FIREBASE object exists at form-submit time.
    ============================================================ */
 window.DADSYNC_FIREBASE = {
-  apiKey: "AIzaSyAgPlafXGlDepGSPR6S2Prwf3GJy-Y6lc",
+  apiKey: "AIzaSyAgPlafXglLDepGSPr6S2Prwf3GJy-Y6lc",
   authDomain: "dadsync2026-7e20f.firebaseapp.com",
   databaseURL: "https://dadsync2026-7e20f-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "dadsync2026-7e20f",
