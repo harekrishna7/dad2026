@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DADsync Admin — Website Inbox & Applications</title>
+<meta name="description" content="DADsync Admin Dashboard — manage website contact messages and job applications for dadsync.in. Demo mode included; connect a backend (e.g. Firebase) for live submissions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'%3E%3Cpath d='M9 3h6v2h-2v2h2a2 2 0 012 2v2h2v2h-2v2h2v2h-2v2a2 2 0 01-2 2h-2v2h-2v-2H9v2H7v-2H5a2 2 0 01-2-2v-2H1v-2h2v-2H1V9h2V7a2 2 0 012-2h2V3zM9 9v6h6V9zm2 2h2v2h-2z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ DADSync Admin v2: Firebase Realtime Database (optional) ============
+     To read live submissions, fill in the FIREBASE_CONFIG placeholders below with your
+     Firebase project values (see README.md). The same project/config used by the main
+     website (dadsync_v7) must be used here so the dashboard reads the same nodes:
+       - contact_messages   (written by the website Contact form)
+       - job_applications   (written by the website Careers forms)
+     If left as placeholders, the dashboard gracefully falls back to the built-in
+     localStorage demo data so it still works standalone.
+     Alternatively paste the config in Settings -> Firebase in the UI (persisted to
+     localStorage, dadsync_admin_config_v2) -- it overrides these constants. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+/* DADSync Admin v2 - Firebase Realtime Database config (fill in to enable).
+   SAME config as the dadsync_v7 website so both read/write the same database. */
+var FIREBASE_CONFIG = {
+  apiKey: 'YOUR_FIREBASE_API_KEY',
+  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
+  databaseURL: 'https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
+  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+  appId: 'YOUR_FIREBASE_APP_ID'
+};
+var FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('YOUR_') === -1 && FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL.indexOf('YOUR_') === -1);
+</script>
+
+<!-- ===================== LOGIN SCREEN ===================== -->
+<div id="login-screen" class="login-screen">
+  <div class="login-bg-grid"></div>
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="login-brand-mark">D</div>
+      <div class="login-brand-text">
+        <div class="login-brand-name">DADsync</div>
+        <div class="login-brand-sub">Admin Dashboard</div>
+      </div>
+    </div>
+    <form id="login-form" autocomplete="off">
+      <label class="field-label" for="login-email">Email</label>
+      <input class="field" id="login-email" type="email" placeholder="owner@dadsync.in" required>
+      <label class="field-label" for="login-password">Password</label>
+      <input class="field" id="login-password" type="password" placeholder="••••••••" required>
+      <button class="btn btn-primary btn-block" id="login-submit" type="submit">Sign in</button>
+    </form>
+    <div class="login-divider"><span>or</span></div>
+    <button class="btn btn-ghost btn-block" id="demo-login" type="button">
+      <span class="demo-dot"></span> Explore with demo data
+    </button>
+    <div class="login-note" id="login-note"></div>
+    <div class="login-brand-foot">
+      <span class="muted-sm">DADsync · Cloud-first AI infrastructure &amp; data intelligence</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== APP SHELL ===================== -->
+<div id="app-shell" class="app-shell hidden">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main-col">
+    <header class="topbar" id="topbar"></header>
+    <main class="main" id="main"></main>
+  </div>
+</div>
+
+<!-- ===================== MODAL ROOT ===================== -->
+<div class="modal-root" id="modal-root"></div>
+
+<!-- ===================== TOASTS ===================== -->
+<div class="toast-root" id="toast-root"></div>
+
+<!-- ===================== APP MODULES ===================== -->
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/views-dashboard.js"></script>
+<script src="js/views-messages.js"></script>
+<script src="js/views-applications.js"></script>
+<script src="js/views-settings.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
