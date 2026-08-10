@@ -223,6 +223,49 @@ button { font-family: inherit; cursor: pointer; }
   background: rgba(148, 163, 184, 0.22);
 }
 
+.btn-link {
+  background: transparent;
+  border: none;
+  color: var(--cyan-400);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 0 0;
+  margin-top: 4px;
+  cursor: pointer;
+}
+.btn-link:hover:not(:disabled) { color: var(--cyan-300); text-decoration: underline; }
+.btn-link:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.btn-google {
+  background: #ffffff;
+  color: #1f2937;
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+.btn-google svg { flex: 0 0 auto; }
+.btn-google:hover:not(:disabled) { background: #f3f4f6; border-color: #ffffff; }
+
+.login-note.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border-radius: 999px;
+  color: var(--role-color, var(--slate-200));
+  background: color-mix(in srgb, var(--role-color, #64748b) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--role-color, #64748b) 45%, transparent);
+  text-transform: uppercase;
+}
+
 .demo-dot {
   width: 8px;
   height: 8px;

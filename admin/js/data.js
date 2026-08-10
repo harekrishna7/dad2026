@@ -147,8 +147,8 @@
       }
     } catch (e) { /* fall through to constants */ }
 
-    if (!cfg && typeof window.FIREBASE_CONFIG === 'object' && window.FIREBASE_CONFIG) {
-      cfg = window.FIREBASE_CONFIG;
+    if (!cfg && typeof window.DADsyncAdmin === 'object' && window.DADsyncAdmin && window.DADsyncAdmin.firebaseConfig) {
+      cfg = window.DADsyncAdmin.firebaseConfig;
     }
     return cfg;
   }

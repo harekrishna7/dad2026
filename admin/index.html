@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DADsync Admin — Website Inbox & Applications</title>
-<meta name="description" content="DADsync Admin Dashboard — manage website contact messages and job applications for dadsync.in. Demo mode included; connect a backend (e.g. Firebase) for live submissions.">
+<title>DADsync Admin — Secure Sign In</title>
+<meta name="description" content="DADsync Admin Dashboard — password + Google OAuth verified login, manage website contact messages and job applications for dadsync.in.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'%3E%3Cpath d='M9 3h6v2h-2v2h2a2 2 0 012 2v2h2v2h-2v2h2v2h-2v2a2 2 0 01-2 2h-2v2h-2v-2H9v2H7v-2H5a2 2 0 01-2-2v-2H1v-2h2v-2H1V9h2V7a2 2 0 012-2h2V3zM9 9v6h6V9zm2 2h2v2h-2z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,32 +13,18 @@
 </head>
 <body>
 
-<!-- ============ DADSync Admin v2: Firebase Realtime Database (optional) ============
-     To read live submissions, fill in the FIREBASE_CONFIG placeholders below with your
-     Firebase project values (see README.md). The same project/config used by the main
-     website (dadsync_v7) must be used here so the dashboard reads the same nodes:
-       - contact_messages   (written by the website Contact form)
-       - job_applications   (written by the website Careers forms)
-     If left as placeholders, the dashboard gracefully falls back to the built-in
-     localStorage demo data so it still works standalone.
-     Alternatively paste the config in Settings -> Firebase in the UI (persisted to
-     localStorage, dadsync_admin_config_v2) -- it overrides these constants. -->
+<!-- ============ DADSync Admin v3: Firebase Auth + Realtime Database ============
+     REAL Firebase project config for dadsync2026-7e20f (provided by the Owner).
+     Web API keys are PUBLIC client identifiers — they only identify the project.
+     Access control is enforced by Firebase Authentication + database.rules.json
+     (auth != null with role gating), NEVER by the config object.
+     - Password sign-in  : Firebase Auth Email/Password
+     - Google OAuth      : Firebase Auth "Continue with Google" (popup)
+     - Roles             : /users/{uid}/role  (ADMIN | TEAM_MEMBER | ...)
+     This config is loaded from js/firebase-config.js (single source of truth). -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script>
-/* DADSync Admin v2 - Firebase Realtime Database config (fill in to enable).
-   SAME config as the dadsync_v7 website so both read/write the same database. */
-var FIREBASE_CONFIG = {
-  apiKey: 'YOUR_FIREBASE_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  databaseURL: 'https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_FIREBASE_APP_ID'
-};
-var FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('YOUR_') === -1 && FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL.indexOf('YOUR_') === -1);
-</script>
 
 <!-- ===================== LOGIN SCREEN ===================== -->
 <div id="login-screen" class="login-screen">
@@ -48,21 +34,31 @@ var FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.index
       <div class="login-brand-mark">D</div>
       <div class="login-brand-text">
         <div class="login-brand-name">DADsync</div>
-        <div class="login-brand-sub">Admin Dashboard</div>
+        <div class="login-brand-sub">Admin Dashboard · Secure Sign In</div>
       </div>
     </div>
-    <form id="login-form" autocomplete="off">
+    <form id="login-form" autocomplete="on">
       <label class="field-label" for="login-email">Email</label>
-      <input class="field" id="login-email" type="email" placeholder="owner@dadsync.in" required>
+      <input class="field" id="login-email" type="email" autocomplete="username" placeholder="owner@dadsync.in" required>
       <label class="field-label" for="login-password">Password</label>
-      <input class="field" id="login-password" type="password" placeholder="••••••••" required>
+      <input class="field" id="login-password" type="password" autocomplete="current-password" placeholder="••••••••" required>
       <button class="btn btn-primary btn-block" id="login-submit" type="submit">Sign in</button>
+      <button class="btn btn-link btn-block" id="forgot-btn" type="button">Forgot password?</button>
     </form>
-    <div class="login-divider"><span>or</span></div>
+    <div class="login-divider"><span>or continue with</span></div>
+    <button class="btn btn-google btn-block" id="google-login" type="button">
+      <svg width="17" height="17" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+        <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+        <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+        <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-3.087 4.807l6.19 5.238C36.5 39.98 44 34.5 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+      </svg>
+      Continue with Google
+    </button>
     <button class="btn btn-ghost btn-block" id="demo-login" type="button">
       <span class="demo-dot"></span> Explore with demo data
     </button>
-    <div class="login-note" id="login-note"></div>
+    <div class="login-note hidden" id="login-note"></div>
     <div class="login-brand-foot">
       <span class="muted-sm">DADsync · Cloud-first AI infrastructure &amp; data intelligence</span>
     </div>
@@ -85,6 +81,8 @@ var FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.index
 <div class="toast-root" id="toast-root"></div>
 
 <!-- ===================== APP MODULES ===================== -->
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
 <script src="js/data.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/views-dashboard.js"></script>
