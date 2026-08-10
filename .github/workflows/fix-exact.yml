@@ -19,16 +19,15 @@ jobs:
             "https://static.teamily.ai/sites/666879b5-b597-4dbd-bde5-617ae780deb7/webpages/dadsync_v7/index.html?tk=c2l0ZTo2NjY4NzliNS1iNTk3LTRkYmQtYmRlNS02MTdhZTc4MGRlYjcvd2VicGFnZXMvZGFkc3luY192NzoxNzg2MzUxNzI5.MjQyZTIyZWFlNTc0YThiZTIyZTlkMGRjNjlmNWVkYTg"
           md5sum index.html
 
-      - name: Download exact admin dashboard files
+      - name: Download exact admin dashboard v3 files (Firebase Auth)
         run: |
           mkdir -p admin/js
-          TK="c2l0ZTo2NjY4NzliNS1iNTk3LTRkYmQtYmRlNS02MTdhZTc4MGRlYjcvd2VicGFnZXMvZGFkc3luYy1hZG1pbi12MjoxNzg2MzUxNzI5.YjliYzE2YzBkMWViZmI2NWI1ZTI2ZmVhNWZhYmE2MjA"
-          BASE="https://static.teamily.ai/sites/666879b5-b597-4dbd-bde5-617ae780deb7/webpages/dadsync-admin-v2"
-          curl -fsSL -o admin/index.html "$BASE/index.html?tk=$TK"
-          curl -fsSL -o admin/styles.css "$BASE/styles.css?tk=$TK"
-          curl -fsSL -o admin/README.md "$BASE/README.md?tk=$TK"
-          for f in app data ui views-dashboard views-messages views-applications views-settings; do
-            curl -fsSL -o "admin/js/$f.js" "$BASE/js/$f.js?tk=$TK"
+          BASE="https://static.teamily.ai/sites/666879b5-b597-4dbd-bde5-617ae780deb7/webpages/dadsync-admin-v3"
+          curl -fsSL -o admin/index.html "$BASE/index.html"
+          curl -fsSL -o admin/styles.css "$BASE/styles.css"
+          curl -fsSL -o admin/README.md "$BASE/README.md"
+          for f in firebase-config auth app data ui views-dashboard views-messages views-applications views-settings; do
+            curl -fsSL -o "admin/js/$f.js" "$BASE/js/$f.js"
           done
           ls -laR admin
 
@@ -40,6 +39,9 @@ jobs:
           test -s admin/index.html
           test -s admin/styles.css
           test -s admin/README.md
+          test -s admin/js/firebase-config.js
+          test -s admin/js/auth.js
+          grep -q "dadsync2026-7e20f" admin/js/firebase-config.js || { echo "real Firebase config missing"; exit 1; }
           for f in app data ui views-dashboard views-messages views-applications views-settings; do
             test -s "admin/js/$f.js" || { echo "missing admin/js/$f.js"; exit 1; }
           done
@@ -56,7 +58,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Deploy DADSync v7 exact (92417B, MD5 5032dba3) + admin dashboard v2"
+            git commit -m "Deploy DADSync v7 exact (92417B) + admin dashboard v3 with Firebase Auth login"
             git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git push origin main
           fi
