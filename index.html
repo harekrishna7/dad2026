@@ -176,6 +176,9 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 @keyframes shine { 0%, 60% { transform: translateX(-110%); } 100% { transform: translateX(110%); } }
 .logo span b { color: var(--accent); }
 .logo .tag { display: block; font-family: var(--font-body); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.logo-header .logo-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.logo-header .logo-brand { font-weight: 800; font-size: clamp(1.35rem, 2.6vw, 1.75rem); letter-spacing: -0.02em; }
+.logo-header .tag { text-transform: none; letter-spacing: 0.1em; font-size: clamp(0.58rem, 1.5vw, 0.72rem); white-space: nowrap; }
 
 .nav-links { display: flex; align-items: center; gap: 6px; }
 .nav-links a {
@@ -470,6 +473,10 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .job-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .job-tags span { font-size: 0.74rem; font-weight: 600; color: var(--text-soft); padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.045); border: 1px solid var(--card-border); }
 .job-apply { align-self: flex-start; margin-top: auto; padding: 12px 24px; font-size: 0.92rem; }
+button.job-apply { font-family: inherit; font-weight: 600; color: #fff; background: linear-gradient(135deg, var(--primary), var(--accent)); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; cursor: pointer; transition: var(--transition); text-align: center; }
+button.job-apply svg { width: 18px; height: 18px; transition: transform var(--transition); }
+button.job-apply:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(37, 99, 235, 0.55); }
+button.job-apply:hover svg { transform: translateX(4px); }
 
 .perks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
 .perk {
@@ -612,6 +619,36 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
 #toast.show { transform: translate(-50%, 0); opacity: 1; }
 #toast svg { width: 20px; height: 20px; color: var(--accent-2); flex-shrink: 0; }
 
+/* ============ APPLICATION MODAL ============ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(2, 8, 24, 0.72); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  position: relative; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
+  background: var(--bg-900); border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px; padding: 30px 28px;
+  box-shadow: 0 24px 70px rgba(2, 8, 24, 0.75);
+  transform: translateY(18px) scale(0.98); transition: transform 0.3s ease;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 6px; }
+.modal h3 span { color: var(--accent); }
+.modal .modal-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 22px; }
+.modal-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--card-border);
+  color: var(--muted); cursor: pointer; transition: var(--transition);
+}
+.modal-close:hover { color: #fff; border-color: var(--accent); background: rgba(37, 99, 235, 0.2); }
+.modal-close svg { width: 17px; height: 17px; }
+
 /* ============ REVEAL ANIMATIONS ============ */
 .js .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .js .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -671,8 +708,54 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
   .contact-form { padding: 28px 22px; }
   .sync-center { width: 124px; height: 124px; }
   .sync-node { width: 50px; height: 50px; }
+  .logo-header .logo-text { align-items: flex-start; }
+  .logo-header .tag { white-space: normal; }
 }
 </style>
+<!-- ============ DADSync v7: Firebase Realtime Database (optional) ============
+     To enable database logging, fill in the FIREBASE_CONFIG placeholders below
+     with your Firebase project values (see README.md).
+     If left as placeholders, the site gracefully falls back to Formspree-only. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+/* DADSync v7 - Firebase Realtime Database config (fill in to enable) */
+var FIREBASE_CONFIG = {
+  apiKey: 'YOUR_FIREBASE_API_KEY',
+  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
+  databaseURL: 'https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
+  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+  appId: 'YOUR_FIREBASE_APP_ID'
+};
+var FIREBASE_ENABLED = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('YOUR_') === -1 && FIREBASE_CONFIG.databaseURL && FIREBASE_CONFIG.databaseURL.indexOf('YOUR_') === -1);
+var DB = null;
+function initFirebase() {
+  if (!FIREBASE_ENABLED) return null;
+  try {
+    if (typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) {
+      firebase.initializeApp(FIREBASE_CONFIG);
+    }
+    return firebase.database();
+  } catch (err) {
+    console.warn('DADSync v7: Firebase init failed, falling back to Formspree-only.', err);
+    return null;
+  }
+}
+function pushRecord(node, record) {
+  if (!FIREBASE_ENABLED) return false;
+  try {
+    var db = DB || (DB = initFirebase());
+    if (!db) return false;
+    db.ref(node).push(record);
+    return true;
+  } catch (err) {
+    console.warn('DADSync v7: Firebase write failed, falling back to Formspree-only.', err);
+    return false;
+  }
+}
+</script>
 </head>
 <body>
 
@@ -685,14 +768,17 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
 <!-- ================= NAVBAR ================= -->
 <header class="navbar" id="navbar">
   <div class="container nav-inner">
-    <a href="#home" class="logo" aria-label="DADSync home">
+    <a href="#home" class="logo logo-header" aria-label="DADSync home">
       <span class="logo-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
           <circle cx="12" cy="12" r="3.2"/>
         </svg>
       </span>
-      <span>DAD<span><b>Sync</b></span><span class="tag">AI DataSync</span></span>
+      <span class="logo-text">
+        <span class="logo-brand">DAD<span><b>Sync</b></span></span>
+        <span class="tag">Dharmanagar AI Datasync Pvt. Ltd.</span>
+      </span>
     </a>
     <nav class="nav-links" id="nav-links" aria-label="Primary">
       <a href="#home" class="active">Home</a>
@@ -1004,9 +1090,9 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             </ul>
             <div class="job-tags"><span>Python</span><span>PyTorch</span><span>LLMs</span><span>MLOps</span></div>
           </div>
-          <a class="btn btn-primary job-apply" data-role="AI Engineer" href="mailto:dharmanagaraidatasync@zohomail.in?subject=Application%20for%20AI%20Engineer%20-%20DADSync%20Careers">Apply Now
+          <button type="button" class="btn btn-primary job-apply" data-role="AI Engineer">Apply Now
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          </button>
         </article>
 
         <article class="job-card reveal">
@@ -1026,9 +1112,9 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             <li>Solid grass of statistics &amp; A/B testing</li>
           </ul>
           <div class="job-tags"><span>SQL</span><span>Python</span><span>Power BI</span><span>Statistics</span></div>
-          <a class="btn btn-primary job-apply" data-role="Data Analyst" href="mailto:dharmanagaraidatasync@zohomail.in?subject=Application%20for%20Data%20Analyst%20-%20DADSync%20Careers">Apply Now
+          <button type="button" class="btn btn-primary job-apply" data-role="Data Analyst">Apply Now
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          </button>
         </article>
 
         <article class="job-card reveal d1">
@@ -1048,9 +1134,9 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             <li>PostgreSQL / MongoDB &amp; cloud deployment (AWS)</li>
           </ul>
           <div class="job-tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>AWS</span></div>
-          <a class="btn btn-primary job-apply" data-role="Full-Stack Developer" href="mailto:dharmanagaraidatasync@zohomail.in?subject=Application%20for%20Full-Stack%20Developer%20-%20DADSync%20Careers">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <button type="button" class="btn btn-primary job-apply" data-role="Full-Stack Developer">Apply Now
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
         </article>
 
         <article class="job-card reveal d1">
@@ -1060,7 +1146,7 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
           </div>
           <h3>Cloud Architect</h3>
           <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Dharmanagar / Remote
           </p>
           <p class="job-desc">Design secure, cost-optimized cloud infrastructure and lead migrations for clients on AWS, Azure and GCP.</p>
@@ -1070,13 +1156,13 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             <li>Kubernetes, networking &amp; security best practices</li>
           </ul>
           <div class="job-tags"><span>AWS</span><span>Azure</span><span>Terraform</span><span>Kubernetes</span></div>
-          <a class="btn btn-primary job-apply" data-role="Cloud Architect" href="mailto:dharmanagaraidatasync@zohomail.in?subject=Application%20for%20Cloud%20Architect%20-%20DADSync%20Careers">Apply Now
+          <button type="button" class="btn btn-primary job-apply" data-role="Cloud Architect">Apply Now
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          </button>
         </article>
 
         <article class="job-card reveal d2">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></div>
           <div class="job-top">
             <span class="job-badge">Full-time</span>
           </div>
@@ -1092,9 +1178,9 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             <li>Market research aptitude &amp; CRM proficiency</li>
           </ul>
           <div class="job-tags"><span>Sales</span><span>Partnerships</span><span>CRM</span><span>Proposals</span></div>
-          <a class="btn btn-primary job-apply" data-role="Business Development Executive" href="mailto:dharmanagaraidatasync@zohomail.in?subject=Application%20for%20Business%20Development%20Executive%20-%20DADSync%20Careers">Apply Now
+          <button type="button" class="btn btn-primary job-apply" data-role="Business Development Executive">Apply Now
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          </button>
         </article>
       </div>
 
@@ -1174,7 +1260,7 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             </a>
 
             <div class="contact-card">
-              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
               <span>
                 <span class="c-label">Location</span>
                 <span class="c-value">Dharmanagar, North Tripura<small>Dharmanagar AI DataSync Private Limited</small></span>
@@ -1185,8 +1271,8 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
 
         <div class="contact-form reveal d1">
           <h3>Send us a message</h3>
-          <p>Fill in the form &mdash; it opens your email app with everything pre-filled.</p>
-          <form id="contact-form" novalidate>
+          <p>Fill in the form &mdash; we&rsquo;ll get back to you within one business day.</p>
+          <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST" novalidate>
             <div class="form-row">
               <div class="field">
                 <label for="f-name">Your Name</label>
@@ -1241,19 +1327,19 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
           <li><a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Home</a></li>
           <li><a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>About</a></li>
           <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Services</a></li>
-          <li><a href="#why-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Why Us</a></li>
-          <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
-          <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
+          <li><a href="#why-us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Why Us</a></li>
+          <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
+          <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
           <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>AI Solutions</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Synchronization</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Analytics</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Cloud Integration</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Automation &amp; Consulting</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Synchronization</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Analytics</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Cloud Integration</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Automation &amp; Consulting</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1272,7 +1358,7 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
             <a href="tel:+916033615231">+91 60336 15231</a>
           </li>
           <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
             <a href="mailto:dharmanagaraidatasync@zohomail.in">dharmanagaraidatasync@zohomail.in</a>
           </li>
           <li>
@@ -1298,6 +1384,38 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
 <div id="toast" role="status" aria-live="polite">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   <span id="toast-msg">Message ready!</span>
+</div>
+
+<!-- Application modal -->
+<div class="modal-overlay" id="apply-modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="apply-title">
+    <button type="button" class="modal-close" id="apply-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <h3 id="apply-title">Apply for <span id="apply-role">this role</span></h3>
+    <p class="modal-sub">Send your application &mdash; it lands directly in our inbox.</p>
+    <form id="apply-form" novalidate>
+      <div class="field">
+        <label for="a-name">Your Name</label>
+        <input type="text" id="a-name" name="name" placeholder="Full name" required>
+      </div>
+      <div class="field">
+        <label for="a-email">Email</label>
+        <input type="email" id="a-email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="a-phone">Phone (optional)</label>
+        <input type="tel" id="a-phone" name="phone" placeholder="+91 ...">
+      </div>
+      <div class="field">
+        <label for="a-message">Why are you a good fit? (optional)</label>
+        <textarea id="a-message" name="message" rows="4" placeholder="Tell us about your experience..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Send Application
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
 </div>
 
 <script>
@@ -1426,21 +1544,150 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
     }, 4200);
   }
 
+  /* ---------- Formspree submission helper ---------- */
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+  var formInFlight = false;
+
+  function submitToFormspree(form, onSuccess, onError) {
+    if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.indexOf('XXXX') !== -1) {
+      showToast('Form endpoint not configured yet \u2013 please add your Formspree ID.');
+      if (onError) onError();
+      return;
+    }
+    var data = new FormData(form);
+    data.append('_subject', form.getAttribute('data-subject') || 'DADSync website submission');
+    data.append('_replyto', (form.querySelector('[name="email"]') || {}).value || '');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', FORMSPREE_ENDPOINT, true);
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== 4) return;
+      if (xhr.status >= 200 && xhr.status < 300) {
+        onSuccess();
+      } else {
+        showToast('Something went wrong \u2013 please try again or email us directly.');
+        if (onError) onError();
+      }
+    };
+    xhr.onerror = function () {
+      showToast('Network error \u2013 please check your connection and try again.');
+      if (onError) onError();
+    };
+    xhr.send(data);
+  }
+
+  /* ---------- Application modal ---------- */
+  var modalEl = document.getElementById('apply-modal');
+  var applyForm = document.getElementById('apply-form');
+  var modalRole = document.getElementById('apply-role');
+  var modalClose = document.getElementById('apply-close');
+  var currentRole = '';
+
+  function openApplyModal(role) {
+    currentRole = role;
+    if (modalRole) modalRole.textContent = role;
+    if (modalEl) {
+      modalEl.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeApplyModal() {
+    if (modalEl) modalEl.classList.remove('open');
+    document.body.style.overflow = '';
+    if (applyForm) applyForm.reset();
+  }
+
+  if (modalEl) {
+    modalEl.addEventListener('click', function (e) {
+      if (e.target === modalEl) closeApplyModal();
+    });
+  }
+  if (modalClose) modalClose.addEventListener('click', closeApplyModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeApplyModal();
+  });
+
   /* ---------- Apply Now buttons ---------- */
   document.querySelectorAll('.job-apply').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var role = btn.getAttribute('data-role') || 'the role';
-      showToast('Opening your email app – application for ' + role + ' ready!');
+      openApplyModal(role);
     });
   });
 
-  /* ---------- Contact form -> mailto ---------- */
+  if (applyForm) {
+    applyForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (formInFlight) return;
+      var name = (document.getElementById('a-name') || {}).value || '';
+      var email = (document.getElementById('a-email') || {}).value || '';
+      var phone = (document.getElementById('a-phone') || {}).value || '';
+
+      if (!name.trim() || !email.trim()) {
+        showToast('Please fill in your name and email.');
+        return;
+      }
+
+      var hiddenRole = document.createElement('input');
+      hiddenRole.type = 'hidden';
+      hiddenRole.name = 'role';
+      hiddenRole.value = currentRole;
+      applyForm.appendChild(hiddenRole);
+
+      var payload = new FormData(applyForm);
+      payload.append('_subject', 'Job Application \u2013 ' + currentRole + ' \u2013 DADSync Careers');
+      payload.append('_replyto', email);
+      if (phone) payload.append('phone', phone);
+
+      formInFlight = true;
+      var btnEl = applyForm.querySelector('[type="submit"]');
+      if (btnEl) btnEl.disabled = true;
+
+      /* DADSync v7: also write the application to Firebase Realtime Database */
+      pushRecord('job_applications', {
+        role: currentRole,
+        name: name,
+        email: email,
+        phone: phone || '',
+        message: (document.getElementById('a-message') || {}).value || '',
+        timestamp: new Date().toISOString(),
+        status: 'new'
+      });
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', FORMSPREE_ENDPOINT, true);
+      xhr.setRequestHeader('Accept', 'application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) return;
+        formInFlight = false;
+        if (btnEl) btnEl.disabled = false;
+        hiddenRole.parentNode.removeChild(hiddenRole);
+        if (xhr.status >= 200 && xhr.status < 300) {
+          closeApplyModal();
+          showToast('Application for ' + currentRole + ' sent \u2013 thank you, ' + name + '!');
+        } else {
+          showToast('Something went wrong \u2013 please try again or email us directly.');
+        }
+      };
+      xhr.onerror = function () {
+        formInFlight = false;
+        if (btnEl) btnEl.disabled = false;
+        hiddenRole.parentNode.removeChild(hiddenRole);
+        showToast('Network error \u2013 please check your connection and try again.');
+      };
+      xhr.send(payload);
+    });
+  }
+
+  /* ---------- Contact form -> Formspree ---------- */
   var form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (formInFlight) return;
       var name = (document.getElementById('f-name') || {}).value || '';
-      var phone = (document.getElementById('f-phone') || {}).value || '';
       var email = (document.getElementById('f-email') || {}).value || '';
       var message = (document.getElementById('f-msg') || {}).value || '';
 
@@ -1449,16 +1696,31 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
         return;
       }
 
-      var subject = encodeURIComponent('Website inquiry from ' + name);
-      var body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        (phone ? 'Phone: ' + phone + '\n' : '') +
-        'Email: ' + email + '\n\n' +
-        'Message:\n' + message
-      );
-      window.location.href = 'mailto:dharmanagaraidatasync@zohomail.in?subject=' + subject + '&body=' + body;
-      showToast('Opening your email app – hit open, thank you, ' + name + '!');
-      form.reset();
+      formInFlight = true;
+      var btnEl = form.querySelector('[type="submit"]');
+      if (btnEl) btnEl.disabled = true;
+      var originalText = btnEl ? btnEl.textContent : '';
+      if (btnEl) btnEl.textContent = 'Sending\u2026';
+
+      /* DADSync v7: also write the message to Firebase Realtime Database */
+      pushRecord('contact_messages', {
+        name: name,
+        email: email,
+        phone: (document.getElementById('f-phone') || {}).value || '',
+        message: message,
+        timestamp: new Date().toISOString(),
+        status: 'new'
+      });
+
+      submitToFormspree(form, function () {
+        formInFlight = false;
+        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
+        showToast('Message sent \u2013 thank you, ' + name + '! We\u2019ll reply within one business day.');
+        form.reset();
+      }, function () {
+        formInFlight = false;
+        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
+      });
     });
   }
 })();
