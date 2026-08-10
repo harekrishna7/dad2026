@@ -1577,6 +1577,35 @@ function pushRecord(node, record) {
     xhr.send(data);
   }
 
+  /* ---------- DADSync v9: direct email helpers (all fields -> team inbox) ---------- */
+  var TEAM_INBOX = 'dharmanagaraidatasync@zohomail.in';
+
+  function formspreeConfigured() {
+    return FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.indexOf('XXXX') === -1;
+  }
+
+  /* Build a plain-text email body from a flat [label, value, ...] array. */
+  function buildEmailBody(fields) {
+    var lines = [];
+    for (var i = 0; i < fields.length; i += 2) {
+      lines.push(fields[i] + ': ' + (fields[i + 1] || '\u2014'));
+    }
+    lines.push('');
+    lines.push('Sent from the DADSync website on ' + new Date().toLocaleString());
+    return lines.join('\n');
+  }
+
+  /* Open the visitor's own email client with subject + body (every field) pre-filled. */
+  function openPrefilledEmail(subject, body) {
+    var a = document.createElement('a');
+    a.href = 'mailto:' + TEAM_INBOX +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   /* ---------- Application modal ---------- */
   var modalEl = document.getElementById('apply-modal');
   var applyForm = document.getElementById('apply-form');
@@ -1624,6 +1653,7 @@ function pushRecord(node, record) {
       var name = (document.getElementById('a-name') || {}).value || '';
       var email = (document.getElementById('a-email') || {}).value || '';
       var phone = (document.getElementById('a-phone') || {}).value || '';
+      var message = (document.getElementById('a-message') || {}).value || '';
 
       if (!name.trim() || !email.trim()) {
         showToast('Please fill in your name and email.');
@@ -1641,6 +1671,27 @@ function pushRecord(node, record) {
       payload.append('_replyto', email);
       if (phone) payload.append('phone', phone);
 
+      /* DADSync v9: pre-fill the visitor's email client with every application field. */
+      var applySubject = 'Job Application \u2013 ' + currentRole + ' \u2013 DADSync Careers';
+      var applyBody = buildEmailBody([
+        'Position applied for', currentRole,
+        'Full name', name,
+        'Email', email,
+        'Phone', phone,
+        'Why a good fit', message
+      ]);
+      var mailtoOpened = false;
+      var sendViaMailto = function () {
+        if (mailtoOpened) return;
+        mailtoOpened = true;
+        openPrefilledEmail(applySubject, applyBody);
+        formInFlight = false;
+        if (btnEl) btnEl.disabled = false;
+        hiddenRole.parentNode.removeChild(hiddenRole);
+        closeApplyModal();
+        showToast('Your email app has opened with all details pre-filled \u2013 just hit send!');
+      };
+
       formInFlight = true;
       var btnEl = applyForm.querySelector('[type="submit"]');
       if (btnEl) btnEl.disabled = true;
@@ -1651,10 +1702,17 @@ function pushRecord(node, record) {
         name: name,
         email: email,
         phone: phone || '',
-        message: (document.getElementById('a-message') || {}).value || '',
+        message: message,
         timestamp: new Date().toISOString(),
         status: 'new'
       });
+
+      /* If a real Formspree endpoint is configured, send automatically first;
+         otherwise (or on failure) open the pre-filled email. */
+      if (!formspreeConfigured()) {
+        sendViaMailto();
+        return;
+      }
 
       var xhr = new XMLHttpRequest();
       xhr.open('POST', FORMSPREE_ENDPOINT, true);
@@ -1668,20 +1726,22 @@ function pushRecord(node, record) {
           closeApplyModal();
           showToast('Application for ' + currentRole + ' sent \u2013 thank you, ' + name + '!');
         } else {
-          showToast('Something went wrong \u2013 please try again or email us directly.');
+          showToast('Something went wrong \u2013 your email app will open with your details.');
+          sendViaMailto();
         }
       };
       xhr.onerror = function () {
         formInFlight = false;
         if (btnEl) btnEl.disabled = false;
         hiddenRole.parentNode.removeChild(hiddenRole);
-        showToast('Network error \u2013 please check your connection and try again.');
+        showToast('Network error \u2013 your email app will open with your details.');
+        sendViaMailto();
       };
       xhr.send(payload);
     });
   }
 
-  /* ---------- Contact form -> Formspree ---------- */
+  /* ---------- Contact form -> email (v9) ---------- */
   var form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -1689,12 +1749,31 @@ function pushRecord(node, record) {
       if (formInFlight) return;
       var name = (document.getElementById('f-name') || {}).value || '';
       var email = (document.getElementById('f-email') || {}).value || '';
+      var phone = (document.getElementById('f-phone') || {}).value || '';
       var message = (document.getElementById('f-msg') || {}).value || '';
 
       if (!name.trim() || !email.trim() || !message.trim()) {
         showToast('Please fill in your name, email and message.');
         return;
       }
+
+      /* DADSync v9: pre-fill the visitor's email client with every message field. */
+      var msgSubject = 'DADSync website message \u2013 ' + name;
+      var msgBody = buildEmailBody([
+        'Full name', name,
+        'Email', email,
+        'Phone', phone,
+        'Message', message
+      ]);
+      var mailtoOpened = false;
+      var sendViaMailto = function () {
+        if (mailtoOpened) return;
+        mailtoOpened = true;
+        openPrefilledEmail(msgSubject, msgBody);
+        formInFlight = false;
+        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
+        showToast('Your email app has opened with all details pre-filled \u2013 just hit send!');
+      };
 
       formInFlight = true;
       var btnEl = form.querySelector('[type="submit"]');
@@ -1706,11 +1785,18 @@ function pushRecord(node, record) {
       pushRecord('contact_messages', {
         name: name,
         email: email,
-        phone: (document.getElementById('f-phone') || {}).value || '',
+        phone: phone || '',
         message: message,
         timestamp: new Date().toISOString(),
         status: 'new'
       });
+
+      /* If a real Formspree endpoint is configured, send automatically first;
+         otherwise (or on failure) open the pre-filled email. */
+      if (!formspreeConfigured()) {
+        sendViaMailto();
+        return;
+      }
 
       submitToFormspree(form, function () {
         formInFlight = false;
@@ -1720,6 +1806,7 @@ function pushRecord(node, record) {
       }, function () {
         formInFlight = false;
         if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
+        sendViaMailto();
       });
     });
   }
