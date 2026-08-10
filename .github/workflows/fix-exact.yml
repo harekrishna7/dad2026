@@ -46,15 +46,17 @@ jobs:
           echo "ALL FILES VERIFIED EXACT"
 
       - name: Commit and push
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          set -e
           git config user.name "DADSync Deploy Bot"
           git config user.email "deploy@dadsync.in"
-          rm -f .b64test.txt
-          git add index.html admin .b64test.txt
+          git add index.html admin
           if git diff --cached --quiet; then
             echo "No changes to commit"
-            exit 0
+          else
+            git commit -m "Deploy DADSync v7 exact (92417B, MD5 5032dba3) + admin dashboard v2"
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin main
           fi
-          git commit -m "Deploy DADSync v7 exact (92417B, MD5 5032dba3) + admin dashboard v2"
-          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push origin main
