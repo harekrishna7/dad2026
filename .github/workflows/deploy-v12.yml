@@ -1,0 +1,43 @@
+name: Deploy DADSync v12 (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact DADSync v12 index.html (95,605 bytes, MD5 7d7f48b1d172336b42dd7dd6ca378c27)
+        run: |
+          curl -fsSL -o index.html \
+            "https://static.teamily.ai/sites/666879b5-b597-4dbd-bde5-617ae780deb7/webpages/dadsync_v12/index.html?tk=c2l0ZTo2NjY4NzliNS1iNTk3LTRkYmQtYmRlNS02MTdhZTc4MGRlYjcvd2VicGFnZXMvZGFkc3luY192MTI6MTc4NjY5MDE1OA.NGM1MThlNTljYmUxODNmM2MyOTFlMWNkZDcyNGRiZTI"
+          md5sum index.html
+
+      - name: Verify exactness (fail build if file differs)
+        run: |
+          set -e
+          test "$(stat -c%s index.html)" = "95605"
+          [ "$(md5sum index.html | cut -d' ' -f1)" = "7d7f48b1d172336b42dd7dd6ca378c27" ] || { echo "index.html mismatch"; exit 1; }
+          echo "All files verified exact."
+
+      - name: Commit and push exact file
+        run: |
+          git config user.name "DADSync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit";
+          else
+            git commit -m "Deploy DADSync v12 (exact 95605B, MD5 7d7f48b1d172336b42dd7dd6ca378c27): MindPal chatbot removed, clean build"
+            git push origin main
+          fi
