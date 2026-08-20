@@ -14,7 +14,7 @@
 <style>
 /* ============= RESET & TOKENS ============= */
 /* Tripura AI module (v13) â€” nav highlight & view switching */
-.nav-ai { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.92rem; color: var(--text-soft); border: 1px solid var(--card-border); border-radius: 999px; padding: 7px 14px; transition: all 0.25s; white-space: nowrap; }
+.nav-ai { display: inline-flex; align-itements: center; font-weight: 600; font-size: 0.92rem; color: var(--text-soft); border: 1px solid var(--card-border); border-radius: 999px; padding: 7px 14px; transition: all 0.25s; white-space: nowrap; }
 .nav-ai:hover { color: #fff; border-color: var(--accent); background: var(--primary-soft); box-shadow: 0 0 14px rgba(56,189,248,0.35); }
 .nav-ai.tads-nav-active { color: #fff; background: var(--primary); border-color: var(--primary); box-shadow: 0 0 18px rgba(37,99,235,0.55); }
 @media (max-width: 980px) { .nav-ai { margin: 6px 0; width: 100%; justify-content: center; } }
@@ -138,7 +138,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: #fff; box-shadow: 0 12px 30px rgba(37, 99, 235, 0.38);
 }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(37, 99, 235, 0.55); }
+.btn-primary:hover { transorm: translateY(-3px); box-shadow: 0 18px 42px rgba(37, 99, 235, 0.55); }
 .btn-primary:hover svg { transform: translateX(4px); }
 .btn-primary::after {
   content: ""; position: absolute; inset: 0;
@@ -186,7 +186,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .logo .tag { display: block; font-family: var(--font-body); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .logo-header .logo-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
 .logo-header .logo-brand { font-weight: 800; font-size: clamp(1.35rem, 2.6vw, 1.75rem); letter-spacing: -0.02em; }
-.logo-header .tag { text-transform: none; letter-spacing: 0.1em; font-size: clamp(0.58rem, 1.5vw, 0.72rem); white-space: nowrap; }
+.logo-header .tag { text-transform: none; letter-spacing: 0.1em; font-size: clamp(0.55rem, 1.5vw, 0.72rem); white-space: nowrap; }
 
 .nav-links { display: flex; align-items: center; gap: 6px; }
 .nav-links a {
@@ -209,7 +209,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.6px) rotate(-45deg); }
 
-/* ============ HERO ============= */
+/* ============ HERO ============ */
 .hero {
   min-height: 100vh;
   display: flex; align-items: center;
@@ -304,7 +304,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
   position: absolute; padding: 12px 18px; border-radius: 14px; font-size: 0.82rem; font-weight: 600;
   background: rgba(12, 29, 61, 0.75); backdrop-filter: blur(10px);
   border: 1px solid var(--card-border); box-shadow: var(--shadow-lg);
-  display: flex; align-items: center; gap: 8px; color: var(--text-soft);
+  display: flex; align-itements: center; gap: 8px; color: var(--text-soft);
   animation: floaty 5s ease-in-out infinite;
 }
 .glass-chip svg { width: 18px; height: 18px; color: var(--accent); }
@@ -320,7 +320,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .ticker-track { display: flex; width: max-content; animation: ticker 34s linear infinite; }
 .ticker-group { display: flex; align-items: center; }
 .ticker-group span {
-  display: inline-flex; align-itements: center; gap: 44px;
+  display: inline-flex; align-items: center; gap: 44px;
   font-family: var(--font-display); font-weight: 600; font-size: 0.92rem;
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft);
   white-space: nowrap; padding: 0 44px;
@@ -330,7 +330,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 
 /* ============ ABOUT ============= */
 #about { background: linear-gradient(180deg, var(--bg-950), var(--bg-900)); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-itements: center; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .about-copy h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 24px; }
 .about-copy h2 em { font-style: normal; background: linear-gradient(92deg, var(--accent), #60a5fa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .about-copy p { color: var(--text-soft); margin-bottom: 18px; }
@@ -347,7 +347,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .facts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 34px 0 8px; }
 .fact {
   padding: 18px 20px; border-radius: 16px;
-  background: var(--card); border: 1px solid var(--card-border);
+  background: var(--card); border : 1px solid var(--card-border);
   transition: var(--transition);
 }
 .fact:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-3px); background: rgba(37, 99, 235, 0.08); }
@@ -355,7 +355,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .fact span { font-size: 0.8rem; color: var(--muted); }
 
 .founder-card {
-  background: var(--card); border: 1px solid var(--card-border);
+  background: var(--card); border : 1px solid var(--card-border);
   border-radius: 24px; padding: 40px; position: relative; overflow: hidden;
   backdrop-filter: blur(12px);
   transition: var(--transition);
@@ -481,7 +481,7 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 .job-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .job-tags span { font-size: 0.74rem; font-weight: 600; color: var(--text-soft); padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.045); border: 1px solid var(--card-border); }
 .job-apply { align-self: flex-start; margin-top: auto; padding: 12px 24px; font-size: 0.92rem; }
-button.job-apply { font-family: inherit; font-weight: 600; color: #fff; background: linear-gradient(135deg, var(--primary), var(--accent)); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; cursor: pointer; transition: var(--transition); text-align: center; }
+button.job-apply { font-family: inherit; font-weight: 600; color: #fff; background: linear-gradient(135deg, var(--primary), var(--accent)); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; cursor: pointer; transition: var(--transimtion); text-align: center; }
 button.job-apply svg { width: 18px; height: 18px; transition: transform var(--transition); }
 button.job-apply:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(37, 99, 235, 0.55); }
 button.job-apply:hover svg { transform: translateX(4px); }
@@ -528,7 +528,7 @@ button.job-apply:hover svg { transform: translateX(4px); }
 #contact { background: linear-gradient(180deg, var(--bg-900), var(--bg-950)); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .contact-info h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
-.contact-info h2 em { font-style: normal; background: linear-gradient(92deg, var(--accent); #60a5fa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.contact-info h2 em { font-style: normal; background: linear-gradient(92deg, var(--accent), #60a5fa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .contact-info > p { color: var(--muted); margin-bottom: 36px; max-width: 480px; }
 .contact-cards { display: grid; gap: 16px; }
 .contact-card {
@@ -581,13 +581,13 @@ button.job-apply:hover svg { transform: translateX(4px); }
 .form-note { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-top: 14px; }
 .form-note svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
 
-/* ============ FOOTER ============= */
+/* ============ FOOTER ============ */
 footer { background: #040a17; border-top: 1px solid var(--card-border); padding: 72px 0 0; position: relative; z-index: 1; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
 .footer-brand p { color: var(--muted); font-size: 0.92rem; margin-top: 18px; max-width: 320px; }
 .footer-col h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; margin-bottom: 22px; }
 .footer-col ul { display: grid; gap: 12px; }
-.footer-col a { color: var(--muted); font-size: 0.92rem; transition: var(--transition); display: inline-flex; align-itements: center; gap: 8px; }
+.footer-col a { color: var(--muted); font-size: 0.92rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
 .footer-col a:hover { color: var(--accent); transform: translateX(4px); }
 .footer-col a svg { width: 14px; height: 14px; opacity: 0.6; }
 .footer-contact li { display: flex; gap: 12px; color: var(--muted); font-size: 0.9rem; }
@@ -699,7 +699,7 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
   .nav-cta { margin: 16px 0 0; justify-content: center; }
   .hamburger { display: flex; }
   .services-grid, .why-grid, .jobs-grid { grid-template-columns: 1fr; }
-  .job-card.featured { flex-direction: column; align-itemes: stretch; gap: 20px; }
+  .job-card.featured { flex-direction: column; align-items: stretch; gap: 20px; }
   .perks { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .cta-band { padding: 48px 28px; }
@@ -718,6 +718,57 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
   .sync-node { width: 50px; height: 50px; }
   .logo-header .logo-text { align-items: flex-start; }
   .logo-header .tag { white-space: normal; }
+}
+
+/* ============ Agency Agents showcase (DADSync v18) ============ */
+.agency-card {
+  position: relative; display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center;
+  border: 1px solid rgba(13, 110, 253, .18); border-radius: 22px; padding: 44px 48px; overflow: hidden;
+  background: linear-gradient(135deg, #0b1220 0%, #0d1b34 60%, #0b1220 100%);
+  color: #e8eefb; box-shadow: 0 24px 64px rgba(9, 9, 11, .28);
+}
+.agency-card::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(520px 240px at 88% 8%, rgba(56, 189, 248, .22), transparent 62%),
+    radial-gradient(420px 220px at 4% 96%, rgba(11, 94, 215, .28), transparent 60%);
+}
+.agency-card-copy { position: relative; z-index: 2; }
+.agency-card-tag {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, .32); background: rgba(56, 189, 248, .09); color: #7dd3fc;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.agency-card h3 { font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-weight: 800; color: #fff; margin: 16px 0 12px; line-height: 1.25; }
+.agency-card h3 em { font-style: normal; color: #7dd3fc; }
+.agency-card-copy p { color: #aab8d4; line-height: 1.7; font-size: .96rem; margin: 0 0 24px; max-width: 560px; }
+.agency-card-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.agency-card-links .btn { border-radius: 11px; }
+.agency-card-links .btn-ghost { border-color: rgba(56, 189, 248, .4); color: #dbeafe; }
+.agency-card-visual { position: relative; z-index: 2; height: 240px; }
+.agency-orb {
+  position: absolute; inset: 50% auto auto 50%; width: 132px; height: 132px; transform: translate(-50%, -50%);
+  border-radius: 50%; display: grid; place-items: center; color: #7dd3fc;
+  background: radial-gradient(circle at 32% 28%, rgba(56, 189, 248, .28), rgba(11, 94, 215, .34) 70%);
+  border: 1px solid rgba(56, 189, 248, .45); box-shadow: 0 0 46px rgba(56, 189, 248, .35);
+  animation: agency-float 5s ease-in-out infinite;
+}
+.agency-orb svg { width: 56px; height: 56px; }
+@keyframes agency-float { 0%,100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-10px); } }
+.agency-node {
+  position: absolute; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+  font-weight: 800; font-size: .95rem; color: #7dd3fc; background: rgba(11, 94, 215, .28);
+  border: 1px solid rgba(56, 189, 248, .5); box-shadow: 0 0 18px rgba(56, 189, 248, .28);
+  animation: agency-node-pulse 3.4s ease-in-out infinite;
+}
+.agency-node:nth-of-type(2) { animation-delay: .6s; }
+.agency-node:nth-of-type(3) { animation-delay: 1.2s; }
+.agency-node:nth-of-type(4) { animation-delay: 1.8s; }
+.agency-node:nth-of-type(5) { animation-delay: 2.4s; }
+@keyframes agency-node-pulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.12); opacity: 1; } }
+@media (max-width: 860px) {
+  .agency-card { grid-template-columns: 1fr; padding: 32px 26px; gap: 26px; }
+  .agency-card-visual { height: 190px; }
 }
 </style>
 <!-- ============ DADSync v7: Firebase Realtime Database (optional) ============
@@ -747,7 +798,7 @@ function initFirebase() {
     }
     return firebase.database();
   } catch (err) {
-    console.warn('DADSync v7: Firebase init failed, falling back to Formspree-only.', err);
+    console.warn('DADSync v7 : Firebase init failed, falling back to Formspree-only.', err);
     return null;
   }
 }
@@ -795,6 +846,7 @@ function pushRecord(node, record) {
       <a href="#careers">Careers</a>
       <a href="#contact">Contact</a>
       <a href="#/tripura-ai" class="nav-ai" data-tads-nav>AI Transformation</a>
+      <a href="agency-agents.html" class="nav-ai">Agency Agents</a>
       <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -837,1013 +889,4 @@ function pushRecord(node, record) {
           <div class="sync-node n3"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4-8-8"/><path d="M14 7h7v7"/></svg></div>
           <div class="sync-node n4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
           <div class="sync-node n5"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-          <div class="sync-node n6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l3-7 4 14 3-7h4"/></svg></div>
-          <div class="sync-center"><b>Sync</b><span>AI Core</span></div>
-        </div>
-        <div class="glass-chip chip-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          Real-time Sync
-        </div>
-        <div class="glass-chip chip-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-          AI-Powered
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TICKER ================= -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <div class="ticker-group">
-        <span>AI Solutions</span><span>Data Synchronization</span><span>Data Analytics</span><span>Cloud Integration</span><span>Automation</span><span>Consulting</span>
-      </div>
-      <div class="ticker-group">
-        <span>AI Solutions</span><span>Data Synchronization</span><span>Data Analytics</span><span>Cloud Integration</span><span>Automation</span><span>Consulting</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= ABOUT ================= -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">About Us</span>
-        <h2>Where <em>Data Meets Intelligence</em></h2>
-        <p>Dharmanagar AI DataSync Private Limited &mdash; a technology company on a mission to simplify how businesses store, move, and understand their data.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <h2>Building the <em>data backbone</em> of modern businesses</h2>
-          <p>
-            Headquartered in <strong>Dharmanagar, North Tripura</strong>, <strong>DADSync</strong> helps organizations
-            of every size harness the power of artificial intelligence and seamless data synchronization. From unified
-            data pipelines and cloud migrations to intelligent analytics and automation, we engineer solutions that are
-            secure, scalable, and built to last.
-          </p>
-          <p>
-            Our philosophy is simple: your data should work <em>for</em> you &mdash; never against you. We combine deep
-            technical expertise with a founder-led, client-first approach to deliver outcomes that move the needle.
-          </p>
-          <ul class="about-points">
-            <li>
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-              End-to-end ownership: strategy, build, deploy &amp; support
-            </li>
-            <li>
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></span>
-              Security-first architecture on every engagement
-            </li>
-            <li>
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-              Fast, reliable delivery with transparent communication
-            </li>
-          </ul>
-
-          <div class="facts-grid">
-            <div class="fact"><b>Dharmanagar AI DataSync Pvt. Ltd.</b><span>Registered company name</span></div>
-            <div class="fact"><b>Dharmanagar, North Tripura</b><span>Headquarters &amp; operations</span></div>
-            <div class="fact"><b>Shivom Debnath</b><span>Founder &amp; CEO</span></div>
-            <div class="fact"><b>AI &middot; Data &middot; Cloud</b><span>Core technology focus</span></div>
-          </div>
-
-          <a href="#contact" class="btn btn-primary" style="margin-top:32px;">Let&rsquo;s Work Together
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
-
-        <div class="founder-card reveal d1">
-          <div class="founder-head">
-            <div class="avatar">SD</div>
-            <div>
-              <h3>Shivom Debnath</h3>
-              <p class="role">Founder &amp; CEO
-                <span>Dharmanagar AI DataSync Pvt. Ltd.</span>
-              </p>
-            </div>
-          </div>
-          <p>
-            Shivom founded DADSync with a vision to bring world-class AI and data engineering capabilities to businesses
-            in Northeast India and beyond &mdash; building solutions that are practical, affordable, and truly transformative.
-          </p>
-          <div class="founder-quote">
-            &ldquo;Every business sits on a goldmine of data. Our job is to unlock it &mdash; with intelligence, integrity, and impact.&rdquo;
-          </div>
-          <div class="founder-links">
-            <a href="tel:+919366755056">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
-              Call
-            </a>
-            <a href="mailto:dharmanagaraidatasync@zohomail.in">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
-              Email
-            </a>
-            <a href="https://www.dadsync.in" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              dadsync.in
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SERVICES ================ -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Our Services</span>
-        <h2>Solutions That <em>Move Your Business Forward</em></h2>
-        <p>Six core service lines engineered around one goal &mdash; making your data intelligent, connected, and actionable.</p>
-      </div>
-
-      <div class="services-grid">
-        <article class="service-card reveal">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5-4 8-8 8-3 0-5-1.6-5-4 0-1.4.8-2.4 2-3-1.2 0-2-1-2-2.2 0-1.4 1-2.4 2.4-2.6C10.6 5.4 11 4 12 2z"/></svg></div>
-          <h3>AI Solutions</h3>
-          <p>Custom machine learning models, NLP systems, conversational AI and computer vision &mdash; tailored to your business challenges.</p>
-          <div class="service-tags"><span>ML Models</span><span>NLP</span><span>GenAI</span></div>
-        </article>
-
-        <article class="service-card reveal d1">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
-          <h3>Data Synchronization</h3>
-          <p>Real-time, bidirectional sync across databases, ERPs, CRMs and cloud platforms &mdash; keeping every system consistently up to date.</p>
-          <div class="service-tags"><span>Real-time Sync</span><span>ETL</span><span>APIs</span></div>
-        </article>
-
-        <article class="service-card reveal d2">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4-8-8"/><path d="M14 7h7v7"/></svg></div>
-          <h3>Data Analytics</h3>
-          <p>Interactive dashboards, predictive analytics and deep reporting that turn raw numbers into clear, confident business decisions.</p>
-          <div class="service-tags"><span>Dashboards</span><span>Predictive</span><span>BI</span></div>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
-          <h3>Cloud Integration</h3>
-          <p>Seamless migration and integration with AWS, Azure and Google Cloud &mdash; modern, scalable, cost-optimized infrastructure.</p>
-          <div class="service-tags"><span>AWS</span><span>Azure</span><span>GCP</span></div>
-        </article>
-
-        <article class="service-card reveal d1">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-          <h3>Automation</h3>
-          <p>Workflow automation, RPA and smart pipelines that eliminate repetitive tasks &mdash; so your team focuses on what matters.</p>
-          <div class="service-tags"><span>RPA</span><span>Workflows</span><span>Pipelines</span></div>
-        </article>
-
-        <article class="service-card reveal d2">
-          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9z"/><path d="M9.5 9.5a3 3 0 0 1 4.2 0M13 15h.01"/></svg></div>
-          <h3>Consulting</h3>
-          <p>AI readiness assessments, data architecture design and technology roadmaps &mdash; strategic guidance from experts who build.</p>
-          <div class="service-tags"><span>Strategy</span><span>Architecture</span><span>Roadmaps</span></div>
-        </article>
-      </div>
-
-      <!-- CTA BAND -->
-      <div class="cta-band reveal">
-        <h2>Have a project in mind?</h2>
-        <p>Tell us about your data challenges &mdash; we&rsquo;ll map the fastest, most reliable path to a solution.</p>
-        <a href="#contact" class="btn btn-primary">Get Started Today
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= WHY US ================= -->
-  <section class="section" id="why-us">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Why Choose Us</span>
-        <h2>Built On <em>Trust, Speed &amp; Intelligence</em></h2>
-        <p>The reasons growing businesses partner with DADSync &mdash; and stay.</p>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-item reveal">
-          <div class="why-num">01</div>
-          <div>
-            <h3>Security-First Architecture</h3>
-            <p>Encryption, access control and best-practice governance baked into every solution from day one &mdash; never bolted on later.</p>
-          </div>
-        </div>
-        <div class="why-item reveal d1">
-          <div class="why-num">02</div>
-          <div>
-            <h3>Scalable &amp; Future-Ready</h3>
-            <p>We design systems that grow with you &mdash; handling more data, more users and more ambition without breaking a sweat.</p>
-          </div>
-        </div>
-        <div class="why-item reveal d2">
-          <div class="why-num">03</div>
-          <div>
-            <h3>Founder-Led, Client-First</h3>
-            <p>Direct access to the people building your solution. Transparent communication, honest timelines, zero runaround.</p>
-          </div>
-        </div>
-        <div class="why-item reveal">
-          <div class="why-num">05</div>
-          <div>
-            <h3>End-to-End Ownership</h3>
-            <p>From the first discovery call to deployment and long-term support &mdash; one accountable team for the entire journey.</p>
-            </div>
-          </div>
-          <div class="why-item reveal d1">
-          <div class="why-num">05</div>
-          <div>
-            <h3>End-to-End Ownership</h3>
-            <p>From the first discovery call to deployment and long-term support &mdash; one accountable team for the entire journey.</p>
-            </div>
-          </div>
-        <div class="why-item reveal d2">
-          <div class="why-num">06</div>
-          <div>
-            <h3>Local Roots, Global Standards</h3>
-            <p>Proudly based in North Tripura, delivering world-class engineering to clients across India &mdash; and beyond.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CAREERS ================= -->
-  <section class="section" id="careers">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Careers</span>
-        <h2>Build the Future of <em>Data with Us</em></h2>
-        <p>Join a founder-led team in Dharmanagar, North Tripura &mdash; work on real AI and data problems, remotely or on-site.</p>
-      </div>
-
-      <div class="jobs-grid">
-        <!-- Featured: AI Engineer -->
-        <article class="job-card featured reveal">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5-4 8-8 8-3 0-5-1.6-5-4 0-1.4.8-2.4 2-3-1.2 0-2-1-2-2.2 0-1.4 1-2.4 2.4-2.6C10.6 5.4 11 4 12 2z"/></svg></div>
-          <div class="job-body">
-            <div class="job-top">
-              <span class="job-badge">Full-time &middot; High Priority</span>
-            </div>
-            <h3>AI Engineer</h3>
-            <p class="job-meta">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Dharmanagar (On-site) / Remote
-            </p>
-            <p class="job-desc">Design, train and deploy machine learning, NLP and generative AI models that solve real business problems &mdash; from conversational AI to production ML pipelines.</p>
-            <ul class="job-req">
-              <li>Strong Python &amp; ML frameworks (PyTorch / TensorFlow)</li>
-              <li>Experience with LLMs, prompt engineering &amp; RAG</li>
-              <li>Knowledge of MLOps: model serving, monitoring, CI/CD</li>
-            </ul>
-            <div class="job-tags"><span>Python</span><span>PyTorch</span><span>LLMs</span><span>MLOps</span></div>
-          </div>
-          <button type="button" class="btn btn-primary job-apply" data-role="AI Engineer">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </article>
-
-        <article class="job-card reveal">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4-8-8"/><path d="M14 7h7v7"/></svg></div>
-          <div class="job-top">
-            <span class="job-badge">Full-time</span>
-          </div>
-          <h3>Data Analyst</h3>
-          <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Dharmanagar / Remote
-          </p>
-          <p class="job-desc">Turn raw business data into clear dashboards, reports and insights that guide confident decisions for our clients.</p>
-          <ul class="job-req">
-            <li>Strong SQL &amp; Python for analysis and cleaning</li>
-            <li>Dashboarding with Power BI / Tableu</li>
-            <li>Solid grass of statistics &amp; A/B testing</li>
-          </ul>
-          <div class="job-tags"><span>SQL</span><span>Python</span><span>Power BI</span><span>Statistics</span></div>
-          <button type="button" class="btn btn-primary job-apply" data-role="Data Analyst">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </article>
-
-        <article class="job-card reveal d1">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
-          <div class="job-top">
-            <span class="job-badge">Full-time</span>
-          </div>
-          <h3>Full-Stack Developer</h3>
-          <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Dharmanagar / Remote
-          </p>
-          <p class="job-desc">Build fast, secure web applications, dashboards and APIs that put our AI and data capabilities in users&rrsquo;s hands.</p>
-          <ul class="job-req">
-            <li>React / Next.js front-end experience</li>
-            <li>Node.js or Python back-end &amp; REST/GraphQL APIs</li>
-            <li>PostgreSQL / MongoDB &amp; cloud deployment (AWS)</li>
-          </ul>
-          <div class="job-tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>AWS</span></div>
-          <button type="button" class="btn btn-primary job-apply" data-role="Full-Stack Developer">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </article>
-
-        <article class="job-card reveal d1">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
-          <div class="job-top">
-            <span class="job-badge">Full-time</span>
-          </div>
-          <h3>Cloud Architect</h3>
-          <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Dharmanagar / Remote
-          </p>
-          <p class="job-desc">Design secure, cost-optimized cloud infrastructure and lead migrations for clients on AWS, Azure and GCP.</p>
-          <ul class="job-req">
-            <li>Deep AWS / Azure / GCP architecture experience</li>
-            <li>Infrastructure as code with Terraform</li>
-            <li>Kubernetes, networking &amp; security best practices</li>
-          </ul>
-          <div class="job-tags"><span>AWS</span><span>Azure</span><span>Terraform</span><span>Kubernetes</span></div>
-          <button type="button" class="btn btn-primary job-apply" data-role="Cloud Architect">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </article>
-
-        <article class="job-card reveal d2">
-          <div class="job-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div class="job-top">
-            <span class="job-badge">Full-time</span>
-          </div>
-          <h3>Business Development Executive</h3>
-          <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Dharmanagar (Preferred) / Remote
-          </p>
-          <p class="job-desc">Grow DADSync&rsquo;s client base and partnerships &mdash; owning outreach, proposals and long-term relationships.</p>
-          <ul class="job-req">
-            <li>Strong communication, presentation &amp; negotiation skills</li>
-            <li>Experience with proposals, RFPs &amp; sales pipelines</li>
-            <li>Market research aptitude &amp; CRM proficiency</li>
-          </ul>
-          <div class="job-tags"><span>Sales</span><span>Partnerships</span><span>CRM</span><span>Proposals</span></div>
-          <button type="button" class="btn btn-primary job-apply" data-role="Business Development Executive">Apply Now
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </article>
-      </div>
-
-      <div class="perks">
-        <div class="perk reveal">
-          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <div>
-            <h4>Flexible Work</h4>
-            <p>Remote-friendly with the option to work from our Dharmanagar base.</p>
-          </div>
-        </div>
-        <div class="perk reveal d1">
-          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></span>
-          <div>
-            <h4>Learning Budget</h4>
-            <p>Annual budget for courses, certifications and conference tickets.</p>
-          </div>
-        </div>
-        <div class="perk reveal d2">
-          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-          <div>
-            <h4>Impactful Work</h4>
-            <p>Ship real AI and data products with a founder who ships alongside you.</p>
-          </div>
-        </div>
-      </div>
-
-      <p class="careers-note">
-        Don&rsquo;t see your role? <a href="mailto:dharmanagaraidatasync@zohomail.in?subject=Open%20Application%20-%20DADSync%20Careers">Email us your CV</a> &mdash; we&rsquo;re always excited to meet great people.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Contact Us</span>
-        <h2>Let&rsquo;s Start a Conversation</h2>
-        <p>Reach out directly &mdash; we typically respond within one business day.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <h2>Get in Touch</h2>
-          <p>Whether you need a quick consultation or a full-scale implementation, we&rsquo;d love to hear from you.</p>
-
-          <div class="contact-cards">
-            <div class="contact-card">
-              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span>
-              <span>
-                <span class="c-label">Phone</span>
-                <span class="c-value">
-                  <a class="c-link" href="tel:+919366755056">+91 93667 55056</a>
-                  <small><a class="c-link" href="tel:+916033615231">+91 60336 15231 (alt)</a></small>
-                </span>
-              </span>
-              <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-
-            <a class="contact-card" href="mailto:dharmanagaraidatasync@zohomail.in">
-              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></span>
-              <span>
-                <span class="c-label">Email</span>
-                <span class="c-value">dharmanagaraidatasync@zohomail.in</span>
-              </span>
-              <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-
-            <a class="contact-card" href="https://www.dadsync.in" target="_blank" rel="noopener">
-              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-              <span>
-                <span class="c-label">Website</span>
-                <span class="c-value">www.dadsync.in</span>
-              </span>
-              <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-
-            <div class="contact-card">
-              <span class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-              <span>
-                <span class="c-label">Location</span>
-                <span class="c-value">Dharmanagar, North Tripura<small>Dharmanagar AI DataSync Private Limited</small></span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form reveal d1">
-          <h3>Send us a message</h3>
-          <p>Fill in the form &mdash; we&rsquo;ll get back to you within one business day.</p>
-          <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST" novalidate>
-            <div class="form-row">
-              <div class="field">
-                <label for="f-name">Your Name</label>
-                <input type="text" id="f-name" name="name" placeholder="Full name" required>
-              </div>
-              <div class="field">
-                <label for="f-phone">Phone (optional)</label>
-                <input type="tel" id="f-phone" name="phone" placeholder="+91 ...">
-              </div>
-            </div>
-            <div class="field">
-              <label for="f-email">Email</label>
-              <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="field">
-              <label for="f-msg">Message</label>
-              <textarea id="f-msg" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Send Message
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            </button>
-            <p class="form-note">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-              Your information stays private &mdash; we never share it.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#home" class="logo">
-          <span class="logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>
-              <circle cx="12" cy="12" r="3.2"/>
-            </svg>
-          </span>
-          <span>DAD<span><b>Sync</b></span><span class="tag">AI DataSync</span></span>
-        </a>
-        <p>Dharmanagar AI DataSync Private Limited &mdash; AI and data synchronization solutions engineered for modern businesses.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Home</a></li>
-          <li><a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>About</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Services</a></li>
-          <li><a href="#why-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Why Us</a></li>
-          <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
-          <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
-          <li><a href="#/tripura-ai"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>Tripura AI Transformation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>AI Solutions</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Synchronization</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Analytics</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Cloud Integration</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Automation &amp; Consulting</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul class="footer-contact">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Dharmanagar, North Tripura</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
-            <a href="tel:+919366755056">+91 93667 55056</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
-            <a href="tel:+916033615231">+91 60336 15231</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
-            <a href="mailto:dharmanagaraidatasync@zohomail.in">dharmanagaraidatasync@zohomail.in</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <a href="https://www.dadsync.in" target="_blank" rel="noopener">www.dadsync.in</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="year">2026</span> Dharmanagar AI DataSync Private Limited. All rights reserved.</span>
-      <span>Crafted with <span class="heart">&hearts;</span> in Dharmanagar, North Tripura &mdash; by <strong>Shivom Debnath</strong> (Founder &amp; CEO)</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ============ TRIPURA AI TRANSFORMATION MODULE (v13) ============ -->
-<div id="tads-topbar" class="tads-top"></div>
-<div id="tads-app" class="tads" aria-live="polite"></div>
-<div id="tads-toast" class="tads-toast" role="status" aria-live="polite"></div>
-
-<script src="tads-data.js?v=13.3"></script>
-<script src="tads-app.js?v=13.3"></script>
-<script>
-(function () {
-  'use strict';
-  /* Tripura AI nav item â€” highlight when the module is active. */
-  var navAI = document.querySelector('[data-tads-nav]');
-  function syncTADSNav() {
-    var on = (window.location.hash || '').indexOf('/tripura-ai') !== -1;
-    if (navAI) navAI.classList.toggle('tads-nav-active', on);
-    if (on) document.body.classList.add('tads-view');
-  }
-  window.addEventListener('hashchange', syncTADSNav);
-  syncTADSNav();
-})();
-</script>
-
-</body>
-<button id="back-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<!-- Toast -->
-<div id="toast" role="status" aria-live="polite">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-  <span id="toast-msg">Message ready!</span>
-</div>
-
-<!-- Application modal -->
-<div class="modal-overlay" id="apply-modal" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="apply-title">
-    <button type="button" class="modal-close" id="apply-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-    <h3 id="apply-title">Apply for <span id="apply-role">this role</span></h3>
-    <p class="modal-sub">Send your application &mdash; it lands directly in our inbox.</p>
-    <form id="apply-form" novalidate>
-      <div class="field">
-        <label for="a-name">Your Name</label>
-        <input type="text" id="a-name" name="name" placeholder="Full name" required>
-      </div>
-      <div class="field">
-        <label for="a-email">Email</label>
-        <input type="email" id="a-email" name="email" placeholder="you@example.com" required>
-      </div>
-      <div class="field">
-        <label for="a-phone">Phone (optional)</label>
-        <input type="tel" id="a-phone" name="phone" placeholder="+91 ...">
-      </div>
-      <div class="field">
-        <label for="a-message">Why are you a good fit? (optional)</label>
-        <textarea id="a-message" name="message" rows="4" placeholder="Tell us about your experience..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Send Application
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-      </button>
-    </form>
-  </div>
-</div>
-
-<script>
-(function () {
-  'use strict';
-
-  var navbar = document.getElementById('navbar');
-  var backTop = document.getElementById('back-top');
-  var progressBar = document.getElementById('progress-bar');
-
-  function onScroll() {
-    var y = window.scrollY || window.pageYOffset;
-    if (navbar) navbar.classList.toggle('scrolled', y > 30);
-    if (backTop) backTop.classList.toggle('show', y > 600);
-    if (progressBar) {
-      var doc = document.documentElement;
-      var max = doc.scrollHeight - doc.clientHeight;
-      progressBar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
-
-  /* ---------- Back to top ---------- */
-  if (backTop) {
-    backTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  /* ---------- Mobile menu ---------- */
-  var hamburger = document.getElementById('hamburger');
-  var navLinks = document.getElementById('nav-links');
-
-  function closeMenu() {
-    if (navLinks) navLinks.classList.remove('open');
-    if (hamburger) {
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-  }
-
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', function () {
-      var open = navLinks.classList.toggle('open');
-      hamburger.classList.toggle('open', open);
-      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  /* ---------- Active nav link highlighting ---------- */
-  var sections = document.querySelectorAll('section[id]');
-  var navAnchors = navLinks ? navLinks.querySelectorAll('a[href*="#"]') : [];
-
-  var spy = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        navAnchors.forEach(function (a) {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(function (s) { spy.observe(s); });
-
-  /* ---------- Reveal on scroll ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (el) { revealObs.observe(el); });
-    setTimeout(function () {
-      document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
-        el.classList.add('visible');
-      });
-    }, 3500);
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('visible'); });
-  }
-
-  /* ---------- Footer year ---------- */
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  /* ---------- Count-up stats ---------- */
-  var counters = document.querySelectorAll('.stat b[data-count]');
-  function animateCount(el) {
-    var target = parseFloat(el.getAttribute('data-count'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1400;
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  counters.forEach(animateCount);
-
-  /* ---------- Toast ---------- */
-  var toast = document.getElementById('toast');
-  var toastMsg = document.getElementById('toast-msg');
-  var toastTimer = null;
-
-  function showToast(msg) {
-    if (!toast || !toastMsg) return;
-    toastMsg.textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      toast.classList.remove('show');
-    }, 4200);
-  }
-
-  /* ---------- Formspree submission helper ---------- */
-  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
-  var formInFlight = false;
-
-  function submitToFormspree(form, onSuccess, onError) {
-    if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.indexOf('XXXX') !== -1) {
-      showToast('Form endpoint not configured yet \u2013 please add your Formspree ID.');
-      if (onError) onError();
-      return;
-    }
-    var data = new FormData(form);
-    data.append('_subject', form.getAttribute('data-subject') || 'DADSync website submission');
-    data.append('_replyto', (form.querySelector('[name="email"]') || {}).value || '');
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', FORMSPREE_ENDPOINT, true);
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== 4) return;
-      if (xhr.status >= 200 && xhr.status < 300) {
-        onSuccess();
-      } else {
-        showToast('Something went wrong \u2013 please try again or email us directly.');
-        if (onError) onError();
-      }
-    };
-    xhr.onerror = function () {
-      showToast('Network error \u2013 please check your connection and try again.');
-      if (onError) onError();
-    };
-    xhr.send(data);
-  }
-
-  /* ---------- DADSync v9: direct email helpers (all fields -> team inbox) ---------- */
-  var TEAM_INBOX = 'dharmanagaraidatasync@zohomail.in';
-
-  function formspreeConfigured() {
-    return FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT.indexOf('XXXX') === -1;
-  }
-
-  /* Build a plain-text email body from a flat [label, value, ...] array. */
-  function buildEmailBody(fields) {
-    var lines = [];
-    for (var i = 0; i < fields.length; i += 2) {
-      lines.push(fields[i] + ': ' + (fields[i + 1] || '\u2014'));
-    }
-    lines.push('');
-    lines.push('Sent from the DADSync website on ' + new Date().toLocaleString());
-    return lines.join('\n');
-  }
-
-  /* Open the visitor's own email client with subject + body (every field) pre-filled. */
-  function openPrefilledEmail(subject, body) {
-    var a = document.createElement('a');
-    a.href = 'mailto:' + TEAM_INBOX +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  /* ---------- Application modal ---------- */
-  var modalEl = document.getElementById('apply-modal');
-  var applyForm = document.getElementById('apply-form');
-  var modalRole = document.getElementById('apply-role');
-  var modalClose = document.getElementById('apply-close');
-  var currentRole = '';
-
-  function openApplyModal(role) {
-    currentRole = role;
-    if (modalRole) modalRole.textContent = role;
-    if (modalEl) {
-      modalEl.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeApplyModal() {
-    if (modalEl) modalEl.classList.remove('open');
-    document.body.style.overflow = '';
-    if (applyForm) applyForm.reset();
-  }
-
-  if (modalEl) {
-    modalEl.addEventListener('click', function (e) {
-      if (e.target === modalEl) closeApplyModal();
-    });
-  }
-  if (modalClose) modalClose.addEventListener('click', closeApplyModal);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeApplyModal();
-  });
-
-  /* ---------- Apply Now buttons ---------- */
-  document.querySelectorAll('.job-apply').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var role = btn.getAttribute('data-role') || 'the role';
-      openApplyModal(role);
-    });
-  });
-
-  if (applyForm) {
-    applyForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (formInFlight) return;
-      var name = (document.getElementById('a-name') || {}).value || '';
-      var email = (document.getElementById('a-email') || {}).value || '';
-      var phone = (document.getElementById('a-phone') || {}).value || '';
-      var message = (document.getElementById('a-message') || {}).value || '';
-
-      if (!name.trim() || !email.trim()) {
-        showToast('Please fill in your name and email.');
-        return;
-      }
-
-      var hiddenRole = document.createElement('input');
-      hiddenRole.type = 'hidden';
-      hiddenRole.name = 'role';
-      hiddenRole.value = currentRole;
-      applyForm.appendChild(hiddenRole);
-
-      var payload = new FormData(applyForm);
-      payload.append('_subject', 'Job Application \u2013 ' + currentRole + ' \u2013 DADSync Careers');
-      payload.append('_replyto', email);
-      if (phone) payload.append('phone', phone);
-
-      /* DADSync v9: pre-fill the visitor's email client with every application field. */
-      var applySubject = 'Job Application \u2013 ' + currentRole + ' \u2013 DADSync Careers';
-      var applyBody = buildEmailBody([
-        'Position applied for', currentRole,
-        'Full name', name,
-        'Email', email,
-        'Phone', phone,
-        'Why a good fit', message
-      ]);
-      var mailtoOpened = false;
-      var sendViaMailto = function () {
-        if (mailtoOpened) return;
-        mailtoOpened = true;
-        openPrefilledEmail(applySubject, applyBody);
-        formInFlight = false;
-        if (btnEl) btnEl.disabled = false;
-        hiddenRole.parentNode.removeChild(hiddenRole);
-        closeApplyModal();
-        showToast('Your email app has opened with all details pre-filled \u2013 just hit send!');
-      };
-
-      formInFlight = true;
-      var btnEl = applyForm.querySelector('[type="submit"]');
-      if (btnEl) btnEl.disabled = true;
-
-      /* DADSync v7: also write the application to Firebase Realtime Database */
-      pushRecord('job_applications', {
-        role: currentRole,
-        name: name,
-        email: email,
-        phone: phone || '',
-        message: message,
-        timestamp: new Date().toISOString(),
-        status: 'new'
-      });
-
-      /* If a real Formspree endpoint is configured, send automatically first;
-         otherwise (or on failure) open the pre-filled email. */
-      if (!formspreeConfigured()) {
-        sendViaMailto();
-        return;
-      }
-
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', FORMSPREE_ENDPOINT, true);
-      xhr.setRequestHeader('Accept', 'application/json');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState !== 4) return;
-        formInFlight = false;
-        if (btnEl) btnEl.disabled = false;
-        hiddenRole.parentNode.removeChild(hiddenRole);
-        if (xhr.status >= 200 && xhr.status < 300) {
-          closeApplyModal();
-          showToast('Application for ' + currentRole + ' sent \u2013 thank you, ' + name + '!');
-        } else {
-          showToast('Something went wrong \u2013 your email app will open with your details.');
-          sendViaMailto();
-        }
-      };
-      xhr.onerror = function () {
-        formInFlight = false;
-        if (btnEl) btnEl.disabled = false;
-        hiddenRole.parentNode.removeChild(hiddenRole);
-        showToast('Network error \u2013 your email app will open with your details.');
-        sendViaMailto();
-      };
-      xhr.send(payload);
-    });
-  }
-
-  /* ---------- Contact form -> email (v9) ---------- */
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (formInFlight) return;
-      var name = (document.getElementById('f-name') || {}).value || '';
-      var email = (document.getElementById('f-email') || {}).value || '';
-      var phone = (document.getElementById('f-phone') || {}).value || '';
-      var message = (document.getElementById('f-msg') || {}).value || '';
-
-      if (!name.trim() || !email.trim() || !message.trim()) {
-        showToast('Please fill in your name, email and message.');
-        return;
-      }
-
-      /* DADSync v9: pre-fill the visitor's email client with every message field. */
-      var msgSubject = 'DADSync website message \u2013 ' + name;
-      var msgBody = buildEmailBody([
-        'Full name', name,
-        'Email', email,
-        'Phone', phone,
-        'Message', message
-      ]);
-      var mailtoOpened = false;
-      var sendViaMailto = function () {
-        if (mailtoOpened) return;
-        mailtoOpened = true;
-        openPrefilledEmail(msgSubject, msgBody);
-        formInFlight = false;
-        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
-        showToast('Your email app has opened with all details pre-filled \u2013 just hit send!');
-      };
-
-      formInFlight = true;
-      var btnEl = form.querySelector('[type="submit"]');
-      if (btnEl) btnEl.disabled = true;
-      var originalText = btnEl ? btnEl.textContent : '';
-      if (btnEl) btnEl.textContent = 'Sending\u2026';
-
-      /* DADSync v7: also write the message to Firebase Realtime Database */
-      pushRecord('contact_messages', {
-        name: name,
-        email: email,
-        phone: phone || '',
-        message: message,
-        timestamp: new Date().toISOString(),
-        status: 'new'
-      });
-
-      /* If a real Formspree endpoint is configured, send automatically first;
-         otherwise (or on failure) open the pre-filled email. */
-      if (!formspreeConfigured()) {
-        sendViaMailto();
-        return;
-      }
-
-      submitToFormspree(form, function () {
-        formInFlight = false;
-        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
-        showToast('Message sent \u2013 thank you, ' + name + '! We\u2019ll reply within one business day.');
-        form.reset();
-      }, function () {
-        formInFlight = false;
-        if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = originalText; }
-        sendViaMailto();
-      });
-    });
-  }
-})();
-</script>
-
-</body>
-</html>
+          <div clq…ÍÌô‰Íå¹Œµ¹½‘”¸ØˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4È€ÄÉ°Ù°Ì´Ü€Ð€ÄÐ€Ì´Ý Ðˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Íå¹Œµ•¹Ñ•ÈˆøñˆùMå¹Œð½ˆøñÍÁ…¸ù$½É”ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰±…ÍÌµ¡¥À¡¥À´Äˆø(€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€Ù0ä€ÄÝ°´Ô´Ôˆ¼øð½ÍÙœø(€€€€€€€€€I•…°µÑ¥µ”Må¹Œ(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰±…ÍÌµ¡¥À¡¥À´Èˆø(€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É°à€ÑØÙŒÀ€Ô´Ì¸Ô€à¸Ô´à€ÄÀ´Ð¸Ô´Ä¸Ô´à´Ô´à´ÄÁXÙ°à´Ñèˆ¼øð½ÍÙœø(€€€€€€€€€$µA½Ý•É•(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôôQ%-H€ôôôôôôôôôôôôôôôôô€´´ø(€€ñ‘¥Ø±…ÍÌô‰Ñ¥­•Èˆ…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆø(€€€€ñ‘¥Ø±…ÍÌô‰Ñ¥­•ÈµÑÉ…¬ˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Ñ¥­•ÈµÉ½ÕÀˆø(€€€€€€€€ñÍÁ…¸ù$M½±ÕÑ¥½¹Ìð½ÍÁ…¸øñÍÁ…¸ù…Ñ„Må¹¡É½¹¥é…Ñ¥½¸ð½ÍÁ…¸øñÍÁ…¸ù…Ñ„¹…±åÑ¥Ìð½ÍÁ…¸ù±½Õ%¹Ñ•É…Ñ¥½¸ð½ÍÁ…¸ùÕÑ½µ…Ñ¥½¸ð½ÍÁ…¸øñÍÁ…¸ù½¹ÍÕ±Ñ¥¹œð½ÍÁ…¸ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰Ñ¥­•ÈµÉ½ÕÀˆø(€€€€€€€€ñÍÁ…¸ù$M½±ÕÑ¥½¹Ìð½ÍÁ…¸øñÍÁ…¸ù…Ñ„Må¹¡É½¹¥é…Ñ¥½¸ð½ÍÁ…¸øñÍÁ…¸ù…Ñ„¹…±åÑ¥Ìð½ÍÁ…¸ù±½Õ%¹Ñ•É…Ñ¥½¸ð½ÍÁ…¸ùÕÑ½µ…Ñ¥½¸ð½ÍÁ…¸øñÍÁ…¸ù½¹ÍÕ±Ñ¥¹œð½ÍÁ…¸ø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½‘¥Øø((€€ð„´´€ôôôôôôôôôôôôôôôôô	=UP€ôôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰…‰½ÕÐˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù‰½ÕÐUÌð½ÍÁ…¸ø(€€€€€€€€ñ Èù]¡•É”€ñ•´ù…Ñ„5••ÑÌ%¹Ñ•±±¥•¹”ð½•´øð½ Èø(€€€€€€€€ñÀù¡…Éµ…¹……È$…Ñ…Må¹ŒAÉ¥Ù…Ñ”1¥µ¥Ñ•€™µ‘…Í ì„Ñ•¡¹½±½ä½µÁ…¹ä½¸„µ¥ÍÍ¥½¸Ñ¼Í¥µÁ±¥™ä¡½Ü‰ÕÍ¥¹•ÍÍ•ÌÍÑ½É”°µ½Ù”°…¹Õ¹‘•ÉÍÑ…¹Ñ¡•¥È‘…Ñ„¸ð½Àø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰…‰½ÕÐµÉ¥ˆø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰…‰½ÕÐµ½ÁäÉ•Ù•…°ˆø(€€€€€€€€€€ñ Èù	Õ¥±‘¥¹œÑ¡”€ñ•´ù‘…Ñ„‰…­‰½¹”ð½•´ø½˜µ½‘•É¸‰ÕÍ¥¹•ÍÍ•Ìð½ Èø(€€€€€€€€€€ñÀø(€€€€€€€€€€€!•…‘ÅÕ…ÉÑ•É•¥¸€ñÍÑÉ½¹œù¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„ð½ÍÑÉ½¹œø°€ñÍÑÉ½¹œùMå¹Œð½ÍÑÉ½¹œø¡•±ÁÌ½É…¹¥é…Ñ¥½¹Ì(€€€€€€€€€€€½˜•Ù•ÉäÍ¥é”¡…É¹•ÍÌÑ¡”Á½Ý•È½˜…ÉÑ¥™¥¥…°¥¹Ñ•±±¥•¹”…¹Í•…µ±•ÍÌ‘…Ñ„Íå¹¡É½¹¥é…Ñ¥½¸¸É½´Õ¹¥™¥•(€€€€€€€€€€€‘…Ñ„Á¥Á•±¥¹•Ì…¹±½Õµ¥É…Ñ¥½¹ÌÑ¼¥¹Ñ•±±¥•¹Ð…¹…±åÑ¥Ì…¹…ÕÑ½µ…Ñ¥½¸°Ý”•¹¥¹••ÈÍ½±ÕÑ¥½¹ÌÑ¡…Ð…É”(€€€€€€€€€€€Í•ÕÉ”°Í…±…‰±”°…¹‰Õ¥±ÐÑ¼±…ÍÐ¸(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÀø(€€€€€€€€€€€=ÕÈÁ¡¥±½Í½Á¡ä¥ÌÍ¥µÁ±”èå½ÕÈ‘…Ñ„Í¡½Õ±Ý½É¬€ñ•´ù™½Èð½•´øå½Ô€™µ‘…Í ì¹•Ù•È……¥¹ÍÐå½Ô¸]”½µ‰¥¹”‘••À(€€€€€€€€€€€Ñ•¡¹¥…°•áÁ•ÉÑ¥Í”Ý¥Ñ „™½Õ¹‘•Èµ±•°±¥•¹Ðµ™¥ÉÍÐ…ÁÁÉ½… Ñ¼‘•±¥Ù•È½ÕÑ½µ•ÌÑ¡…Ðµ½Ù”Ñ¡”¹••‘±”¸(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÕ°±…ÍÌô‰…‰½ÕÐµÁ½¥¹ÑÌˆø(€€€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€Ù0ä€ÄÝ°´Ô´Ôˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€¹µÑ¼µ•¹½Ý¹•ÉÍ¡¥ÀèÍÑÉ…Ñ•ä°‰Õ¥±°‘•Á±½ä€™…µÀìÍÕÁÁ½ÉÐ(€€€€€€€€€€€€ð½±¤ø(€€€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É°à€ÑØÙŒÀ€Ô´Ì¸Ô€à¸Ô´à€ÄÀ´Ð¸Ô´Ä¸Ô´à´Ô´à´ÄÁXÙ°à´Ñèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€M•ÕÉ¥Ñäµ™¥ÉÍÐ…É¡¥Ñ•ÑÕÉ”½¸•Ù•Éä•¹…•µ•¹Ð(€€€€€€€€€€€€ð½±¤ø(€€€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÌ€É0Ì€ÄÑ Ý°´Ä€à€ÄÀ´ÄÉ ´Ý°Ä´áèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€…ÍÐ°É•±¥…‰±”‘•±¥Ù•ÉäÝ¥Ñ ÑÉ…¹ÍÁ…É•¹Ð½µµÕ¹¥…Ñ¥½¸(€€€€€€€€€€€€ð½±¤ø(€€€€€€€€€€ð½Õ°ø((€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™…ÑÌµÉ¥ˆø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™…Ðˆøñˆù¡…Éµ…¹……È$…Ñ…Må¹ŒAÙÐ¸1Ñ¸ð½ˆøñÍÁ…¸ùI•¥ÍÑ•É•½µÁ…¹ä¹…µ”ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™…Ðˆøñˆù¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„ð½ˆøñÍÁ…¸ù!•…‘ÅÕ…ÉÑ•ÉÌ€™…µÀì½Á•É…Ñ¥½¹Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™…ÐˆøñˆùM¡¥Ù½´•‰¹…Ñ ð½ˆøñÍÁ…¸ù½Õ¹‘•È€™…µÀì<ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™…Ðˆøñˆù$€™µ¥‘‘½Ðì…Ñ„€™µ¥‘‘½Ðì±½Õð½ˆøñÍÁ…¸ù½É”Ñ•¡¹½±½ä™½ÕÌð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø((€€€€€€€€€€ñ„¡É•˜ôˆ½¹Ñ…Ðˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…ÉäˆÍÑå±”ô‰µ…É¥¸µÑ½ÀèÌÉÁàìˆù1•Ð™ÉÍÅÕ¼íÌ]½É¬Q½•Ñ¡•È(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½„ø(€€€€€€€€ð½‘¥Øø((€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½Õ¹‘•Èµ…ÉÉ•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½Õ¹‘•Èµ¡•…ˆø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…Ù…Ñ…ÈˆùMð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€€€ñ ÌùM¡¥Ù½´•‰¹…Ñ ð½ Ìø(€€€€€€€€€€€€€€ñÀ±…ÍÌô‰É½±”ˆù½Õ¹‘•È€™…µÀì<(€€€€€€€€€€€€€€€€ñÍÁ…¸ù¡…Éµ…¹……È$…Ñ…Må¹ŒAÙÐ¸1Ñ¸ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ð½Àø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñÀø(€€€€€€€€€€€M¡¥Ù½´™½Õ¹‘•Må¹ŒÝ¥Ñ „Ù¥Í¥½¸Ñ¼‰É¥¹œÝ½É±µ±…ÍÌ$…¹‘…Ñ„•¹¥¹••É¥¹œ…Á…‰¥±¥Ñ¥•ÌÑ¼‰ÕÍ¥¹•ÍÍ•Ì(€€€€€€€€€€€¥¸9½ÉÑ¡•…ÍÐ%¹‘¥„…¹‰•å½¹€™µ‘…Í ì‰Õ¥±‘¥¹œÍ½±ÕÑ¥½¹ÌÑ¡…Ð…É”ÁÉ…Ñ¥…°°…™™½É‘…‰±”°…¹ÑÉÕ±äÑÉ…¹Í™½Éµ…Ñ¥Ù”¸(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½Õ¹‘•ÈµÅÕ½Ñ”ˆø(€€€€€€€€€€€€™±‘ÅÕ¼íÙ•Éä‰ÕÍ¥¹•ÍÌÍ¥ÑÌ½¸„½±‘µ¥¹”½˜‘…Ñ„¸=ÕÈ©½ˆ¥ÌÑ¼Õ¹±½¬¥Ð€™µ‘…Í ìÝ¥Ñ ¥¹Ñ•±±¥•¹”°¥¹Ñ•É¥Ñä°…¹¥µÁ…Ð¸™É‘ÅÕ¼ì(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½Õ¹‘•Èµ±¥¹­Ìˆø(€€€€€€€€€€€€ñ„¡É•˜ô‰Ñ•°è¬äÄäÌØØÜÔÔÀÔØˆø(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€ÄØ¸åØÍ„È€È€À€À€Ä´È¸È€È€Ää¸à€Ää¸à€À€À€Ä´à¸Ø´Ì¸Ä€Ää¸Ô€Ää¸Ô€À€À€Ä´Ø´ÙÄä¸à€Ää¸à€À€À€Ä€È¸Ä€Ð¸È€È€È€À€À€Ä€Ð¸Ä€É Í„È€È€À€À€Ä€È€Ä¸ÝŒ¸Ä€Ä€¸Ð€È€¸Ü€È¸å„È€È€À€À€Ä´¸Ô€È¸Å0à€ÄÁ„ÄØ€ÄØ€À€À€À€Ø€Ù°Ä¸Ì´Ä¸Í„È€È€À€À€Ä€È¸Ä´¸ÕŒ¸ä¸Ì€Ä¸ä¸Ø€È¸ä¸Ý„È€È€À€À€Ä€Ä¸Ü€Éèˆ¼øð½ÍÙœø(€€€€€€€€€€€€€…±°(€€€€€€€€€€€€ð½„ø(€€€€€€€€€€€€ñ„¡É•˜ô‰µ…¥±Ñ¼é‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ˆø(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÉ•ÐàôˆÈˆäôˆÐˆÝ¥‘Ñ ôˆÈÀˆ¡•¥¡ÐôˆÄØˆÉàôˆÈˆ¼øñÁ…Ñ ô‰4ÈÈ€Ý°´ÄÀ€Ù0È€Üˆ¼øð½ÍÙœø(€€€€€€€€€€€€€µ…¥°(€€€€€€€€€€€€ð½„ø(€€€€€€€€€€€€ñ„¡É•˜ô‰¡ÑÑÁÌè¼½ÝÝÜ¹‘…‘Íå¹Œ¹¥¸ˆÑ…É•Ðô‰}‰±…¹¬ˆÉ•°ô‰¹½½Á•¹•Èˆø(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÄÀˆ¼øñÁ…Ñ ô‰4È€ÄÉ ÈÁ4ÄÈ€É„ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð´ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð´ÄÁèˆ¼øð½ÍÙœø(€€€€€€€€€€€€€‘…‘Íå¹Œ¹¥¸(€€€€€€€€€€€€ð½„ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôôMIY%L€ôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰Í•ÉÙ¥•Ìˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù=ÕÈM•ÉÙ¥•Ìð½ÍÁ…¸ø(€€€€€€€€ñ ÈùM½±ÕÑ¥½¹ÌQ¡…Ð€ñ•´ù5½Ù”e½ÕÈ	ÕÍ¥¹•ÍÌ½ÉÝ…Éð½•´øð½ Èø(€€€€€€€€ñÀùM¥à½É”Í•ÉÙ¥”±¥¹•Ì•¹¥¹••É•…É½Õ¹½¹”½…°€™µ‘…Í ìµ…­¥¹œå½ÕÈ‘…Ñ„¥¹Ñ•±±¥•¹Ð°½¹¹•Ñ•°…¹…Ñ¥½¹…‰±”¸ð½Àø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥•ÌµÉ¥ˆø(€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É„ÄÀ€ÄÀ€À€À€Ä€ÄÀ€ÄÁŒÀ€Ô´Ð€à´´à€à´Ì€À´Ô´Ä¸Ø´Ô´Ð€À´Ä¸Ð¸à´È¸Ð€È´Ì´Ä¸È€À´È´Ä´È´È¸È€À´Ä¸Ð€Ä´È¸Ð€È¸Ð´È¸ÙÄÀ¸Ø€Ô¸Ð€ÄÄ€Ð€ÄÈ€Éèˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ Ìù$M½±ÕÑ¥½¹Ìð½ Ìø(€€€€€€€€€€ñÀùÕÍÑ½´µ…¡¥¹”±•…É¹¥¹œµ½‘•±Ì°91@ÍåÍÑ•µÌ°½¹Ù•ÉÍ…Ñ¥½¹…°$…¹½µÁÕÑ•ÈÙ¥Í¥½¸€™µ‘…Í ìÑ…¥±½É•Ñ¼å½ÕÈ‰ÕÍ¥¹•ÍÌ¡…±±•¹•Ì¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ù505½‘•±Ìð½ÍÁ…¸øñÍÁ…¸ù91@ð½ÍÁ…¸øñÍÁ…¸ù•¹$ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÜ€Í„È¸à€È¸à€À€Ä€Ä€Ð€Ñ0Ü¸Ô€ÈÀ¸Ô€È€ÈÉ°Ä¸Ô´Ô¸Õ0ÄÜ€Íèˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ Ìù…Ñ„Må¹¡É½¹¥é…Ñ¥½¸ð½ Ìø(€€€€€€€€€€ñÀùI•…°µÑ¥µ”°‰¥‘¥É•Ñ¥½¹…°Íå¹Œ…É½ÍÌ‘…Ñ…‰…Í•Ì°IAÌ°I5Ì…¹±½ÕÁ±…Ñ™½ÉµÌ€™µ‘…Í ì­••Á¥¹œ•Ù•ÉäÍåÍÑ•´½¹Í¥ÍÑ•¹Ñ±äÕÀÑ¼‘…Ñ”¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ùI•…°µÑ¥µ”Må¹Œð½ÍÁ…¸øñÍÁ…¸ùQ0ð½ÍÁ…¸øñÍÁ…¸ùA%Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°Èˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ì€ÄÝ°Ø´Ø€Ð€Ð´à´àˆ¼øñÁ…Ñ ô‰4ÄÐ€Ý ÝØÜˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ Ìù…Ñ„¹…±åÑ¥Ìð½ Ìø(€€€€€€€€€€ñÀù%¹Ñ•É…Ñ¥Ù”‘…Í¡‰½…É‘Ì°ÁÉ•‘¥Ñ¥Ù”…¹…±åÑ¥Ì…¹‘••ÀÉ•Á½ÉÑ¥¹œÑ¡…ÐÑÕÉ¸É…Ü¹Õµ‰•ÉÌ¥¹Ñ¼±•…È°½¹™¥‘•¹Ð‰ÕÍ¥¹•ÍÌ‘•¥Í¥½¹Ì¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ù…Í¡‰½…É‘Ìð½ÍÁ…¸øñÍÁ…¸ùAÉ•‘¥Ñ¥Ù”ð½ÍÁ…¸øñÍÁ…¸ù	$ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÄ€ÄÉ„ä€ä€À€Ä€Ä´ä´äˆ¼øñÁ…Ñ ô‰4ÈÄ€ÍØÙ ´Øˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ Ìù±½Õ%¹Ñ•É…Ñ¥½¸ð½ Ìø(€€€€€€€€€€ñÀùM•…µ±•ÍÌµ¥É…Ñ¥½¸…¹¥¹Ñ•É…Ñ¥½¸Ý¥Ñ ]L°éÕÉ”…¹½½±”±½Õ€™µ‘…Í ìµ½‘•É¸°Í…±…‰±”°½ÍÐµ½ÁÑ¥µ¥é•¥¹™É…ÍÑÉÕÑÕÉ”¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ù]Lð½ÍÁ…¸øñÍÁ…¸ùéÕÉ”ð½ÍÁ…¸øñÍÁ…¸ù@ð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÌˆ¼øñÁ…Ñ ô‰4ÄÈ€ÉØÍ4ÄÈ€ÄåØÍ4È€ÄÉ Í4Ää€ÄÉ Í4Ô€Õ°È€É4ÄÜ€ÄÝ°È€É4Ää€Õ°´È€É4Ü€ÄÝ°´È€Èˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ ÌùÕÑ½µ…Ñ¥½¸ð½ Ìø(€€€€€€€€€€ñÀù]½É­™±½Ü…ÕÑ½µ…Ñ¥½¸°IA…¹Íµ…ÉÐÁ¥Á•±¥¹•ÌÑ¡…Ð•±¥µ¥¹…Ñ”É•Á•Ñ¥Ñ¥Ù”Ñ…Í­Ì€™µ‘…Í ìÍ¼å½ÕÈÑ•…´™½ÕÍ•Ì½¸Ý¡…Ðµ…ÑÑ•ÉÌ¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ùIAð½ÍÁ…¸øñÍÁ…¸ù]½É­™±½ÝÌð½ÍÁ…¸øñÍÁ…¸ùA¥Á•±¥¹•Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰Í•ÉÙ¥”µ…ÉÉ•Ù•…°Èˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÄ€ÄÉ„ä€ä€À€Ä€Ä´ä´ä€ä€ä€À€À€Ä€ä€åèˆ¼øñÁ…Ñ ô‰4ä¸Ô€ä¸Õ„Ì€Ì€À€À€Ä€Ð¸È€Á4ÄÌ€ÄÕ ¸ÀÄˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ Ìù½¹ÍÕ±Ñ¥¹œð½ Ìø(€€€€€€€€€€ñÀù$É•…‘¥¹•ÍÌ…ÍÍ•ÍÍµ•¹ÑÌ°‘…Ñ„…É¡¥Ñ•ÑÕÉ”‘•Í¥¸…¹Ñ•¡¹½±½äÉ½…‘µ…ÁÌ€™µ‘…Í ìÍÑÉ…Ñ•¥ŒÕ¥‘…¹”™É½´•áÁ•ÉÑÌÝ¡¼‰Õ¥±¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Í•ÉÙ¥”µÑ…ÌˆøñÍÁ…¸ùMÑÉ…Ñ•äð½ÍÁ…¸øñÍÁ…¸ùÉ¡¥Ñ•ÑÕÉ”ð½ÍÁ…¸øñÍÁ…¸ùI½…‘µ…ÁÌð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€ð½…ÉÑ¥±”ø(€€€€€€ð½‘¥Øø((€€€€€€ð„´´Q	9€´´ø(€€€€€€ñ‘¥Ø±…ÍÌô‰Ñ„µ‰…¹É•Ù•…°ˆø(€€€€€€€€ñ Èù!…Ù”„ÁÉ½©•Ð¥¸µ¥¹üð½ Èø(€€€€€€€€ñÀùQ•±°ÕÌ…‰½ÕÐå½ÕÈ‘…Ñ„¡…±±•¹•Ì€™µ‘…Í ìÝ”™ÉÍÅÕ¼í±°µ…ÀÑ¡”™…ÍÑ•ÍÐ°µ½ÍÐÉ•±¥…‰±”Á…Ñ Ñ¼„Í½±ÕÑ¥½¸¸ð½Àø(€€€€€€€€ñ„¡É•˜ôˆ½¹Ñ…Ðˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éäˆù•ÐMÑ…ÉÑ•Q½‘…ä(€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€ð½„ø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôô9d9QL€ôôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰…•¹äµ…•¹ÑÌˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù=Á•¸M½ÕÉ”ð½ÍÁ…¸ø(€€€€€€€€ñ ÈùQ¡”•¹äè€ñ•´ù$MÁ•¥…±¥ÍÑÌ…Ðe½ÕÈ¥¹•ÉÑ¥ÁÌð½•´øð½ Èø(€€€€€€€€ñÀù5••ÐÑ¡”…•¹äµ…•¹ÑÌÉ½ÍÑ•È€™µ‘…Í ì„É½Ý¥¹œ½±±•Ñ¥½¸½˜ÍÁ•¥…±¥Í•$…•¹ÐÁ•ÉÍ½¹…±¥Ñ¥•Ì°µ…¥¹Ñ…¥¹•‰äÑ¡”Må¹ŒÑ•…´…¹™É•”Ñ¼ÕÍ”¸ð½Àø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ…ÉÉ•Ù•…°ˆø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ…Éµ½Áäˆø(€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰…•¹äµ…ÉµÑ…œˆù5%P1¥•¹Í”€™µ¥‘‘½Ðì¥Ñ!Õˆð½ÍÁ…¸ø(€€€€€€€€€€ñ ÌøÄÜ¬‘¥Ù¥Í¥½¹Ì¸€ÈÔÀ¬…•¹ÑÌ¸=¹”½µµ…¹Ñ¼¥¹ÍÑ…±°¸ð½ Ìø(€€€€€€€€€€ñÀùÉ½´™É½¹Ñ•¹Ý¥é…É‘ÌÑ¼I•‘‘¥Ð½µµÕ¹¥Ñä¹¥¹©…Ì€™µ‘…Í ìÁ•ÉÍ½¹…±¥Ñäµ‘É¥Ù•¸°‘•±¥Ù•É…‰±”µ™½ÕÍ•$ÍÁ•¥…±¥ÍÑÌ™½È•¹¥¹••É¥¹œ°‘•Í¥¸°µ…É­•Ñ¥¹œ°Í•ÕÉ¥Ñä°™¥¹…¹”°ÍÑÉ…Ñ•ä…¹µ½É”¸]½É­ÌÝ¥Ñ ±…Õ‘”½‘”°ÕÉÍ½È°½‘•à°•µ¥¹¤1$°=Á•¹½‘”…¹µ…¹ä½Ñ¡•ÈÑ½½±Ì¸ð½Àø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ…Éµ±¥¹­Ìˆø(€€€€€€€€€€€€ñ„¡É•˜ô‰…•¹äµ…•¹ÑÌ¹¡Ñµ°ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…ÉäˆùáÁ±½É”Q¡”•¹ä(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€€€ð½„ø(€€€€€€€€€€€€ñ„¡É•˜ô‰¡ÑÑÁÌè¼½¥Ñ¡Õˆ¹½´½¡…É•­É¥Í¡¹„Ü½…•¹äµ…•¹ÑÌˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µ¡½ÍÐˆÑ…É•Ðô‰}‰±…¹¬ˆÉ•°ô‰¹½½Á•¹•È¹½É•™•ÉÉ•ÈˆùY¥•Ü½¸¥Ñ!Õˆð½„ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ…ÉµÙ¥ÍÕ…°ˆ…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ½Éˆˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÄ¸ØˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÌˆ¼øñÁ…Ñ ô‰4ÄÈ€ÉØÑ4ÄÈ€ÄáØÑ4È€ÄÉ Ñ4Äà€ÄÉ Ñ4Ð¸ä€Ð¸å°È¸à€È¸á4ÄØ¸Ì€ÄØ¸Í°È¸à€È¸á4Ää¸Ä€Ð¸å°´È¸à€È¸á4Ü¸Ü€ÄØ¸Í°´È¸à€È¸àˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ¹½‘”ˆÍÑå±”ô‰Ñ½ÀèÄÈ”í±•™ÐèÄà”ˆùð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ¹½‘”ˆÍÑå±”ô‰Ñ½ÀèÈÈ”íÉ¥¡ÐèÄÐ”ˆù4ð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ¹½‘”ˆÍÑå±”ô‰‰½ÑÑ½´èÈÀ”í±•™ÐèÈÈ”ˆùLð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰…•¹äµ¹½‘”ˆÍÑå±”ô‰‰½ÑÑ½´èÈØ”íÉ¥¡ÐèÈÀ”ˆùð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôô]!dUL€ôôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰Ý¡äµÕÌˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù]¡ä¡½½Í”UÌð½ÍÁ…¸ø(€€€€€€€€ñ Èù	Õ¥±Ð=¸€ñ•´ùQÉÕÍÐ°MÁ••€™…µÀì%¹Ñ•±±¥•¹”ð½•´øð½ Èø(€€€€€€€€ñÀùQ¡”É•…Í½¹ÌÉ½Ý¥¹œ‰ÕÍ¥¹•ÍÍ•ÌÁ…ÉÑ¹•ÈÝ¥Ñ Må¹Œ€™µ‘…Í ì…¹ÍÑ…ä¸ð½Àø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµÉ¥ˆø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀÄð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ ÌùM•ÕÉ¥Ñäµ¥ÉÍÐÉ¡¥Ñ•ÑÕÉ”ð½ Ìø(€€€€€€€€€€€€ñÀù¹ÉåÁÑ¥½¸°…•ÍÌ½¹ÑÉ½°…¹‰•ÍÐµÁÉ…Ñ¥”½Ù•É¹…¹”‰…­•¥¹Ñ¼•Ù•ÉäÍ½±ÕÑ¥½¸™É½´‘…ä½¹”€™µ‘…Í ì¹•Ù•È‰½±Ñ•½¸±…Ñ•È¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀÈð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ ÌùM…±…‰±”€™…µÀìÕÑÕÉ”µI•…‘äð½ Ìø(€€€€€€€€€€€€ñÀù]”‘•Í¥¸ÍåÍÑ•µÌÑ¡…ÐÉ½ÜÝ¥Ñ å½Ô€™µ‘…Í ì¡…¹‘±¥¹œµ½É”‘…Ñ„°µ½É”ÕÍ•ÉÌ…¹µ½É”…µ‰¥Ñ¥½¸Ý¥Ñ¡½ÕÐ‰É•…­¥¹œ„ÍÝ•…Ð¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°Èˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀÌð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ìù½Õ¹‘•Èµ1•°±¥•¹Ðµ¥ÉÍÐð½ Ìø(€€€€€€€€€€€€ñÀù¥É•Ð…•ÍÌÑ¼Ñ¡”Á•½Á±”‰Õ¥±‘¥¹œå½ÕÈÍ½±ÕÑ¥½¸¸QÉ…¹ÍÁ…É•¹Ð½µµÕ¹¥…Ñ¥½¸°¡½¹•ÍÐÑ¥µ•±¥¹•Ì°é•É¼ÉÕ¹…É½Õ¹¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀÔð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ìù¹µÑ¼µ¹=Ý¹•ÉÍ¡¥Àð½ Ìø(€€€€€€€€€€€€ñÀùÉ½´Ñ¡”™¥ÉÍÐ‘¥Í½Ù•Éä…±°Ñ¼‘•Á±½åµ•¹Ð…¹±½¹œµÑ•É´ÍÕÁÁ½ÉÐ€™µ‘…Í ì½¹”…½Õ¹Ñ…‰±”Ñ•…´™½ÈÑ¡”•¹Ñ¥É”©½ÕÉ¹•ä¸ð½Àø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀÔð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ìù¹µÑ¼µ¹=Ý¹•ÉÍ¡¥Àð½ Ìø(€€€€€€€€€€€€ñÀùÉ½´Ñ¡”™¥ÉÍÐ‘¥Í½Ù•Éä…±°Ñ¼‘•Á±½åµ•¹Ð…¹±½¹œµÑ•É´ÍÕÁÁ½ÉÐ€™µ‘…Í ì½¹”…½Õ¹Ñ…‰±”Ñ•…´™½ÈÑ¡”•¹Ñ¥É”©½ÕÉ¹•ä¸ð½Àø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¥Ñ•´É•Ù•…°Èˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰Ý¡äµ¹Õ´ˆøÀØð½‘¥Øø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ìù1½…°I½½ÑÌ°±½‰…°MÑ…¹‘…É‘Ìð½ Ìø(€€€€€€€€€€€€ñÀùAÉ½Õ‘±ä‰…Í•¥¸9½ÉÑ QÉ¥ÁÕÉ„°‘•±¥Ù•É¥¹œÝ½É±µ±…ÍÌ•¹¥¹••É¥¹œÑ¼±¥•¹ÑÌ…É½ÍÌ%¹‘¥„€™µ‘…Í ì…¹‰•å½¹¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôôIIL€ôôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰…É••ÉÌˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù…É••ÉÌð½ÍÁ…¸ø(€€€€€€€€ñ Èù	Õ¥±Ñ¡”ÕÑÕÉ”½˜€ñ•´ù…Ñ„Ý¥Ñ UÌð½•´øð½ Èø(€€€€€€€€ñÀù)½¥¸„™½Õ¹‘•Èµ±•Ñ•…´¥¸¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„€™µ‘…Í ìÝ½É¬½¸É•…°$…¹‘…Ñ„ÁÉ½‰±•µÌ°É•µ½Ñ•±ä½È½¸µÍ¥Ñ”¸ð½Àø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰©½‰ÌµÉ¥ˆø(€€€€€€€€ð„´´•…ÑÕÉ•è$¹¥¹••È€´´ø(€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰©½ˆµ…É™•…ÑÕÉ•É•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É„ÄÀ€ÄÀ€À€À€Ä€ÄÀ€ÄÁŒÀ€Ô´Ð€à´à€à´Ì€À´Ô´Ä¸Ø´Ô´Ð€À´Ä¸Ð¸à´È¸Ð€È´Ì´Ä¸È€À´È´Ä´È´È¸È€À´Ä¸Ð€Ä´È¸Ð€È¸Ð´È¸ÙÄÀ¸Ø€Ô¸Ð€ÄÄ€Ð€ÄÈ€Éèˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ‰½‘äˆø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ½Àˆø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰©½ˆµ‰…‘”ˆùÕ±°µÑ¥µ”€™µ¥‘‘½Ðì!¥ AÉ¥½É¥Ñäð½ÍÁ…¸ø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€ñ Ìù$¹¥¹••Èð½ Ìø(€€€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµµ•Ñ„ˆø(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€€€¡…Éµ…¹……È€¡=¸µÍ¥Ñ”¤€¼I•µ½Ñ”(€€€€€€€€€€€€ð½Àø(€€€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµ‘•ÍŒˆù•Í¥¸°ÑÉ…¥¸…¹‘•Á±½äµ…¡¥¹”±•…É¹¥¹œ°91@…¹•¹•É…Ñ¥Ù”$µ½‘•±ÌÑ¡…ÐÍ½±Ù”É•…°‰ÕÍ¥¹•ÍÌÁÉ½‰±•µÌ€™µ‘…Í ì™É½´½¹Ù•ÉÍ…Ñ¥½¹…°$Ñ¼ÁÉ½‘ÕÑ¥½¸50Á¥Á•±¥¹•Ì¸ð½Àø(€€€€€€€€€€€€ñÕ°±…ÍÌô‰©½ˆµÉ•Äˆø(€€€€€€€€€€€€€€ñ±¤ùMÑÉ½¹œAåÑ¡½¸€™…µÀì50™É…µ•Ý½É­Ì€¡AåQ½É €¼Q•¹Í½É±½Ü¤ð½±¤ø(€€€€€€€€€€€€€€ñ±¤ùáÁ•É¥•¹”Ý¥Ñ 115Ì°ÁÉ½µÁÐ•¹¥¹••É¥¹œ€™…µÀìIð½±¤ø(€€€€€€€€€€€€€€ñ±¤ù-¹½Ý±•‘”½˜51=ÁÌèµ½‘•°Í•ÉÙ¥¹œ°µ½¹¥Ñ½É¥¹œ°$½ð½±¤ø(€€€€€€€€€€€€ð½Õ°ø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ…ÌˆøñÍÁ…¸ùAåÑ¡½¸ð½ÍÁ…¸øñÍÁ…¸ùAåQ½É ð½ÍÁ…¸øñÍÁ…¸ù115Ìð½ÍÁ…¸øñÍÁ…¸ù51=ÁÌð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä©½ˆµ…ÁÁ±äˆ‘…Ñ„µÉ½±”ô‰$¹¥¹••ÈˆùÁÁ±ä9½Ü(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰©½ˆµ…ÉÉ•Ù•…°ˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ì€ÄÝ°Ø´Ø€Ð€Ð´à´àˆ¼øñÁ…Ñ ô‰4ÄÐ€Ý ÝØÜˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ½Àˆø(€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰©½ˆµ‰…‘”ˆùÕ±°µÑ¥µ”ð½ÍÁ…¸ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ Ìù…Ñ„¹…±åÍÐð½ Ìø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµµ•Ñ„ˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€¡…Éµ…¹……È€¼I•µ½Ñ”(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµ‘•ÍŒˆùQÕÉ¸É…Ü‰ÕÍ¥¹•ÍÌ‘…Ñ„¥¹Ñ¼±•…È‘…Í¡‰½…É‘Ì°É•Á½ÉÑÌ…¹¥¹Í¥¡ÑÌÑ¡…ÐÕ¥‘”½¹™¥‘•¹Ð‘•¥Í¥½¹Ì™½È½ÕÈ±¥•¹ÑÌ¸ð½Àø(€€€€€€€€€€ñÕ°±…ÍÌô‰©½ˆµÉ•Äˆø(€€€€€€€€€€€€ñ±¤ùMÑÉ½¹œME0€™…µÀìAåÑ¡½¸™½È…¹…±åÍ¥Ì…¹±•…¹¥¹œð½±¤ø(€€€€€€€€€€€€ñ±¤ù…Í¡‰½…É‘¥¹œÝ¥Ñ A½Ý•È	$€¼Q…‰±•Ôð½±¤ø(€€€€€€€€€€€€ñ±¤ùM½±¥É…ÍÌ½˜ÍÑ…Ñ¥ÍÑ¥Ì€™…µÀì½Ñ•ÍÑ¥¹œð½±¤ø(€€€€€€€€€€ð½Õ°ø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ…ÌˆøñÍÁ…¸ùME0ð½ÍÁ…¸øñÍÁ…¸ùAåÑ¡½¸ð½ÍÁ…¸øñÍÁ…¸ùA½Ý•È	$ð½ÍÁ…¸øñÍÁ…¸ùMÑ…Ñ¥ÍÑ¥Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä©½ˆµ…ÁÁ±äˆ‘…Ñ„µÉ½±”ô‰…Ñ„¹…±åÍÐˆùÁÁ±ä9½Ü(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰©½ˆµ…ÉÉ•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4à€Ù ÄÍ4à€ÄÉ ÄÍ4à€Äá ÄÌˆ¼øñÁ…Ñ ô‰4Ì€Ù ¸ÀÅ4Ì€ÄÉ ¸ÀÅ4Ì€Äá ¸ÀÄˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ½Àˆø(€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰©½ˆµ‰…‘”ˆùÕ±°µÑ¥µ”ð½ÍÁ…¸ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ ÌùÕ±°µMÑ…¬•Ù•±½Á•Èð½ Ìø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµµ•Ñ„ˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€¡…Éµ…¹……È€¼I•µ½Ñ”(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµ‘•ÍŒˆù	Õ¥±™…ÍÐ°Í•ÕÉ”Ý•ˆ…ÁÁ±¥…Ñ¥½¹Ì°‘…Í¡‰½…É‘Ì…¹A%ÌÑ¡…ÐÁÕÐ½ÕÈ$…¹‘…Ñ„…Á…‰¥±¥Ñ¥•Ì¥¸ÕÍ•ÉÌ™ÉÍÍÅÕ¼íÌ¡…¹‘Ì¸ð½Àø(€€€€€€€€€€ñÕ°±…ÍÌô‰©½ˆµÉ•Äˆø(€€€€€€€€€€€€ñ±¤ùI•…Ð€¼9•áÐ¹©Ì™É½¹Ðµ•¹•áÁ•É¥•¹”ð½±¤ø(€€€€€€€€€€€€ñ±¤ù9½‘”¹©Ì½ÈAåÑ¡½¸‰…¬µ•¹€™…µÀìIMP½É…Á¡E0A%Ìð½±¤ø(€€€€€€€€€€€€ñ±¤ùA½ÍÑÉ•ME0€¼5½¹½€™…µÀì±½Õ‘•Á±½åµ•¹Ð€¡]L¤ð½±¤ø(€€€€€€€€€€ð½Õ°ø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ…ÌˆøñÍÁ…¸ùI•…Ðð½ÍÁ…¸øñÍÁ…¸ù9½‘”¹©Ìð½ÍÁ…¸øñÍÁ…¸ùA½ÍÑÉ•ME0ð½ÍÁ…¸øñÍÁ…¸ù]Lð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä©½ˆµ…ÁÁ±äˆ‘…Ñ„µÉ½±”ô‰Õ±°µMÑ…¬•Ù•±½Á•ÈˆùÁÁ±ä9½Ü(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰©½ˆµ…ÉÉ•Ù•…°Äˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÄ€ÄÉ„ä€ä€À€Ä€Ä´ä´äˆ¼øñÁ…Ñ ô‰4ÈÄ€ÍØÙ ´Øˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ½Àˆø(€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰©½ˆµ‰…‘”ˆùÕ±°µÑ¥µ”ð½ÍÁ…¸ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ Ìù±½ÕÉ¡¥Ñ•Ðð½ Ìø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµµ•Ñ„ˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€¡…Éµ…¹……È€¼I•µ½Ñ”(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµ‘•ÍŒˆù•Í¥¸Í•ÕÉ”°½ÍÐµ½ÁÑ¥µ¥é•±½Õ¥¹™É…ÍÑÉÕÑÕÉ”…¹±•…µ¥É…Ñ¥½¹Ì™½È±¥•¹ÑÌ½¸]L°éÕÉ”…¹@¸ð½Àø(€€€€€€€€€€ñÕ°±…ÍÌô‰©½ˆµÉ•Äˆø(€€€€€€€€€€€€ñ±¤ù••À]L€¼éÕÉ”€¼@…É¡¥Ñ•ÑÕÉ”•áÁ•É¥•¹”ð½±¤ø(€€€€€€€€€€€€ñ±¤ù%¹™É…ÍÑÉÕÑÕÉ”…Ì½‘”Ý¥Ñ Q•ÉÉ…™½É´ð½±¤ø(€€€€€€€€€€€€ñ±¤ù-Õ‰•É¹•Ñ•Ì°¹•ÑÝ½É­¥¹œ€™…µÀìÍ•ÕÉ¥Ñä‰•ÍÐÁÉ…Ñ¥•Ìð½±¤ø(€€€€€€€€€€ð½Õ°ø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ…ÌˆøñÍÁ…¸ù]Lð½ÍÁ…¸øñÍÁ…¸ùéÕÉ”ð½ÍÁ…¸øñÍÁ…¸ùQ•ÉÉ…™½É´ð½ÍÁ…¸øñÍÁ…¸ù-Õ‰•É¹•Ñ•Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä©½ˆµ…ÁÁ±äˆ‘…Ñ„µÉ½±”ô‰±½ÕÉ¡¥Ñ•ÐˆùÁÁ±ä9½Ü(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€ð½…ÉÑ¥±”ø((€€€€€€€€ñ…ÉÑ¥±”±…ÍÌô‰©½ˆµ…ÉÉ•Ù•…°Èˆø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµ¥½¸ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€ÄØ¸åØÍ„È€È€À€À€Ä´È¸È€È€Ää¸à€Ää¸à€À€À€Ä´à¸Ø´Ì¸Ä€Ää¸Ô€Ää¸Ô€À€À€Ä´Ø´ÙÄä¸à€Ää¸à€À€À€Ä€È¸Ä€Ð¸È€È€È€À€À€Ä€Ð¸Ä€É Í„È€È€À€À€Ä€È€Ä¸ÝŒ¸Ä€Ä€¸Ð€È€¸Ü€È¸å„È€È€À€À€Ä´¸Ô€È¸Å0à€ÄÁ„ÄØ€ÄØ€À€À€À€Ø€Ù°Ä¸Ì´Ä¸Í„È€È€À€À€Ä€È¸Ä´¸ÕŒ¸ä¸Ì€Ä¸ä¸Ø€È¸ä¸Ý„È€È€À€À€Ä€Ä¸Ü€Éèˆ¼øð½ÍÙœøð½‘¥Øø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ½Àˆø(€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰©½ˆµ‰…‘”ˆùÕ±°µÑ¥µ”ð½ÍÁ…¸ø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ñ Ìù	ÕÍ¥¹•ÍÌ•Ù•±½Áµ•¹Ðá•ÕÑ¥Ù”ð½ Ìø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµµ•Ñ„ˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€¡…Éµ…¹……È€¡AÉ•™•ÉÉ•¤€¼I•µ½Ñ”(€€€€€€€€€€ð½Àø(€€€€€€€€€€ñÀ±…ÍÌô‰©½ˆµ‘•ÍŒˆùÉ½ÜMå¹Œ™ÉÍÅÕ¼íÌ±¥•¹Ð‰…Í”…¹Á…ÉÑ¹•ÉÍ¡¥ÁÌ€™µ‘…Í ì½Ý¹¥¹œ½ÕÑÉ•… °ÁÉ½Á½Í…±Ì…¹±½¹œµÑ•É´É•±…Ñ¥½¹Í¡¥ÁÌ¸ð½Àø(€€€€€€€€€€ñÕ°±…ÍÌô‰©½ˆµÉ•Äˆø(€€€€€€€€€€€€ñ±¤ùMÑÉ½¹œ½µµÕ¹¥…Ñ¥½¸°ÁÉ•Í•¹Ñ…Ñ¥½¸€™…µÀì¹•½Ñ¥…Ñ¥½¸Í­¥±±Ìð½±¤ø(€€€€€€€€€€€€ñ±¤ùáÁ•É¥•¹”Ý¥Ñ ÁÉ½Á½Í…±Ì°IAÌ€™…µÀìÍ…±•ÌÁ¥Á•±¥¹•Ìð½±¤ø(€€€€€€€€€€€€ñ±¤ù5…É­•ÐÉ•Í•…É …ÁÑ¥ÑÕ‘”€™…µÀìI4ÁÉ½™¥¥•¹äð½±¤ø(€€€€€€€€€€ð½Õ°ø(€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰©½ˆµÑ…ÌˆøñÍÁ…¸ùM…±•Ìð½ÍÁ…¸øñÍÁ…¸ùA…ÉÑ¹•ÉÍ¡¥ÁÌð½ÍÁ…¸øñÍÁ…¸ùI4ð½ÍÁ…¸øñÍÁ…¸ùAÉ½Á½Í…±Ìð½ÍÁ…¸øð½‘¥Øø(€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä©½ˆµ…ÁÁ±äˆ‘…Ñ„µÉ½±”ô‰	ÕÍ¥¹•ÍÌ•Ù•±½Áµ•¹Ðá•ÕÑ¥Ù”ˆùÁÁ±ä9½Ü(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœø(€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€ð½…ÉÑ¥±”ø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰Á•É­Ìˆø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Á•É¬É•Ù•…°ˆø(€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Àµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ðù±•á¥‰±”]½É¬ð½ Ðø(€€€€€€€€€€€€ñÀùI•µ½Ñ”µ™É¥•¹‘±äÝ¥Ñ Ñ¡”½ÁÑ¥½¸Ñ¼Ý½É¬™É½´½ÕÈ¡…Éµ…¹……È‰…Í”¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Á•É¬É•Ù•…°Äˆø(€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Àµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É°à€ÑØÙŒÀ€Ô´Ì¸Ô€à¸Ô´à€ÄÀ´Ð¸Ô´Ä¸Ô´à´Ô´à´ÄÁXÙ°à´Ñèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ðù1•…É¹¥¹œ	Õ‘•Ðð½ Ðø(€€€€€€€€€€€€ñÀù¹¹Õ…°‰Õ‘•Ð™½È½ÕÉÍ•Ì°•ÉÑ¥™¥…Ñ¥½¹Ì…¹½¹™•É•¹”Ñ¥­•ÑÌ¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰Á•É¬É•Ù•…°Èˆø(€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Àµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÌ€É0Ì€ÄÑ Ý°´Ä€à€ÄÀ´ÄÉ ´Ý°Ä´áèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€ñ‘¥Øø(€€€€€€€€€€€€ñ Ðù%µÁ…Ñ™Õ°]½É¬ð½ Ðø(€€€€€€€€€€€€ñÀùM¡¥ÀÉ•…°$…¹‘…Ñ„ÁÉ½‘ÕÑÌÝ¥Ñ „™½Õ¹‘•ÈÝ¡¼Í¡¥ÁÌ…±½¹Í¥‘”å½Ô¸ð½Àø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø((€€€€€€ñÀ±…ÍÌô‰…É••ÉÌµ¹½Ñ”ˆø(€€€€€€€½¸™ÉÍÅÕ¼íÐÍ•”å½ÕÈÉ½±”ü€ñ„¡É•˜ô‰µ…¥±Ñ¼é‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ýÍÕ‰©•Ðõ=Á•¸”ÈÁÁÁ±¥…Ñ¥½¸”ÈÀ´”ÈÁMå¹Œ”ÈÁ…É••ÉÌˆùµ…¥°ÕÌå½ÕÈXð½„ø€™µ‘…Í ìÝ”™ÉÍÅÕ¼íÉ”…±Ý…åÌ•á¥Ñ•Ñ¼µ••ÐÉ•…ÐÁ•½Á±”¸(€€€€€€ð½Àø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø((€€ð„´´€ôôôôôôôôôôôôôôôôô=9QP€ôôôôôôôôôôôôôôôôô€´´ø(€€ñÍ•Ñ¥½¸±…ÍÌô‰Í•Ñ¥½¸ˆ¥ô‰½¹Ñ…Ðˆø(€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰Í•Ñ¥½¸µ¡•…É•Ù•…°ˆø(€€€€€€€€ñÍÁ…¸±…ÍÌô‰•å•‰É½Üˆù½¹Ñ…ÐUÌð½ÍÁ…¸ø(€€€€€€€€ñ Èù1•Ð™ÉÍÅÕ¼íÌMÑ…ÉÐ„½¹Ù•ÉÍ…Ñ¥½¸ð½ Èø(€€€€€€€€ñÀùI•… ½ÕÐ‘¥É•Ñ±ä€™µ‘…Í ìÝ”ÑåÁ¥…±±äÉ•ÍÁ½¹Ý¥Ñ¡¥¸½¹”‰ÕÍ¥¹•ÍÌ‘…ä¸ð½Àø(€€€€€€ð½‘¥Øø((€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…ÐµÉ¥ˆø(€€€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…Ðµ¥¹™¼É•Ù•…°ˆø(€€€€€€€€€€ñ Èù•Ð¥¸Q½Õ ð½ Èø(€€€€€€€€€€ñÀù]¡•Ñ¡•Èå½Ô¹••„ÅÕ¥¬½¹ÍÕ±Ñ…Ñ¥½¸½È„™Õ±°µÍ…±”¥µÁ±•µ•¹Ñ…Ñ¥½¸°Ý”™ÉÍÅÕ¼í±½Ù”Ñ¼¡•…È™É½´å½Ô¸ð½Àø((€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…Ðµ…É‘Ìˆø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…Ðµ…Éˆø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€ÄØ¸åØÍ„È€È€À€À€Ä´È¸È€È€Ää¸à€Ää¸à€À€À€Ä´à¸Ø´Ì¸Ä€Ää¸Ô€Ää¸Ô€À€À€Ä´Ø´ÙÄä¸à€Ää¸à€À€À€Ä€È¸Ä€Ð¸È€È€È€À€À€Ä€Ð¸Ä€É Í„È€È€À€À€Ä€È€Ä¸ÝŒ¸Ä€Ä€¸Ð€È€¸Ü€È¸å„È€È€À€À€Ä´¸Ô€È¸Å0à€ÄÁ„ÄØ€ÄØ€À€À€À€Ø€Ù°Ä¸Ì´Ä¸Í„È€È€À€À€Ä€È¸Ä´¸ÕŒ¸ä¸Ì€Ä¸ä¸Ø€È¸ä¸Ý„È€È€À€À€Ä€Ä¸Ü€Éèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ±…‰•°ˆùA¡½¹”ð½ÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰ŒµÙ…±Õ”ˆø(€€€€€€€€€€€€€€€€€€ñ„±…ÍÌô‰Œµ±¥¹¬ˆ¡É•˜ô‰Ñ•°è¬äÄäÌØØÜÔÔÀÔØˆø¬äÄ€äÌØØÜ€ÔÔÀÔØð½„ø(€€€€€€€€€€€€€€€€€€ñÍµ…±°øñ„±…ÍÌô‰Œµ±¥¹¬ˆ¡É•˜ô‰Ñ•°è¬äÄØÀÌÌØÄÔÈÌÄˆø¬äÄ€ØÀÌÌØ€ÄÔÈÌÄ€¡…±Ð¤ð½„øð½Íµ…±°ø(€€€€€€€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰…ÉÉ½ÜˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€ð½‘¥Øø((€€€€€€€€€€€€ñ„±…ÍÌô‰½¹Ñ…Ðµ…Éˆ¡É•˜ô‰µ…¥±Ñ¼é‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ˆø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÉ•ÐàôˆÈˆäôˆÐˆÝ¥‘Ñ ôˆÈÀˆ¡•¥¡ÐôˆÄØˆÉàôˆÈˆ¼øñÁ…Ñ ô‰4ÈÈ€Ý°´ÄÀ€Ù0È€Üˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ±…‰•°ˆùµ…¥°ð½ÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰ŒµÙ…±Õ”ˆù‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰…ÉÉ½ÜˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€ð½„ø((€€€€€€€€€€€€ñ„±…ÍÌô‰½¹Ñ…Ðµ…Éˆ¡É•˜ô‰¡ÑÑÁÌè¼½ÝÝÜ¹‘…‘Íå¹Œ¹¥¸ˆÑ…É•Ðô‰}‰±…¹¬ˆÉ•°ô‰¹½½Á•¹•Èˆø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÄÀˆ¼øñÁ…Ñ ô‰4È€ÄÉ ÈÁ4ÄÈ€É„ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð´ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð´ÄÁèˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ±…‰•°ˆù]•‰Í¥Ñ”ð½ÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰ŒµÙ…±Õ”ˆùÝÝÜ¹‘…‘Íå¹Œ¹¥¸ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰…ÉÉ½ÜˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Ô€ÄÉ ÄÑ4ÄÌ€Ù°Ø€Ø´Ø€Øˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€ð½„ø((€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…Ðµ…Éˆø(€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ¥ŒˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœøð½ÍÁ…¸ø(€€€€€€€€€€€€€€ñÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰Œµ±…‰•°ˆù1½…Ñ¥½¸ð½ÍÁ…¸ø(€€€€€€€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰ŒµÙ…±Õ”ˆù¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„ñÍµ…±°ù¡…Éµ…¹……È$…Ñ…Må¹ŒAÉ¥Ù…Ñ”1¥µ¥Ñ•ð½Íµ…±°øð½ÍÁ…¸ø(€€€€€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€ð½‘¥Øø(€€€€€€€€ð½‘¥Øø((€€€€€€€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…Ðµ™½É´É•Ù•…°Äˆø(€€€€€€€€€€ñ ÌùM•¹ÕÌ„µ•ÍÍ…”ð½ Ìø(€€€€€€€€€€ñÀù¥±°¥¸Ñ¡”™½É´€™µ‘…Í ìÝ”™ÉÉÍÅÕ¼í±°•Ð‰…¬Ñ¼å½ÔÝ¥Ñ¡¥¸½¹”‰ÕÍ¥¹•ÍÌ‘…ä¸ð½Àø(€€€€€€€€€€ñ™½É´¥ô‰½¹Ñ…Ðµ™½É´ˆ…Ñ¥½¸ô‰¡ÑÑÁÌè¼½™½ÉµÍÁÉ•”¹¥¼½˜½aaaaaaa`ˆµ•Ñ¡½ô‰A=MPˆ¹½Ù…±¥‘…Ñ”ø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½É´µÉ½Üˆø(€€€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€€€€€€€€€ñ±…‰•°™½Èô‰˜µ¹…µ”ˆùe½ÕÈ9…µ”ð½±…‰•°ø(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰Ñ•áÐˆ¥ô‰˜µ¹…µ”ˆ¹…µ”ô‰¹…µ”ˆÁ±…•¡½±‘•Èô‰Õ±°¹…µ”ˆÉ•ÅÕ¥É•ø(€€€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€€€€€€€€€ñ±…‰•°™½Èô‰˜µÁ¡½¹”ˆùA¡½¹”€¡½ÁÑ¥½¹…°¤ð½±…‰•°ø(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰Ñ•°ˆ¥ô‰˜µÁ¡½¹”ˆ¹…µ”ô‰Á¡½¹”ˆÁ±…•¡½±‘•Èôˆ¬äÄ€¸¸¸ˆø(€€€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€€€€€€€ñ±…‰•°™½Èô‰˜µ•µ…¥°ˆùµ…¥°ð½±…‰•°ø(€€€€€€€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰•µ…¥°ˆ¥ô‰˜µ•µ…¥°ˆ¹…µ”ô‰•µ…¥°ˆÁ±…•¡½±‘•Èô‰å½Õ•á…µÁ±”¹½´ˆÉ•ÅÕ¥É•ø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€€€€€€€ñ±…‰•°™½Èô‰˜µµÍœˆù5•ÍÍ…”ð½±…‰•°ø(€€€€€€€€€€€€€€ñÑ•áÑ…É•„¥ô‰˜µµÍœˆ¹…µ”ô‰µ•ÍÍ…”ˆÉ½ÝÌôˆÔˆÁ±…•¡½±‘•Èô‰Q•±°ÕÌ…‰½ÕÐå½ÕÈÁÉ½©•Ð¸¸¸ˆÉ•ÅÕ¥É•øð½Ñ•áÑ…É•„ø(€€€€€€€€€€€€ð½‘¥Øø(€€€€€€€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰ÍÕ‰µ¥Ðˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä‰Ñ¸µ‰±½¬ˆùM•¹5•ÍÍ…”(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€É0ÄÄ€ÄÍ4ÈÈ€É°´Ü€ÈÀ´Ð´ä´ä´Ð€ÈÀ´Ýèˆ¼øð½ÍÙœø(€€€€€€€€€€€€ð½‰ÕÑÑ½¸ø(€€€€€€€€€€€€ñÀ±…ÍÌô‰™½É´µ¹½Ñ”ˆø(€€€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€É°à€ÑØÙŒÀ€Ô´Ì¸Ô€à¸Ô´à€ÄÀ´Ð¸Ô´Ä¸Ô´à´Ô´à´ÄÁXÙ°à´Ñèˆ¼øð½ÍÙœø(€€€€€€€€€€€€€e½ÕÈ¥¹™½Éµ…Ñ¥½¸ÍÑ…åÌÁÉ¥Ù…Ñ”€™µ‘…Í ìÝ”¹•Ù•ÈÍ¡…É”¥Ð¸(€€€€€€€€€€€€ð½Àø(€€€€€€€€€€ð½™½É´ø(€€€€€€€€ð½‘¥Øø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€ð½Í•Ñ¥½¸ø(ð½µ…¥¸ø((ð„´´€ôôôôôôôôôôôôôôôôô==QH€ôôôôôôôôôôôôôôôôô€´´ø(ñ™½½Ñ•Èø(€€ñ‘¥Ø±…ÍÌô‰½¹Ñ…¥¹•Èˆø(€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•ÈµÉ¥ˆø(€€€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•Èµ‰É…¹ˆø(€€€€€€€€ñ„¡É•˜ôˆ¡½µ”ˆ±…ÍÌô‰±½¼ˆø(€€€€€€€€€€ñÍÁ…¸±…ÍÌô‰±½¼µµ…É¬ˆø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆ…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆø(€€€€€€€€€€€€€€ñÁ…Ñ ô‰4ÄÈ€ÍØÑ4ÄÈ€ÄÝØÑ4Ì€ÄÉ Ñ4ÄÜ€ÄÉ Ðˆ¼ø(€€€€€€€€€€€€€€ñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÌ¸Èˆ¼ø(€€€€€€€€€€€€ð½ÍÙœø(€€€€€€€€€€ð½ÍÁ…¸ø(€€€€€€€€€€ñÍÁ…¸ùñÍÁ…¸øñˆùMå¹Œð½ˆøð½ÍÁ…¸øñÍÁ…¸±…ÍÌô‰Ñ…œˆù$…Ñ…Må¹Œð½ÍÁ…¸øð½ÍÁ…¸ø(€€€€€€€€ð½„ø(€€€€€€€€ñÀù¡…Éµ…¹……È$…Ñ…Må¹ŒAÉ¥Ù…Ñ”1¥µ¥Ñ•€™µ‘…Í ì$…¹‘…Ñ„Íå¹¡É½¹¥é…Ñ¥½¸Í½±ÕÑ¥½¹Ì•¹¥¹••É•™½Èµ½‘•É¸‰ÕÍ¥¹•ÍÍ•Ì¸ð½Àø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•Èµ½°ˆø(€€€€€€€€ñ ÐùEÕ¥¬1¥¹­Ìð½ Ðø(€€€€€€€€ñÕ°ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆ¡½µ”ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù!½µ”ð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆ…‰½ÕÐˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù‰½ÕÐð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœùM•ÉÙ¥•Ìð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÝ¡äµÕÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù]¡äUÌð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆ…É••ÉÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù…É••ÉÌð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆ½¹Ñ…ÐˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù½¹Ñ…Ðð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆŒ½ÑÉ¥ÁÕÉ„µ…¤ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€ÍØÑ4ÄÈ€ÄÝØÑ4Ì€ÄÉ Ñ4ÄÜ€ÄÉ Ðˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÌ¸Èˆ¼øð½ÍÙœùQÉ¥ÁÕÉ„$QÉ…¹Í™½Éµ…Ñ¥½¸ð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ô‰…•¹äµ…•¹ÑÌ¹¡Ñµ°ˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÜ€ÈÅØ´É„Ð€Ð€À€À€À´Ð´Ñ Õ„Ð€Ð€À€À€À´Ð€ÑØÈˆ¼øñ¥É±”àôˆäˆäôˆÜˆÈôˆÐˆ¼øñÁ…Ñ ô‰4ÈÌ€ÈÅØ´É„Ð€Ð€À€À€À´Ì´Ì¸àÝ4ÄØ€Ì¸ÄÍ„Ð€Ð€À€À€Ä€À€Ü¸ÜÔˆ¼øð½ÍÙœù•¹ä•¹ÑÌð½„øð½±¤ø(€€€€€€€€ð½Õ°ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•Èµ½°ˆø(€€€€€€€€ñ ÐùM•ÉÙ¥•Ìð½ Ðø(€€€€€€€€ñÕ°ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù$M½±ÕÑ¥½¹Ìð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù…Ñ„Må¹¡É½¹¥é…Ñ¥½¸ð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù…Ñ„¹…±åÑ¥Ìð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœù±½Õ%¹Ñ•É…Ñ¥½¸ð½„øð½±¤ø(€€€€€€€€€€ñ±¤øñ„¡É•˜ôˆÍ•ÉÙ¥•ÌˆøñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ä€Äá°Ø´Ø´Ø´Øˆ¼øð½ÍÙœùÕÑ½µ…Ñ¥½¸€™…µÀì½¹ÍÕ±Ñ¥¹œð½„øð½±¤ø(€€€€€€€€ð½Õ°ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•Èµ½°ˆø(€€€€€€€€ñ Ðù½¹Ñ…Ðð½ Ðø(€€€€€€€€ñÕ°±…ÍÌô‰™½½Ñ•Èµ½¹Ñ…Ðˆø(€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€ÄÁŒÀ€Ø´à€ÄÈ´à€ÄÉÌ´à´Ø´à´ÄÉ„à€à€À€À€Ä€ÄØ€Áèˆ¼øñ¥É±”àôˆÄÈˆäôˆÄÀˆÈôˆÌˆ¼øð½ÍÙœø(€€€€€€€€€€€€ñÍÁ…¸ù¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„ð½ÍÁ…¸ø(€€€€€€€€€€ð½±¤ø(€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€ÄØ¸åØÍ„È€È€À€À€Ä´È¸È€È€Ää¸à€Ää¸à€À€À€Ä´à¸Ø´Ì¸Ä€Ää¸Ô€Ää¸Ô€À€À€Ä´Ø´ÙÄä¸à€Ää¸à€À€À€Ä€È¸Ä€Ð¸È€È€È€À€À€Ä€Ð¸Ä€É Í„È€È€À€À€Ä€È€Ä¸ÝŒ¸Ä€Ä€¸Ð€È€¸Ü€È¸å„È€È€À€À€Ä´¸Ô€È¸Å0à€ÄÁ„ÄØ€ÄØ€À€À€À€Ø€Ù°Ä¸Ì´Ä¸Í„È€È€À€À€Ä€È¸Ä´¸ÕŒ¸ä¸Ì€Ä¸ä¸Ø€È¸ä¸Ý„È€È€À€À€Ä€Ä¸Ü€Éèˆ¼øð½ÍÙœø(€€€€€€€€€€€€ñ„¡É•˜ô‰Ñ•°è¬äÄäÌØØÜÔÔÀÔØˆø¬äÄ€äÌØØÜ€ÔÔÀÔØð½„ø(€€€€€€€€€€ð½±¤ø(€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€ÄØ¸åØÍ„È€È€À€À€Ä´È¸È€È€Ää¸à€Ää¸à€À€À€Ä´à¸Ø´Ì¸Ä€Ää¸Ô€Ää¸Ô€À€À€Ä´Ø´ÙÄä¸à€Ää¸à€À€À€Ä€È¸Ä€Ð¸È€È€È€À€À€Ä€Ð¸Ä€É Í„È€È€À€À€Ä€È€Ä¸ÝŒ¸Ä€Ä€¸Ð€È€¸Ü€È¸å„È€È€À€À€Ä´¸Ô€È¸Å0à€ÄÁ„ÄØ€ÄØ€À€À€À€Ø€Ù°Ä¸Ì´Ä¸Í„È€È€À€À€Ä€È¸Ä´¸ÕŒ¸ä¸Ì€Ä¸ä¸Ø€È¸ä¸Ý„È€È€À€À€Ä€Ä¸Ü€Éèˆ¼øð½ÍÙœø(€€€€€€€€€€€€ñ„¡É•˜ô‰Ñ•°è¬äÄØÀÌÌØÄÔÈÌÄˆø¬äÄ€ØÀÌÌØ€ÄÔÈÌÄð½„ø(€€€€€€€€€€ð½±¤ø(€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÉ•ÐàôˆÈˆäôˆÐˆÝ¥‘Ñ ôˆÈÀˆ¡•¥¡ÐôˆÄØˆÉàôˆÈˆ¼øñÁ…Ñ ô‰4ÈÈ€Ý°´ÄÀ€Ù0È€Üˆ¼øð½ÍÙœø(€€€€€€€€€€€€ñ„¡É•˜ô‰µ…¥±Ñ¼é‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ˆù‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸ð½„ø(€€€€€€€€€€ð½±¤ø(€€€€€€€€€€ñ±¤ø(€€€€€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñ¥É±”àôˆÄÈˆäôˆÄÈˆÈôˆÄÀˆ¼øñÁ…Ñ ô‰4È€ÄÉ ÈÁ4ÄÈ€É„ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð€ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä´Ð´ÄÀ€ÄÔ¸Ì€ÄÔ¸Ì€À€À€Ä€Ð´ÄÁèˆ¼øð½ÍÙœø(€€€€€€€€€€€€ñ„¡É•˜ô‰¡ÑÑÁÌè¼½ÝÝÜ¹‘…‘Íå¹Œ¹¥¸ˆÑ…É•Ðô‰}‰±…¹¬ˆÉ•°ô‰¹½½Á•¹•ÈˆùÝÝÜ¹‘…‘Íå¹Œ¹¥¸ð½„ø(€€€€€€€€€€ð½±¤ø(€€€€€€€€ð½Õ°ø(€€€€€€ð½‘¥Øø(€€€€ð½‘¥Øø(€€€€ñ‘¥Ø±…ÍÌô‰™½½Ñ•Èµ‰½ÑÑ½´ˆø(€€€€€€ñÍÁ…¸ø™½Áäì€ñÍÁ…¸¥ô‰å•…ÈˆøÈÀÈØð½ÍÁ…¸ø¡…Éµ…¹……È$…Ñ…Må¹ŒAÉ¥Ù…Ñ”1¥µ¥Ñ•¸±°É¥¡ÑÌÉ•Í•ÉÙ•¸ð½ÍÁ…¸ø(€€€€€€ñÍÁ…¸ùÉ…™Ñ•Ý¥Ñ €ñÍÁ…¸±…ÍÌô‰¡•…ÉÐˆø™¡•…ÉÑÌìð½ÍÁ…¸ø¥¸¡…Éµ…¹……È°9½ÉÑ QÉ¥ÁÕÉ„€™µ‘…Í ì‰ä€ñÍÑÉ½¹œùM¡¥Ù½´•‰¹…Ñ ð½ÍÑÉ½¹œø€¡½Õ¹‘•È€™…µÀì=<¤ð½ÍÁ…¸ø(€€€€ð½‘¥Øø(€€ð½‘¥Øø(ð½™½½Ñ•Èø((ð„´´€ôôôôôôôôôôôôQI%AUI$QI9M=I5Q%=85=U1€¡ØÄÌ¤€ôôôôôôôôôôôô€´´ø(ñ‘¥Ø¥ô‰Ñ…‘ÌµÑ½Á‰…Èˆ±…ÍÌô‰Ñ…‘ÌµÑ½Àˆøð½‘¥Øø(ñ‘¥Ø¥ô‰Ñ…‘Ìµ…ÁÀˆ±…ÍÌô‰Ñ…‘Ìˆ…É¥„µ±¥Ù”ô‰Á½±¥Ñ”ˆøð½‘¥Øø(ñ‘¥Ø¥ô‰Ñ…‘ÌµÑ½…ÍÐˆ±…ÍÌô‰Ñ…‘ÌµÑ½…ÍÐˆÉ½±”ô‰ÍÑ…ÑÕÌˆ…É¥„µ±¥Ù”ô‰Á½±¥Ñ”ˆøð½‘¥Øø((ñÍÉ¥ÁÐÍÉŒô‰Ñ…‘Ìµ‘…Ñ„¹©ÌýØôÄÌ¸Ìˆøð½ÍÉ¥ÁÐø(ñÍÉ¥ÁÐÍÉŒô‰Ñ…‘Ìµ…ÁÀ¹©ÌýØôÄÌ¸Ìˆøð½ÍÉ¥ÁÐø(ñÍÉ¥ÁÐø(¡™Õ¹Ñ¥½¸€ ¤ì(€€ÕÍ”ÍÑÉ¥Ðœì(€€¼¨QÉ¥ÁÕÉ„$¹…Ø¥Ñ•´ƒŠP¡¥¡±¥¡ÐÝ¡•¸Ñ¡”µ½‘Õ±”¥Ì…Ñ¥Ù”¸€¨¼(€Ù…È¹…Ù$€ô‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½È m‘…Ñ„µÑ…‘Ìµ¹…Ùtœ¤ì(€™Õ¹Ñ¥½¸Íå¹QM9…Ø ¤ì(€€€Ù…È½¸€ô€¡Ý¥¹‘½Ü¹±½…Ñ¥½¸¹¡…Í ñð€œœ¤¹¥¹‘•á=˜ œ½ÑÉ¥ÁÕÉ„µ…¤œ¤€„ôô€´Äì(€€€¥˜€¡¹…Ù$¤¹…Ù$¹±…ÍÍ1¥ÍÐ¹Ñ½±” Ñ…‘Ìµ¹…Øµ…Ñ¥Ù”œ°½¸¤ì(€€€¥˜€¡½¸¤‘½Õµ•¹Ð¹‰½‘ä¹±…ÍÍ1¥ÍÐ¹…‘ Ñ…‘ÌµÙ¥•Üœ¤ì(€ô(€Ý¥¹‘½Ü¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ¡…Í¡¡…¹”œ°Íå¹QM9…Ø¤ì(€Íå¹QM9…Ø ¤ì)ô¤ ¤ì(ð½ÍÉ¥ÁÐø((ð½‰½‘äø(ñ‰ÕÑÑ½¸¥ô‰‰…¬µÑ½Àˆ…É¥„µ±…‰•°ô‰	…¬Ñ¼Ñ½Àˆø(€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÐˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÄÈ€ÄåXÕ4Ô€ÄÉ°Ü´Ü€Ü€Üˆ¼øð½ÍÙœø(ð½‰ÕÑÑ½¸ø((ð„´´Q½…ÍÐ€´´ø(ñ‘¥Ø¥ô‰Ñ½…ÍÐˆÉ½±”ô‰ÍÑ…ÑÕÌˆ…É¥„µ±¥Ù”ô‰Á½±¥Ñ”ˆø(€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÀ€Ù0ä€ÄÝ°´Ô´Ôˆ¼øð½ÍÙœø(€€ñÍÁ…¸¥ô‰Ñ½…ÍÐµµÍœˆù5•ÍÍ…”É•…‘ä„ð½ÍÁ…¸ø(ð½‘¥Øø((ð„´´ÁÁ±¥…Ñ¥½¸µ½‘…°€´´ø(ñ‘¥Ø±…ÍÌô‰µ½‘…°µ½Ù•É±…äˆ¥ô‰…ÁÁ±äµµ½‘…°ˆ…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆø(€€ñ‘¥Ø±…ÍÌô‰µ½‘…°ˆÉ½±”ô‰‘¥…±½œˆ…É¥„µµ½‘…°ô‰ÑÉÕ”ˆ…É¥„µ±…‰•±±•‘‰äô‰…ÁÁ±äµÑ¥Ñ±”ˆø(€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰‰ÕÑÑ½¸ˆ±…ÍÌô‰µ½‘…°µ±½Í”ˆ¥ô‰…ÁÁ±äµ±½Í”ˆ…É¥„µ±…‰•°ô‰±½Í”ˆø(€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”ô‰ÕÉÉ•¹Ñ½±½ÈˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4Äà€Ù0Ø€Äá4Ø€Ù°ÄÈ€ÄÈˆ¼øð½ÍÙœø(€€€€ð½‰ÕÑÑ½¸ø(€€€€ñ Ì¥ô‰…ÁÁ±äµÑ¥Ñ±”ˆùÁÁ±ä™½È€ñÍÁ…¸¥ô‰…ÁÁ±äµÉ½±”ˆùÑ¡¥ÌÉ½±”ð½ÍÁ…¸øð½ Ìø(€€€€ñÀ±…ÍÌô‰µ½‘…°µÍÕˆˆùM•¹å½ÕÈ…ÁÁ±¥…Ñ¥½¸€™µ‘…Í ì¥Ð±…¹‘Ì±•ÑÑ¥¸¥¸½ÕÈ¥¹‰½à¸ð½Àø(€€€€ñ™½É´¥ô‰…ÁÁ±äµ™½É´ˆ¹½Ù…±¥‘…Ñ”ø(€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰„µ¹…µ”ˆùe½ÕÈ9…µ”ð½±…‰•°ø(€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰Ñ•áÐˆ¥ô‰„µ¹…µ”ˆ¹…µ”ô‰¹…µ”ˆÁ±…•¡½±‘•Èô‰Õ±°¹…µ”ˆÉ•ÅÕ¥É•ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰„µ•µ…¥°ˆùµ…¥°ð½±…‰•°ø(€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰•µ…¥°ˆ¥ô‰„µ•µ…¥°ˆ¹…µ”ô‰•µ…¥°ˆÁ±…•¡½±‘•Èô‰å½Õ•á…µÁ±”¹½´ˆÉ•ÅÕ¥É•ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰„µÁ¡½¹”ˆùA¡½¹”€¡½ÁÑ¥½¹…°¤ð½±…‰•°ø(€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰Ñ•°ˆ¥ô‰„µÁ¡½¹”ˆ¹…µ”ô‰Á¡½¹”ˆÁ±…•¡½±‘•Èôˆ¬äÄ€¸¸¸ˆø(€€€€€€ð½‘¥Øø(€€€€€€ñ‘¥Ø±…ÍÌô‰™¥•±ˆø(€€€€€€€€ñ±…‰•°™½Èô‰„µµ•ÍÍ…”ˆù]¡ä…É”å½Ô„½½™¥Ðü€¡½ÁÑ¥½¹…°¤ð½±…‰•°ø(€€€€€€€€ñÑ•áÑ…É•„¥ô‰„µµ•ÍÍ…”ˆ¹…µ”ô‰µ•ÍÍ…”ˆÉ½ÝÌôˆÐˆÁ±…•¡½±‘•Èô‰Q•±°ÕÌ…‰½ÕÐå½ÕÈ•áÁ•É¥•¹”¸¸¸ˆøð½Ñ•áÑ…É•„ø(€€€€€€ð½‘¥Øø(€€€€€€ñ‰ÕÑÑ½¸ÑåÁ”ô‰ÍÕ‰µ¥Ðˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éä‰Ñ¸µ‰±½¬ˆùM•¹ÁÁ±¥…Ñ¥½¸(€€€€€€€€ñÍÙœÙ¥•Ý	½àôˆÀ€À€ÈÐ€ÈÐˆ™¥±°ô‰¹½¹”ˆÍÑÉ½­”µÝ¥‘Ñ ôˆÈ¸ÈˆÍÑÉ½­”µ±¥¹•…Àô‰É½Õ¹ˆÍÑÉ½­”µ±¥¹•©½¥¸ô‰É½Õ¹ˆøñÁ…Ñ ô‰4ÈÈ€É0ÄÄ€ÄÍ4ÈÈ€É°´Ü€ÈÀ´Ð´ä´ä´Ð€ÈÀ´Ýèˆ¼øð½ÍÙœø(€€€€€€ð½‰ÕÑÑ½¸ø(€€€€ð½™½É´ø(€€ð½‘¥Øø(ð½‘¥Øø((ñÍÉ¥ÁÐø(¡™Õ¹Ñ¥½¸€ ¤ì(€€ÕÍ”ÍÑÉ¥Ðœì((€Ù…È¹…Ù‰…È€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ¹…Ù‰…Èœ¤ì(€Ù…È‰…­Q½À€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰…¬µÑ½Àœ¤ì(€Ù…ÈÁÉ½É•ÍÍ	…È€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ÁÉ½É•ÍÌµ‰…Èœ¤ì((€™Õ¹Ñ¥½¸½¹MÉ½±° ¤ì(€€€Ù…Èä€ôÝ¥¹‘½Ü¹ÍÉ½±±dñðÝ¥¹‘½Ü¹Á…•e=™™Í•Ðì(€€€¥˜€¡¹…Ù‰…È¤¹…Ù‰…È¹±…ÍÍ1¥ÍÐ¹Ñ½±” ÍÉ½±±•œ°ä€ø€ÌÀ¤ì(€€€¥˜€¡‰…­Q½À¤‰…­Q½À¹±…ÍÍ1¥ÍÐ¹Ñ½±” Í¡½Üœ°ä€ø€ØÀÀ¤ì(€€€¥˜€¡ÁÉ½É•ÍÍ	…È¤ì(€€€€€Ù…È‘½Œ€ô‘½Õµ•¹Ð¹‘½Õµ•¹Ñ±•µ•¹Ðì(€€€€€Ù…Èµ…à€ô‘½Œ¹ÍÉ½±±!•¥¡Ð€´‘½Œ¹±¥•¹Ñ!•¥¡Ðì(€€€€€ÁÉ½É•ÍÍ	…È¹ÍÑå±”¹Ý¥‘Ñ €ô€¡µ…à€ø€À€ü€¡ä€¼µ…à¤€¨€ÄÀÀ€è€À¤€¬€œ”œì(€€€ô(€ô(€Ý¥¹‘½Ü¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ÍÉ½±°œ°½¹MÉ½±°°ìÁ…ÍÍ¥Ù”èÑÉÕ”ô¤ì(€Ý¥¹‘½Ü¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È É•Í¥é”œ°½¹MÉ½±°¤ì(€½¹MÉ½±° ¤ì((€€¼¨€´´´´´´´´´´	…¬Ñ¼Ñ½À€´´´´´´´´´´€¨¼(€¥˜€¡‰…­Q½À¤ì(€€€‰…­Q½À¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°™Õ¹Ñ¥½¸€ ¤ì(€€€€€Ý¥¹‘½Ü¹ÍÉ½±±Q¼¡ìÑ½Àè€À°‰•¡…Ù¥½Èè€Íµ½½Ñ œô¤ì(€€€ô¤ì(€ô((€€¼¨€´´´´´´´´´´5½‰¥±”µ•¹Ô€´´´´´´´´´´€¨¼(€Ù…È¡…µ‰ÕÉ•È€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ¡…µ‰ÕÉ•Èœ¤ì(€Ù…È¹…Ù1¥¹­Ì€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ¹…Øµ±¥¹­Ìœ¤ì((€™Õ¹Ñ¥½¸±½Í•5•¹Ô ¤ì(€€€¥˜€¡¹…Ù1¥¹­Ì¤¹…Ù1¥¹­Ì¹±…ÍÍ1¥ÍÐ¹É•µ½Ù” ½Á•¸œ¤ì(€€€¥˜€¡¡…µ‰ÕÉ•È¤ì(€€€€€¡…µ‰ÕÉ•È¹±…ÍÍ1¥ÍÐ¹É•µ½Ù” ½Á•¸œ¤ì(€€€€€¡…µ‰ÕÉ•È¹Í•ÑÑÑÉ¥‰ÕÑ” …É¥„µ•áÁ…¹‘•œ°€™…±Í”œ¤ì(€€€ô(€ô((€¥˜€¡¡…µ‰ÕÉ•È€˜˜¹…Ù1¥¹­Ì¤ì(€€€¡…µ‰ÕÉ•È¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°™Õ¹Ñ¥½¸€ ¤ì(€€€€€Ù…È½Á•¸€ô¹…Ù1¥¹­Ì¹±…ÍÍ1¥ÍÐ¹Ñ½±” ½Á•¸œ¤ì(€€€€€¡…µ‰ÕÉ•È¹±…ÍÍ1¥ÍÐ¹Ñ½±” ½Á•¸œ°½Á•¸¤ì(€€€€€¡…µ‰ÕÉ•È¹Í•ÑÑÑÉ¥‰ÕÑ” …É¥„µ•áÁ…¹‘•œ°½Á•¸€ü€ÑÉÕ”œ€è€™…±Í”œ¤ì(€€€ô¤ì(€€€¹…Ù1¥¹­Ì¹ÅÕ•ÉåM•±•Ñ½É±° „œ¤¹™½É… ¡™Õ¹Ñ¥½¸€¡±¥¹¬¤ì(€€€€€±¥¹¬¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°±½Í•5•¹Ô¤ì(€€€ô¤ì(€ô((€€¼¨€´´´´´´´´´´Ñ¥Ù”¹…Ø±¥¹¬¡¥¡±¥¡Ñ¥¹œ€´´´´´´´´´´€¨¼(€Ù…ÈÍ•Ñ¥½¹Ì€ô‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° Í•Ñ¥½¹m¥‘tœ¤ì(€Ù…È¹…Ù¹¡½ÉÌ€ô¹…Ù1¥¹­Ì€ü¹…Ù1¥¹­Ì¹ÅÕ•ÉåM•±•Ñ½É±° …m¡É•˜¨ôˆŒ‰tœ¤€èmtì((€Ù…ÈÍÁä€ô¹•Ü%¹Ñ•ÉÍ•Ñ¥½¹=‰Í•ÉÙ•È¡™Õ¹Ñ¥½¸€¡•¹ÑÉ¥•Ì¤ì(€€€•¹ÑÉ¥•Ì¹™½É… ¡™Õ¹Ñ¥½¸€¡•¹ÑÉä¤ì(€€€€€¥˜€¡•¹ÑÉä¹¥Í%¹Ñ•ÉÍ•Ñ¥¹œ¤ì(€€€€€€€¹…Ù¹¡½ÉÌ¹™½É… ¡™Õ¹Ñ¥½¸€¡„¤ì(€€€€€€€€€„¹±…ÍÍ1¥ÍÐ¹Ñ½±” …Ñ¥Ù”œ°„¹•ÑÑÑÉ¥‰ÕÑ” ¡É•˜œ¤€ôôô€œŒœ€¬•¹ÑÉä¹Ñ…É•Ð¹¥¤ì(€€€€€€€ô¤ì(€€€€€ô(€€€ô¤ì(€ô°ìÉ½½Ñ5…É¥¸è€œ´ÐÀ”€ÁÁà€´ÔÔ”€ÁÁàœô¤ì((€Í•Ñ¥½¹Ì¹™½É… ¡™Õ¹Ñ¥½¸€¡Ì¤ìÍÁä¹½‰Í•ÉÙ”¡Ì¤ìô¤ì((€€¼¨€´´´´´´´´´´I•Ù•…°½¸ÍÉ½±°€´´´´´´´´´´€¨¼(€Ù…ÈÉ•Ù•…±±Ì€ô‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° œ¹É•Ù•…°œ¤ì(€¥˜€ %¹Ñ•ÉÍ•Ñ¥½¹=‰Í•ÉÙ•Èœ¥¸Ý¥¹‘½Ü¤ì(€€€Ù…ÈÉ•Ù•…±=‰Ì€ô¹•Ü%¹Ñ•ÉÍ•Ñ¥½¹=‰Í•ÉÙ•È¡™Õ¹Ñ¥½¸€¡•¹ÑÉ¥•Ì¤ì(€€€€€•¹ÑÉ¥•Ì¹™½É… ¡™Õ¹Ñ¥½¸€¡•¹ÑÉä¤ì(€€€€€€€¥˜€¡•¹ÑÉä¹¥Í%¹Ñ•ÉÍ•Ñ¥¹œ¤ì(€€€€€€€€€•¹ÑÉä¹Ñ…É•Ð¹±…ÍÍ1¥ÍÐ¹…‘ Ù¥Í¥‰±”œ¤ì(€€€€€€€€€É•Ù•…±=‰Ì¹Õ¹½‰Í•ÉÙ”¡•¹ÑÉä¹Ñ…É•Ð¤ì(€€€€€€€ô(€€€€€ô¤ì(€€€ô°ìÑ¡É•Í¡½±è€À¸ÄÈô¤ì(€€€É•Ù•…±±Ì¹™½É… ¡™Õ¹Ñ¥½¸€¡•°¤ìÉ•Ù•…±=‰Ì¹½‰Í•ÉÙ”¡•°¤ìô¤ì(€€€Í•ÑQ¥µ•½ÕÐ¡™Õ¹Ñ¥½¸€ ¤ì(€€€€€‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° œ¹É•Ù•…°é¹½Ð ¹Ù¥Í¥‰±”¤œ¤¹™½É… ¡™Õ¹Ñ¥½¸€¡•°¤ì(€€€€€€€•°¹±…ÍÍ1¥ÍÐ¹…‘ Ù¥Í¥‰±”œ¤ì(€€€€€ô¤ì(€€€ô°€ÌÔÀÀ¤ì(€ô•±Í”ì(€€€É•Ù•…±±Ì¹™½É… ¡™Õ¹Ñ¥½¸€¡•°¤ì•°¹±…ÍÍ1¥ÍÐ¹…‘ Ù¥Í¥‰±”œ¤ìô¤ì(€ô((€€¼¨€´´´´´´´´´´½½Ñ•Èå•…È€´´´´´´´´´´€¨¼(€Ù…Èå•…É°€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% å•…Èœ¤ì(€¥˜€¡å•…É°¤å•…É°¹Ñ•áÑ½¹Ñ•¹Ð€ôMÑÉ¥¹œ¡¹•Ü…Ñ” ¤¹•ÑÕ±±e•…È ¤¤ì((€€¼¨€´´´´´´´´´´½Õ¹ÐµÕÀÍÑ…ÑÌ€´´´´´´´´´´€¨¼(€Ù…È½Õ¹Ñ•ÉÌ€ô‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° œ¹ÍÑ…Ð‰m‘…Ñ„µ½Õ¹Ñtœ¤ì(€™Õ¹Ñ¥½¸…¹¥µ…Ñ•½Õ¹Ð¡•°¤ì(€€€Ù…ÈÑ…É•Ð€ôÁ…ÉÍ•±½…Ð¡•°¹•ÑÑÑÉ¥‰ÕÑ” ‘…Ñ„µ½Õ¹Ðœ¤¤ì(€€€Ù…ÈÍÕ™™¥à€ô•°¹•ÑÑÑÉ¥‰ÕÑ” ‘…Ñ„µÍÕ™™¥àœ¤ñð€œœì(€€€Ù…È‘ÕÉ…Ñ¥½¸€ô€ÄÐÀÀì(€€€Ù…ÈÍÑ…ÉÐ€ô¹Õ±°ì(€€€™Õ¹Ñ¥½¸ÍÑ•À¡ÑÌ¤ì(€€€€€¥˜€ …ÍÑ…ÉÐ¤ÍÑ…ÉÐ€ôÑÌì(€€€€€Ù…ÈÀ€ô5…Ñ ¹µ¥¸ ¡ÑÌ€´ÍÑ…ÉÐ¤€¼‘ÕÉ…Ñ¥½¸°€Ä¤ì(€€€€€Ù…È•…Í•€ô€Ä€´5…Ñ ¹Á½Ü Ä€´À°€Ì¤ì(€€€€€•°¹Ñ•áÑ½¹Ñ•¹Ð€ô5…Ñ ¹É½Õ¹¡Ñ…É•Ð€¨•…Í•¤€¬ÍÕ™™¥àì(€€€€€¥˜€¡À€ð€Ä¤É•ÅÕ•ÍÑ¹¥µ…Ñ¥½¹É…µ”¡ÍÑ•À¤ì(€€€ô(€€€É•ÅÕ•ÍÑ¹¥µ…Ñ¥½¹É…µ”¡ÍÑ•À¤ì(€ô(€½Õ¹Ñ•ÉÌ¹™½É… ¡…¹¥µ…Ñ•½Õ¹Ð¤ì((€€¼¨€´´´´´´´´´´Q½…ÍÐ€´´´´´´´´´´€¨¼(€Ù…ÈÑ½…ÍÐ€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% Ñ½…ÍÐœ¤ì(€Ù…ÈÑ½…ÍÑ5Íœ€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% Ñ½…ÍÐµµÍœœ¤ì(€Ù…ÈÑ½…ÍÑQ¥µ•È€ô¹Õ±°ì((€™Õ¹Ñ¥½¸Í¡½ÝQ½…ÍÐ¡µÍœ¤ì(€€€¥˜€ …Ñ½…ÍÐñð€…Ñ½…ÍÑ5Íœ¤É•ÑÕÉ¸ì(€€€Ñ½…ÍÑ5Íœ¹Ñ•áÑ½¹Ñ•¹Ð€ôµÍœì(€€€Ñ½…ÍÐ¹±…ÍÍ1¥ÍÐ¹…‘ Í¡½Üœ¤ì(€€€±•…ÉQ¥µ•½ÕÐ¡Ñ½…ÍÑQ¥µ•È¤ì(€€€Ñ½…ÍÑQ¥µ•È€ôÍ•ÑQ¥µ•½ÕÐ¡™Õ¹Ñ¥½¸€ ¤ì(€€€€€Ñ½…ÍÐ¹±…ÍÍ1¥ÍÐ¹É•µ½Ù” Í¡½Üœ¤ì(€€€ô°€ÐÈÀÀ¤ì(€ô((€€¼¨€´´´´´´´´´´½ÉµÍÁÉ•”ÍÕ‰µ¥ÍÍ¥½¸¡•±Á•È€´´´´´´´´´´€¨¼(€Ù…È=I5MAI}9A=%9P€ô€¡ÑÑÁÌè¼½™½ÉµÍÁÉ•”¹¥¼½˜½aaaaaaa`œì(€Ù…È™½Éµ%¹±¥¡Ð€ô™…±Í”ì((€™Õ¹Ñ¥½¸ÍÕ‰µ¥ÑQ½½ÉµÍÁÉ•”¡™½É´°½¹MÕ•ÍÌ°½¹ÉÉ½È¤ì(€€€¥˜€ …=I5MAI}9A=%9Pñð=I5MAI}9A=%9P¹¥¹‘•á=˜ aaa`œ¤€„ôô€´Ä¤ì(€€€€€Í¡½ÝQ½…ÍÐ ½É´•¹‘Á½¥¹Ð¹½Ð½¹™¥ÕÉ•å•ÐqÔÈÀÄÌÁ±•…Í”…‘å½ÕÈ½ÉµÍÁÉ•”%¸œ¤ì(€€€€€¥˜€¡½¹ÉÉ½È¤½¹ÉÉ½È ¤ì(€€€€€É•ÑÕÉ¸ì(€€€ô(€€€Ù…È‘…Ñ„€ô¹•Ü½Éµ…Ñ„¡™½É´¤ì(€€€‘…Ñ„¹…ÁÁ•¹ }ÍÕ‰©•Ðœ°™½É´¹•ÑÑÑÉ¥‰ÕÑ” ‘…Ñ„µÍÕ‰©•Ðœ¤ñð€Må¹ŒÝ•‰Í¥Ñ”ÍÕ‰µ¥ÍÍ¥½¸œ¤ì(€€€‘…Ñ„¹…ÁÁ•¹ }É•Á±åÑ¼œ°€¡™½É´¹ÅÕ•ÉåM•±•Ñ½È m¹…µ”ô‰•µ…¥°‰tœ¤ñðíô¤¹Ù…±Õ”ñð€œœ¤ì((€€€Ù…Èá¡È€ô¹•Üa51!ÑÑÁI•ÅÕ•ÍÐ ¤ì(€€€á¡È¹½Á•¸ A=MPœ°=I5MAI}9A=%9P°ÑÉÕ”¤ì(€€€á¡È¹Í•ÑI•ÅÕ•ÍÑ!•…‘•È •ÁÐœ°€…ÁÁ±¥…Ñ¥½¸½©Í½¸œ¤ì(€€€á¡È¹½¹É•…‘åÍÑ…Ñ•¡…¹”€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€¥˜€¡á¡È¹É•…‘åMÑ…Ñ”€„ôô€Ð¤É•ÑÕÉ¸ì(€€€€€¥˜€¡á¡È¹ÍÑ…ÑÕÌ€øô€ÈÀÀ€˜˜á¡È¹ÍÑ…ÑÕÌ€ð€ÌÀÀ¤ì(€€€€€€€½¹MÕ•ÍÌ ¤ì(€€€€€ô•±Í”ì(€€€€€€€Í¡½ÝQ½…ÍÐ M½µ•Ñ¡¥¹œÝ•¹ÐÝÉ½¹œqÔÈÀÄÌÁ±•…Í”ÑÉä……¥¸½È•µ…¥°ÕÌ‘¥É•Ñ±ä¸œ¤ì(€€€€€€€¥˜€¡½¹ÉÉ½È¤½¹ÉÉ½È ¤ì(€€€€€ô(€€€ôì(€€€á¡È¹½¹•ÉÉ½È€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€Í¡½ÝQ½…ÍÐ 9•ÑÝ½É¬•ÉÉ½ÈqÔÈÀÄÌÁ±•…Í”¡•¬å½ÕÈ½¹¹•Ñ¥½¸…¹ÑÉä……¥¸¸œ¤ì(€€€€€¥˜€¡½¹ÉÉ½È¤½¹ÉÉ½È ¤ì(€€€ôì(€€€á¡È¹Í•¹¡‘…Ñ„¤ì(€ô((€€¼¨€´´´´´´´´´´Må¹ŒØäè‘¥É•Ð•µ…¥°¡•±Á•ÉÌ€¡…±°™¥•±‘Ì€´øÑ•…´¥¹‰½à¤€´´´´´´´´´´€¨¼(€Ù…ÈQ5}%9	=`€ô€‘¡…Éµ…¹……É…¥‘…Ñ…Íå¹é½¡½µ…¥°¹¥¸œì((€™Õ¹Ñ¥½¸™½ÉµÍÁÉ••½¹™¥ÕÉ• ¤ì(€€€É•ÑÕÉ¸=I5MAI}9A=%9P€˜˜=I5MAI}9A=%9P¹¥¹‘•á=˜ aaa`œ¤€ôôô€´Äì(€ô((€€¼¨	Õ¥±„Á±…¥¸µÑ•áÐ•µ…¥°‰½‘ä™É½´„™±…Ðm±…‰•°°Ù…±Õ”°€¸¸¹t…ÉÉ…ä¸€¨¼(€™Õ¹Ñ¥½¸‰Õ¥±‘µ…¥±	½‘ä¡™¥•±‘Ì¤ì(€€€Ù…È±¥¹•Ì€ômtì(€€€™½È€¡Ù…È¤€ô€Àì¤€ð™¥•±‘Ì¹±•¹Ñ ì¤€¬ô€È¤ì(€€€€€±¥¹•Ì¹ÁÕÍ ¡™¥•±‘Ím¥t€¬€œè€œ€¬€¡™¥•±‘Ím¤€¬€Åtñð€qÔÈÀÄÐœ¤¤ì(€€€ô(€€€±¥¹•Ì¹ÁÕÍ  œœ¤ì(€€€±¥¹•Ì¹ÁÕÍ  M•¹Ð™É½´Ñ¡”Må¹ŒÝ•‰Í¥Ñ”½¸€œ€¬¹•Ü…Ñ” ¤¹Ñ½1½…±•MÑÉ¥¹œ ¤¤ì(€€€É•ÑÕÉ¸±¥¹•Ì¹©½¥¸ q¸œ¤ì(€ô((€€¼¨=Á•¸Ñ¡”Ù¥Í¥Ñ½ÈÌ½Ý¸•µ…¥°±¥•¹ÐÝ¥Ñ ÍÕ‰©•Ð€¬‰½‘ä€¡•Ù•Éä™¥•±¤ÁÉ”µ™¥±±•¸€¨¼(€™Õ¹Ñ¥½¸½Á•¹AÉ•™¥±±•‘µ…¥°¡ÍÕ‰©•Ð°‰½‘ä¤ì(€€€Ù…È„€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð „œ¤ì(€€€„¹¡É•˜€ô€µ…¥±Ñ¼èœ€¬Q5}%9	=`€¬(€€€€€€œýÍÕ‰©•Ðôœ€¬•¹½‘•UI%½µÁ½¹•¹Ð¡ÍÕ‰©•Ð¤€¬(€€€€€€œ™‰½‘äôœ€¬•¹½‘•UI%½µÁ½¹•¹Ð¡‰½‘ä¤ì(€€€‘½Õµ•¹Ð¹‰½‘ä¹…ÁÁ•¹‘¡¥±¡„¤ì(€€€„¹±¥¬ ¤ì(€€€‘½Õµ•¹Ð¹‰½‘ä¹É•µ½Ù•¡¥±¡„¤ì(€ô((€€¼¨€´´´´´´´´´´ÁÁ±¥…Ñ¥½¸µ½‘…°€´´´´´´´´´´€¨¼(€Ù…Èµ½‘…±°€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% …ÁÁ±äµµ½‘…°œ¤ì(€Ù…È…ÁÁ±å½É´€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% …ÁÁ±äµ™½É´œ¤ì(€Ù…Èµ½‘…±I½±”€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% …ÁÁ±äµÉ½±”œ¤ì(€Ù…Èµ½‘…±±½Í”€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% …ÁÁ±äµ±½Í”œ¤ì(€Ù…ÈÕÉÉ•¹ÑI½±”€ô€œœì((€™Õ¹Ñ¥½¸½Á•¹ÁÁ±å5½‘…°¡É½±”¤ì(€€€ÕÉÉ•¹ÑI½±”€ôÉ½±”ì(€€€¥˜€¡µ½‘…±I½±”¤µ½‘…±I½±”¹Ñ•áÑ½¹Ñ•¹Ð€ôÉ½±”ì(€€€¥˜€¡µ½‘…±°¤ì(€€€€€µ½‘…±°¹±…ÍÍ1¥ÍÐ¹…‘ ½Á•¸œ¤ì(€€€€€‘½Õµ•¹Ð¹‰½‘ä¹ÍÑå±”¹½Ù•É™±½Ü€ô€¡¥‘‘•¸œì(€€€ô(€ô((€™Õ¹Ñ¥½¸±½Í•ÁÁ±å5½‘…° ¤ì(€€€¥˜€¡µ½‘…±°¤µ½‘…±°¹±…ÍÍ1¥ÍÐ¹É•µ½Ù” ½Á•¸œ¤ì(€€€‘½Õµ•¹Ð¹‰½‘ä¹ÍÑå±”¹½Ù•É™±½Ü€ô€œœì(€€€¥˜€¡…ÁÁ±å½É´¤…ÁÁ±å½É´¹É•Í•Ð ¤ì(€ô((€¥˜€¡µ½‘…±°¤ì(€€€µ½‘…±°¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°™Õ¹Ñ¥½¸€¡”¤ì(€€€€€¥˜€¡”¹Ñ…É•Ð€ôôôµ½‘…±°¤±½Í•ÁÁ±å5½‘…° ¤ì(€€€ô¤ì(€ô(€¥˜€¡µ½‘…±±½Í”¤µ½‘…±±½Í”¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°±½Í•ÁÁ±å5½‘…°¤ì(€‘½Õµ•¹Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ­•å‘½Ý¸œ°™Õ¹Ñ¥½¸€¡”¤ì(€€€¥˜€¡”¹­•ä€ôôô€Í…Á”œ¤±½Í•ÁÁ±å5½‘…° ¤ì(€ô¤ì((€€¼¨€´´´´´´´´´´ÁÁ±ä9½Ü‰ÕÑÑ½¹Ì€´´´´´´´´´´€¨¼(€‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° œ¹©½ˆµ…ÁÁ±äœ¤¹™½É… ¡™Õ¹Ñ¥½¸€¡‰Ñ¸¤ì(€€€‰Ñ¸¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°™Õ¹Ñ¥½¸€ ¤ì(€€€€€Ù…ÈÉ½±”€ô‰Ñ¸¹•ÑÑÑÉ¥‰ÕÑ” ‘…Ñ„µÉ½±”œ¤ñð€Ñ¡”É½±”œì(€€€€€½Á•¹ÁÁ±å5½‘…°¡É½±”¤ì(€€€ô¤ì(€ô¤ì((€¥˜€¡…ÁÁ±å½É´¤ì(€€€…ÁÁ±å½É´¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ÍÕ‰µ¥Ðœ°™Õ¹Ñ¥½¸€¡”¤ì(€€€€€”¹ÁÉ•Ù•¹Ñ•™…Õ±Ð ¤ì(€€€€€¥˜€¡™½Éµ%¹±¥¡Ð¤É•ÑÕÉ¸ì(€€€€€Ù…È¹…µ”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% „µ¹…µ”œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…È•µ…¥°€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% „µ•µ…¥°œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…ÈÁ¡½¹”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% „µÁ¡½¹”œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…Èµ•ÍÍ…”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% „µµ•ÍÍ…”œ¤ñðíô¤¹Ù…±Õ”ñð€œœì((€€€€€¥˜€ …¹…µ”¹ÑÉ¥´ ¤ñð€…•µ…¥°¹ÑÉ¥´ ¤¤ì(€€€€€€€Í¡½ÝQ½…ÍÐ A±•…Í”™¥±°¥¸å½ÕÈ¹…µ”…¹•µ…¥°¸œ¤ì(€€€€€€€É•ÑÕÉ¸ì(€€€€€ô((€€€€€Ù…È¡¥‘‘•¹I½±”€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ¥¹ÁÕÐœ¤ì(€€€€€¡¥‘‘•¹I½±”¹ÑåÁ”€ô€¡¥‘‘•¸œì(€€€€€¡¥‘‘•¹I½±”¹¹…µ”€ô€É½±”œì(€€€€€¡¥‘‘•¹I½±”¹Ù…±Õ”€ôÕÉÉ•¹ÑI½±”ì(€€€€€…ÁÁ±å½É´¹…ÁÁ•¹‘¡¥±¡¡¥‘‘•¹I½±”¤ì((€€€€€Ù…ÈÁ…å±½…€ô¹•Ü½Éµ…Ñ„¡…ÁÁ±å½É´¤ì(€€€€€Á…å±½…¹…ÁÁ•¹ }ÍÕ‰©•Ðœ°€)½ˆÁÁ±¥…Ñ¥½¸qÔÈÀÄÌ€œ€¬ÕÉÉ•¹ÑI½±”€¬€œqÔÈÀÄÌMå¹Œ…É••ÉÌœ¤ì(€€€€€Á…å±½…¹…ÁÁ•¹ }É•Á±åÑ¼œ°•µ…¥°¤ì(€€€€€¥˜€¡Á¡½¹”¤Á…å±½…¹…ÁÁ•¹ Á¡½¹”œ°Á¡½¹”¤ì((€€€€€€¼¨Må¹ŒØäèÁÉ”µ™¥±°Ñ¡”Ù¥Í¥Ñ½ÈÌ•µ…¥°±¥•¹ÐÝ¥Ñ •Ù•Éä…ÁÁ±¥…Ñ¥½¸™¥•±¸€¨¼(€€€€€Ù…È…ÁÁ±åMÕ‰©•Ð€ô€)½ˆÁÁ±¥…Ñ¥½¸qÔÈÀÄÌ€œ€¬ÕÉÉ•¹ÑI½±”€¬€œqÔÈÀÄÌMå¹Œ…É••ÉÌœì(€€€€€Ù…È…ÁÁ±å	½‘ä€ô‰Õ¥±‘µ…¥±	½‘ä¡l(€€€€€€€€A½Í¥Ñ¥½¸…ÁÁ±¥•™½Èœ°ÕÉÉ•¹ÑI½±”°(€€€€€€€€Õ±°¹…µ”œ°¹…µ”°(€€€€€€€€µ…¥°œ°•µ…¥°°(€€€€€€€€A¡½¹”œ°Á¡½¹”°(€€€€€€€€]¡ä„½½™¥Ðœ°µ•ÍÍ…”(€€€€€t¤ì(€€€€€Ù…Èµ…¥±Ñ½=Á•¹•€ô™…±Í”ì(€€€€€Ù…ÈÍ•¹‘Y¥…5…¥±Ñ¼€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€¥˜€¡µ…¥±Ñ½=Á•¹•¤É•ÑÕÉ¸ì(€€€€€€€µ…¥±Ñ½=Á•¹•€ôÑÉÕ”ì(€€€€€€€½Á•¹AÉ•™¥±±•‘µ…¥°¡…ÁÁ±åMÕ‰©•Ð°…ÁÁ±å	½‘ä¤ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì(€€€€€€€¡¥‘‘•¹I½±”¹Á…É•¹Ñ9½‘”¹É•µ½Ù•¡¥±¡¡¥‘‘•¹I½±”¤ì(€€€€€€€±½Í•ÁÁ±å5½‘…° ¤ì(€€€€€€€Í¡½ÝQ½…ÍÐ e½ÕÈ•µ…¥°…ÁÀ¡…Ì½Á•¹•Ý¥Ñ …±°‘•Ñ…¥±ÌÁÉ”µ™¥±±•qÔÈÀÄÌ©ÕÍÐ¡¥ÐÍ•¹„œ¤ì(€€€€€ôì((€€€€€™½Éµ%¹±¥¡Ð€ôÑÉÕ”ì(€€€€€Ù…È‰Ñ¹°€ô…ÁÁ±å½É´¹ÅÕ•ÉåM•±•Ñ½È mÑåÁ”ô‰ÍÕ‰µ¥Ð‰tœ¤ì(€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹‘¥Í…‰±•€ôÑÉÕ”ì((€€€€€€¼¨Må¹ŒØÜè…±Í¼ÝÉ¥Ñ”Ñ¡”…ÁÁ±¥…Ñ¥½¸Ñ¼¥É•‰…Í”I•…±Ñ¥µ”…Ñ…‰…Í”€¨¼(€€€€€ÁÕÍ¡I•½É ©½‰}…ÁÁ±¥…Ñ¥½¹Ìœ°ì(€€€€€€€É½±”èÕÉÉ•¹ÑI½±”°(€€€€€€€¹…µ”è¹…µ”°(€€€€€€€•µ…¥°è•µ…¥°°(€€€€€€€Á¡½¹”èÁ¡½¹”ñð€œœ°(€€€€€€€µ•ÍÍ…”èµ•ÍÍ…”°(€€€€€€€Ñ¥µ•ÍÑ…µÀè¹•Ü…Ñ” ¤¹Ñ½%M=MÑÉ¥¹œ ¤°(€€€€€€€ÍÑ…ÑÕÌè€¹•Üœ(€€€€€ô¤ì((€€€€€€¼¨%˜„É•…°½ÉµÍÁÉ•”•¹‘Á½¥¹Ð¥Ì½¹™¥ÕÉ•°Í•¹…ÕÑ½µ…Ñ¥…±±ä™¥ÉÍÐì(€€€€€€€€½Ñ¡•ÉÝ¥Í”€¡½È½¸™…¥±ÕÉ”¤½Á•¸Ñ¡”ÁÉ”µ™¥±±••µ…¥°¸€¨¼(€€€€€¥˜€ …™½ÉµÍÁÉ••½¹™¥ÕÉ• ¤¤ì(€€€€€€€Í•¹‘Y¥…5…¥±Ñ¼ ¤ì(€€€€€€€É•ÑÕÉ¸ì(€€€€€ô((€€€€€Ù…Èá¡È€ô¹•Üa51!ÑÑÁI•ÅÕ•ÍÐ ¤ì(€€€€€á¡È¹½Á•¸ A=MPœ°=I5MAI}9A=%9P°ÑÉÕ”¤ì(€€€€€á¡È¹Í•ÑI•ÅÕ•ÍÑ!•…‘•È •ÁÐœ°€…ÁÁ±¥…Ñ¥½¸½©Í½¸œ¤ì(€€€€€á¡È¹½¹É•…‘åÍÑ…Ñ•¡…¹”€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€¥˜€¡á¡È¹É•…‘åMÑ…Ñ”€„ôô€Ð¤É•ÑÕÉ¸ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì(€€€€€€€¡¥‘‘•¹I½±”¹Á…É•¹Ñ9½‘”¹É•µ½Ù•¡¥±¡¡¥‘‘•¹I½±”¤ì(€€€€€€€¥˜€¡á¡È¹ÍÑ…ÑÕÌ€øô€ÈÀÀ€˜˜á¡È¹ÍÑ…ÑÕÌ€ð€ÌÀÀ¤ì(€€€€€€€€€±½Í•ÁÁ±å5½‘…° ¤ì(€€€€€€€€€Í¡½ÝQ½…ÍÐ ÁÁ±¥…Ñ¥½¸™½È€œ€¬ÕÉÉ•¹ÑI½±”€¬€œÍ•¹ÐqÔÈÀÄÌÑ¡…¹¬å½Ô°€œ€¬¹…µ”€¬€œ„œ¤ì(€€€€€€€ô•±Í”ì(€€€€€€€€€Í¡½ÝQ½…ÍÐ M½µ•Ñ¡¥¹œÝ•¹ÐÝÉ½¹œqÔÈÀÄÌå½ÕÈ•µ…¥°…ÁÀÝ¥±°½Á•¸Ý¥Ñ å½ÕÈ‘•Ñ…¥±Ì¸œ¤ì(€€€€€€€€€Í•¹‘Y¥…5…¥±Ñ¼ ¤ì(€€€€€€€ô(€€€€€ôì(€€€€€á¡È¹½¹•ÉÉ½È€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì(€€€€€€€¡¥‘‘•¹I½±”¹Á…É•¹Ñ9½‘”¹É•µ½Ù•¡¥±¡¡¥‘‘•¹I½±”¤ì(€€€€€€€Í¡½ÝQ½…ÍÐ 9•ÑÝ½É¬•ÉÉ½ÈqÔÈÀÄÌå½ÕÈ•µ…¥°…ÁÀÝ¥±°½Á•¸Ý¥Ñ å½ÕÈ‘•Ñ…¥±Ì¸œ¤ì(€€€€€€€Í•¹‘Y¥…5…¥±Ñ¼ ¤ì(€€€€€ôì(€€€€€á¡È¹Í•¹¡Á…å±½…¤ì(€€€ô¤ì(€ô((€€¼¨€´´´´´´´´´´½¹Ñ…Ð™½É´€´ø•µ…¥°€¡Øä¤€´´´´´´´´´´€¨¼(€Ù…È™½É´€ô‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ½¹Ñ…Ðµ™½É´œ¤ì(€¥˜€¡™½É´¤ì(€€€™½É´¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ÍÕ‰µ¥Ðœ°™Õ¹Ñ¥½¸€¡”¤ì(€€€€€”¹ÁÉ•Ù•¹Ñ•™…Õ±Ð ¤ì(€€€€€¥˜€¡™½Éµ%¹±¥¡Ð¤É•ÑÕÉ¸ì(€€€€€Ù…È¹…µ”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ˜µ¹…µ”œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…È•µ…¥°€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ˜µ•µ…¥°œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…ÈÁ¡½¹”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ˜µÁ¡½¹”œ¤ñðíô¤¹Ù…±Õ”ñð€œœì(€€€€€Ù…Èµ•ÍÍ…”€ô€¡‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ˜µµÍœœ¤ñðíô¤¹Ù…±Õ”ñð€œœì((€€€€€¥˜€ …¹…µ”¹ÑÉ¥´ ¤ñð€…•µ…¥°¹ÑÉ¥´ ¤ñð€…µ•ÍÍ…”¹ÑÉ¥´ ¤¤ì(€€€€€€€Í¡½ÝQ½…ÍÐ A±•…Í”™¥±°¥¸å½ÕÈ¹…µ”°•µ…¥°…¹µ•ÍÍ…”¸œ¤ì(€€€€€€€É•ÑÕÉ¸ì(€€€€€ô((€€€€€€¼¨Må¹ŒØäèÁÉ”µ™¥±°Ñ¡”Ù¥Í¥Ñ½ÈÌ•µ…¥°±¥•¹ÐÝ¥Ñ •Ù•Éäµ•ÍÍ…”™¥•±¸€¨¼(€€€€€Ù…ÈµÍMÕ‰©•Ð€ô€Må¹ŒÝ•‰Í¥Ñ”µ•ÍÍ…”qÔÈÀÄÌ€œ€¬¹…µ”ì(€€€€€Ù…ÈµÍ	½‘ä€ô‰Õ¥±‘µ…¥±	½‘ä¡l(€€€€€€€€Õ±°¹…µ”œ°¹…µ”°(€€€€€€€€µ…¥°œ°•µ…¥°°(€€€€€€€€A¡½¹”œ°Á¡½¹”°(€€€€€€€€5•ÍÍ…”œ°µ•ÍÍ…”(€€€€€t¤ì(€€€€€Ù…Èµ…¥±Ñ½=Á•¹•€ô™…±Í”ì(€€€€€Ù…ÈÍ•¹‘Y¥…5…¥±Ñ¼€ô™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€¥˜€¡µ…¥±Ñ½=Á•¹•¤É•ÑÕÉ¸ì(€€€€€€€µ…¥±Ñ½=Á•¹•€ôÑÉÕ”ì(€€€€€€€½Á•¹AÉ•™¥±±•‘µ…¥°¡µÍMÕ‰©•Ð°µÍ	½‘ä¤ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤ì‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì‰Ñ¹°¹¥¹¹•É!Q50€ô½É¥¥¹…±Q•áÐìô(€€€€€€€Í¡½ÝQ½…ÍÐ e½ÕÈ•µ…¥°…ÁÀ¡…Ì½Á•¹•Ý¥Ñ …±°‘•Ñ…¥±ÌÁÉ”µ™¥±±•qÔÈÀÄÌ©ÕÍÐ¡¥ÐÍ•¹„œ¤ì(€€€€€ôì((€€€€€™½Éµ%¹±¥¡Ð€ôÑÉÕ”ì(€€€€€Ù…È‰Ñ¹°€ô™½É´¹ÅÕ•ÉåM•±•Ñ½È mÑåÁ”ô‰ÍÕ‰µ¥Ð‰tœ¤ì(€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹‘¥Í…‰±•€ôÑÉÕ”ì(€€€€€Ù…È½É¥¥¹…±Q•áÐ€ô‰Ñ¹°€ü‰Ñ¹°¹Ñ•áÑ½¹Ñ•¹Ð€è€œœì(€€€€€¥˜€¡‰Ñ¹°¤‰Ñ¹°¹Ñ•áÑ½¹Ñ•¹Ð€ô€M•¹‘¥¹qÔÈÀÈØœì((€€€€€€¼¨Må¹ŒØÜè…±Í¼ÝÉ¥Ñ”Ñ¡”µ•ÍÍ…”Ñ¼¥É•‰…Í”I•…±Ñ¥µ”…Ñ…‰…Í”€¨¼(€€€€€ÁÕÍ¡I•½É ½¹Ñ…Ñ}µ•ÍÍ…•Ìœ°ì(€€€€€€€¹…µ”è¹…µ”°(€€€€€€€•µ…¥°è•µ…¥°°(€€€€€€€Á¡½¹”èÁ¡½¹”ñð€œœ°(€€€€€€€µ•ÍÍ…”èµ•ÍÍ…”°(€€€€€€€Ñ¥µ•ÍÑ…µÀè¹•Ü…Ñ” ¤¹Ñ½%M=MÑÉ¥¹œ ¤°(€€€€€€€ÍÑ…ÑÕÌè€¹•Üœ(€€€€€ô¤ì((€€€€€€¼¨%˜„É•…°½ÉµÍÁÉ•”•¹‘Á½¥¹Ð¥Ì½¹™¥ÕÉ•°Í•¹…ÕÑ½µ…Ñ¥…±±ä™¥ÉÍÐì(€€€€€€€€½Ñ¡•ÉÝ¥Í”€¡½È½¸™…¥±ÕÉ”¤½Á•¸Ñ¡”ÁÉ”µ™¥±±••µ…¥°¸€¨¼(€€€€€¥˜€ …™½ÉµÍÁÉ••½¹™¥ÕÉ• ¤¤ì(€€€€€€€Í•¹‘Y¥…5…¥±Ñ¼ ¤ì(€€€€€€€É•ÑÕÉ¸ì(€€€€€ô((€€€€€ÍÕ‰µ¥ÑQ½½ÉµÍÁÉ•”¡™½É´°™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤ì‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì‰Ñ¹°¹¥¹¹•É!Q50€ô½É¥¥¹…±Q•áÐìô(€€€€€€€Í¡½ÝQ½…ÍÐ 5•ÍÍ…”Í•¹ÐqÔÈÀÄÌÑ¡…¹¬å½Ô°€œ€¬¹…µ”€¬€œ„]•qÔÈÀÄå±°É•Á±äÝ¥Ñ¡¥¸½¹”‰ÕÍ¥¹•ÍÌ‘…ä¸œ¤ì(€€€€€€€™½É´¹É•Í•Ð ¤ì(€€€€€ô°™Õ¹Ñ¥½¸€ ¤ì(€€€€€€€™½Éµ%¹±¥¡Ð€ô™…±Í”ì(€€€€€€€¥˜€¡‰Ñ¹°¤ì‰Ñ¹°¹‘¥Í…‰±•€ô™…±Í”ì‰Ñ¹°¹¥¹¹•É!Q50€ô½É¥¥¹…±Q•áÐìô(€€€€€€€Í•¹‘Y¥…5…¥±Ñ¼ ¤ì(€€€€€ô¤ì(€€€ô¤ì(€ô)ô¤ ¤ì(ð½ÍÉ¥ÁÐø((ð½‰½‘äø(ð½¡Ñµ°ø
