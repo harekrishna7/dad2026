@@ -1,0 +1,47 @@
+name: Deploy DADSync v18 index.html (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact DADSync v18 index.html (103,400 bytes, MD5 714f31932df50f374a86a4727acf74d2)
+        run: |
+          curl -fsSL -o index.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v18/index.html?tk=c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtZ2hwYWdlcy1kZXBsb3ktdjE4OjE3ODcyNDg4NzU.ZmFmOTgzZjA0NDU3MDAwZDA2NzEzZjQzMGJhZjcxOTE"
+          echo "size: $(stat -c%s index.html)"
+          md5sum index.html
+
+      - name: Verify exactness (fail build if file differs)
+        run: |
+          set -e
+          test "$(stat -c%s index.html)" = "103400" || { echo "index.html size mismatch"; exit 1; }
+          [ "$(md5sum index.html | cut -d' ' -f1)" = "714f31932df50f374a86a4727acf74d2" ] || { echo "index.html MD5 mismatch"; exit 1; }
+          echo "index.html verified exact (103400 bytes, MD5 714f31932df50f374a86a4727acf74d2)"
+
+      - name: Commit and push exact index.html
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git commit -m "Deploy DADSync v18 index.html (exact 103400B, MD5 714f31932df50f374a86a4727acf74d2): Agency Agents showcase homepage"
+            git push origin main
+          fi
