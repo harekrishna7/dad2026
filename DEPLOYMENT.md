@@ -8,6 +8,7 @@ the comprehensive error-fix pass is fixed in this version (v14).
 
 ## 0. Changelog
 
+- **v18** — Added the **Agency Agents** showcase page (`agency-agents.html`) featuring the open-source `harekrishna7/agency-agents` repository (MIT, 17+ divisions, 250+ agent definitions). Wired `Agency Agents` into the top nav, mobile menu and footer of every static page, added a homepage showcase section + footer link, added the `agency-agents` route to `404.html`, and added `agency-agents.html` to `sitemap.xml`.
 - **v11** — Removed placeholder GSC token from all pages; added `news` route to `404.html` SPA fallback; cleaned Firebase placeholder comments in `app.js`.
 - **v12/v14** — Added a defensive responsive safeguard to `assets/styles.css`:
   `img, svg, iframe, video, canvas { max-width: 100%; height: auto; }`,
