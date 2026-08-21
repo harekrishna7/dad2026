@@ -1,0 +1,20 @@
+{
+  "name": "dad2026",
+  "version": "1.0.0",
+  "description": "DADSync - AI Infrastructure & Data Intelligence",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "vercel deploy"
+  },
+  "keywords": [
+    "ai",
+    "data-intelligence",
+    "analytics"
+  ],
+  "author": "Shivom Debnath",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
