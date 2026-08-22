@@ -1,0 +1,111 @@
+name: Deploy DADSync v21 Full-Page Dify Chatbot (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact v21 pages (14 files)
+        run: |
+          curl -fsSL -o chatbot.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/chatbot.html"
+          echo "chatbot.html: $(stat -c%s chatbot.html) bytes, $(md5sum chatbot.html | cut -d" " -f1)"
+          curl -fsSL -o about.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/about.html"
+          echo "about.html: $(stat -c%s about.html) bytes, $(md5sum about.html | cut -d" " -f1)"
+          curl -fsSL -o agency-agents.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/agency-agents.html"
+          echo "agency-agents.html: $(stat -c%s agency-agents.html) bytes, $(md5sum agency-agents.html | cut -d" " -f1)"
+          curl -fsSL -o careers.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/careers.html"
+          echo "careers.html: $(stat -c%s careers.html) bytes, $(md5sum careers.html | cut -d" " -f1)"
+          curl -fsSL -o connection.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/connection.html"
+          echo "connection.html: $(stat -c%s connection.html) bytes, $(md5sum connection.html | cut -d" " -f1)"
+          curl -fsSL -o hub.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/hub.html"
+          echo "hub.html: $(stat -c%s hub.html) bytes, $(md5sum hub.html | cut -d" " -f1)"
+          curl -fsSL -o index.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/index.html"
+          echo "index.html: $(stat -c%s index.html) bytes, $(md5sum index.html | cut -d" " -f1)"
+          curl -fsSL -o industries.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/industries.html"
+          echo "industries.html: $(stat -c%s industries.html) bytes, $(md5sum industries.html | cut -d" " -f1)"
+          curl -fsSL -o investors.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/investors.html"
+          echo "investors.html: $(stat -c%s investors.html) bytes, $(md5sum investors.html | cut -d" " -f1)"
+          curl -fsSL -o contact.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/contact.html"
+          echo "contact.html: $(stat -c%s contact.html) bytes, $(md5sum contact.html | cut -d" " -f1)"
+          curl -fsSL -o news.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/news.html"
+          echo "news.html: $(stat -c%s news.html) bytes, $(md5sum news.html | cut -d" " -f1)"
+          curl -fsSL -o privacy.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/privacy.html"
+          echo "privacy.html: $(stat -c%s privacy.html) bytes, $(md5sum privacy.html | cut -d" " -f1)"
+          curl -fsSL -o services.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/services.html"
+          echo "services.html: $(stat -c%s services.html) bytes, $(md5sum services.html | cut -d" " -f1)"
+          curl -fsSL -o terms.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v21/terms.html"
+          echo "terms.html: $(stat -c%s terms.html) bytes, $(md5sum terms.html | cut -d" " -f1)"
+
+      - name: Verify exactness (fail build if any file differs)
+        run: |
+          set -e
+          test "$(stat -c%s chatbot.html)" = "12817" || { echo "chatbot.html size mismatch"; exit 1; }
+          [ "$(md5sum chatbot.html | cut -d" " -f1)" = "df6efb3bb17c6cd2ef783af6dc42365f" ] || { echo "chatbot.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s about.html)" = "17265" || { echo "about.html size mismatch"; exit 1; }
+          [ "$(md5sum about.html | cut -d" " -f1)" = "1712fd0891f7ab4438b60a5ffd500282" ] || { echo "about.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s agency-agents.html)" = "33755" || { echo "agency-agents.html size mismatch"; exit 1; }
+          [ "$(md5sum agency-agents.html | cut -d" " -f1)" = "0cbbcb934f2a779d10d86ad2a07c1cd9" ] || { echo "agency-agents.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s careers.html)" = "21861" || { echo "careers.html size mismatch"; exit 1; }
+          [ "$(md5sum careers.html | cut -d" " -f1)" = "1e0f16383abda60008eb25f956548094" ] || { echo "careers.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s connection.html)" = "33844" || { echo "connection.html size mismatch"; exit 1; }
+          [ "$(md5sum connection.html | cut -d" " -f1)" = "03bbc30b31331cc8d37b6650f4d79704" ] || { echo "connection.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s hub.html)" = "17484" || { echo "hub.html size mismatch"; exit 1; }
+          [ "$(md5sum hub.html | cut -d" " -f1)" = "cb0ca087f6f31d1a0efcfcf6fa4d4b1e" ] || { echo "hub.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s index.html)" = "104652" || { echo "index.html size mismatch"; exit 1; }
+          [ "$(md5sum index.html | cut -d" " -f1)" = "30da7126094694d359310077bc98014d" ] || { echo "index.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s industries.html)" = "15433" || { echo "industries.html size mismatch"; exit 1; }
+          [ "$(md5sum industries.html | cut -d" " -f1)" = "441c61f23cc57af60a3bd7b710e55857" ] || { echo "industries.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s investors.html)" = "19792" || { echo "investors.html size mismatch"; exit 1; }
+          [ "$(md5sum investors.html | cut -d" " -f1)" = "12da9adbdec0b7e3c3d85066687d1547" ] || { echo "investors.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s contact.html)" = "26280" || { echo "contact.html size mismatch"; exit 1; }
+          [ "$(md5sum contact.html | cut -d" " -f1)" = "c2a2adbea639fa053f47c41bf3afdee8" ] || { echo "contact.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s news.html)" = "20727" || { echo "news.html size mismatch"; exit 1; }
+          [ "$(md5sum news.html | cut -d" " -f1)" = "49cd4091e19364465b6d0cf0bc6e1ddb" ] || { echo "news.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s privacy.html)" = "14130" || { echo "privacy.html size mismatch"; exit 1; }
+          [ "$(md5sum privacy.html | cut -d" " -f1)" = "278a5508f424d06ca68956b86101519e" ] || { echo "privacy.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s services.html)" = "20781" || { echo "services.html size mismatch"; exit 1; }
+          [ "$(md5sum services.html | cut -d" " -f1)" = "7adb870cddd715a434a138e76fdfeb78" ] || { echo "services.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s terms.html)" = "14314" || { echo "terms.html size mismatch"; exit 1; }
+          [ "$(md5sum terms.html | cut -d" " -f1)" = "3174e50fc4a4b14304c89acf5043bdb9" ] || { echo "terms.html MD5 mismatch"; exit 1; }
+          echo "All 14 files verified exact."
+
+      - name: Commit and push exact pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add chatbot.html about.html agency-agents.html careers.html connection.html hub.html index.html industries.html investors.html contact.html news.html privacy.html services.html terms.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git commit -m "Deploy v21: add full-page Dify chatbot iframe (udify.app/chatbot/fgP1ZlmvUNOHZK0H) at chatbot.html + AI Chat nav links site-wide - 14 files, exact bytes (MD5 verified)"
+            git push origin main
+          fi
