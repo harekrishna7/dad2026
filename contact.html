@@ -400,5 +400,26 @@
     });
   </script>
   <script src="assets/app.js" defer></script>
+
+    <!-- ===== Dify AI Chatbot - DADSync =====
+       Dify Cloud chat bubble widget (embed.min.js).
+       App token: app-i5a3R2bfu0OBYa3l4xTtfbHb (client-side publish token).
+       Loads from the official Dify Cloud CDN: https://udify.app/embed.min.js -->
+
+  <div id="dify-chat-bubble" data-token="app-i5a3R2bfu0OBYa3l4xTtfbHb" data-base-url="https://udify.app"></div>
+  <script>
+    window.difyChatbotConfig = {
+      token: 'app-i5a3R2bfu0OBYa3l4xTtfbHb',
+      baseUrl: 'https://udify.app',   /* Dify Cloud embed host (leave for cloud) */
+      isDev: false,                   /* set true to test against dev.udify.app */
+      draggable: false,               /* optional: let visitors drag the bubble */
+      dragAxis: 'both',               /* 'x', 'y' or 'both' when draggable */
+      containerProps: {
+        style: { right: '20px', bottom: '20px' },
+        className: 'dadsync-dify-chat'
+      }
+    };
+  </script>
+  <script src="https://udify.app/embed.min.js"></script>
 </body>
 </html>
