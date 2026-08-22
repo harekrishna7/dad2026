@@ -105,7 +105,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git remote set-url origin "https://x-access-token:${{GH_TOKEN}}@github.com/${{GITHUB_REPOSITORY}}.git"
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git commit -m "Deploy v20: integrate Dify AI chatbot embed with real app token (app-i5a3R2bfu0OBYa3l4xTtfbHb) site-wide - 14 pages, exact bytes (MD5 verified)"
             git push origin main
           fi
