@@ -720,56 +720,6 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
   .logo-header .tag { white-space: normal; }
 }
 
-/* ============ Agency Agents showcase (DADSync v18) ============ */
-.agency-card {
-  position: relative; display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center;
-  border: 1px solid rgba(13, 110, 253, .18); border-radius: 22px; padding: 44px 48px; overflow: hidden;
-  background: linear-gradient(135deg, #0b1220 0%, #0d1b34 60%, #0b1220 100%);
-  color: #e8eefb; box-shadow: 0 24px 64px rgba(9, 9, 11, .28);
-}
-.agency-card::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(520px 240px at 88% 8%, rgba(56, 189, 248, .22), transparent 62%),
-    radial-gradient(420px 220px at 4% 96%, rgba(11, 94, 215, .28), transparent 60%);
-}
-.agency-card-copy { position: relative; z-index: 2; }
-.agency-card-tag {
-  display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, .32); background: rgba(56, 189, 248, .09); color: #7dd3fc;
-  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-}
-.agency-card h3 { font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-weight: 800; color: #fff; margin: 16px 0 12px; line-height: 1.25; }
-.agency-card h3 em { font-style: normal; color: #7dd3fc; }
-.agency-card-copy p { color: #aab8d4; line-height: 1.7; font-size: .96rem; margin: 0 0 24px; max-width: 560px; }
-.agency-card-links { display: flex; flex-wrap: wrap; gap: 12px; }
-.agency-card-links .btn { border-radius: 11px; }
-.agency-card-links .btn-ghost { border-color: rgba(56, 189, 248, .4); color: #dbeafe; }
-.agency-card-visual { position: relative; z-index: 2; height: 240px; }
-.agency-orb {
-  position: absolute; inset: 50% auto auto 50%; width: 132px; height: 132px; transform: translate(-50%, -50%);
-  border-radius: 50%; display: grid; place-items: center; color: #7dd3fc;
-  background: radial-gradient(circle at 32% 28%, rgba(56, 189, 248, .28), rgba(11, 94, 215, .34) 70%);
-  border: 1px solid rgba(56, 189, 248, .45); box-shadow: 0 0 46px rgba(56, 189, 248, .35);
-  animation: agency-float 5s ease-in-out infinite;
-}
-.agency-orb svg { width: 56px; height: 56px; }
-@keyframes agency-float { 0%,100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-10px); } }
-.agency-node {
-  position: absolute; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-  font-weight: 800; font-size: .95rem; color: #7dd3fc; background: rgba(11, 94, 215, .28);
-  border: 1px solid rgba(56, 189, 248, .5); box-shadow: 0 0 18px rgba(56, 189, 248, .28);
-  animation: agency-node-pulse 3.4s ease-in-out infinite;
-}
-.agency-node:nth-of-type(2) { animation-delay: .6s; }
-.agency-node:nth-of-type(3) { animation-delay: 1.2s; }
-.agency-node:nth-of-type(4) { animation-delay: 1.8s; }
-.agency-node:nth-of-type(5) { animation-delay: 2.4s; }
-@keyframes agency-node-pulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.12); opacity: 1; } }
-@media (max-width: 860px) {
-  .agency-card { grid-template-columns: 1fr; padding: 32px 26px; gap: 26px; }
-  .agency-card-visual { height: 190px; }
-}
 </style>
 <!-- ============ DADSync v7: Firebase Realtime Database (optional) ============
      To enable database logging, fill in the FIREBASE_CONFIG placeholders below
@@ -846,7 +796,6 @@ function pushRecord(node, record) {
       <a href="#careers">Careers</a>
       <a href="#contact">Contact</a>
       <a href="#/tripura-ai" class="nav-ai" data-tads-nav>AI Transformation</a>
-      <a href="agency-agents.html" class="nav-ai">Agency Agents</a>
       <a href="chatbot.html" class="nav-ai">AI Chat</a>
       <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
     </nav>
@@ -1062,39 +1011,6 @@ function pushRecord(node, record) {
         <a href="#contact" class="btn btn-primary">Get Started Today
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= AGENCY AGENTS ================= -->
-  <section class="section" id="agency-agents">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Open Source</span>
-        <h2>The Agency: <em>AI Specialists at Your Fingertips</em></h2>
-        <p>Meet the agency-agents roster &mdash; a growing collection of specialised AI agent personalities, maintained by the DADSync team and free to use.</p>
-      </div>
-      <div class="agency-card reveal">
-        <div class="agency-card-copy">
-          <span class="agency-card-tag">MIT License &middot; GitHub</span>
-          <h3>17+ divisions. 250+ agents. One command to install.</h3>
-          <p>From frontend wizards to Reddit community ninjas &mdash; personality-driven, deliverable-focused AI specialists for engineering, design, marketing, security, finance, strategy and more. Works with Claude Code, Cursor, Codex, Gemini CLI, OpenCode and many other tools.</p>
-          <div class="agency-card-links">
-            <a href="agency-agents.html" class="btn btn-primary">Explore The Agency
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a href="https://github.com/harekrishna7/agency-agents" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div class="agency-card-visual" aria-hidden="true">
-          <div class="agency-orb">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M19.1 4.9l-2.8 2.8M7.7 16.3l-2.8 2.8"/></svg>
-          </div>
-          <div class="agency-node" style="top:12%;left:18%">E</div>
-          <div class="agency-node" style="top:22%;right:14%">M</div>
-          <div class="agency-node" style="bottom:20%;left:22%">S</div>
-          <div class="agency-node" style="bottom:26%;right:20%">D</div>
-        </div>
       </div>
     </div>
   </section>
@@ -1426,7 +1342,6 @@ function pushRecord(node, record) {
           <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
           <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
           <li><a href="#/tripura-ai"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>Tripura AI Transformation</a></li>
-          <li><a href="agency-agents.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Agency Agents</a></li>
           <li><a href="chatbot.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>AI Chat</a></li>
         </ul>
       </div>
