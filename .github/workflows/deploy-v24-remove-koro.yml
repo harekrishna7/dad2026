@@ -1,0 +1,110 @@
+name: Deploy DADSync v24 Remove Koro (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact v24 pages (15 files, Koro removed)
+        run: |
+          B="https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v24"
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html; do
+            curl -fsSL -o "$f" "$B/$f"
+            echo "fetched $f: $(stat -c%s "$f") bytes"
+          done
+
+      - name: Strip CDN-injected media-guard shim (restore exact bytes)
+        run: |
+          python3 - <<'PYEOF'
+          import glob, sys
+          def strip(p):
+              s = open(p, encoding="utf-8").read()
+              i = s.find('data-tmly-media-guard="1"')
+              if i == -1:
+                  return False
+              a = s.rfind("<script", 0, i)
+              b = s.find("</script>", i)
+              if a == -1 or b == -1:
+                  sys.exit("FAIL: malformed guard script in " + p)
+              b += len("</script>")
+              open(p, "w", encoding="utf-8").write(s[:a] + s[b:])
+              return True
+          for p in sorted(glob.glob("*.html")):
+              print(p, "guard-stripped" if strip(p) else "no-guard")
+          PYEOF
+
+      - name: Verify exactness (fail build if any file differs)
+        run: |
+          set -e
+          test "$(stat -c%s 404.html)" = "3844" || { echo "404.html size mismatch"; exit 1; }
+          [ "$(md5sum 404.html | cut -d" " -f1)" = "73fbb93910ed3aa0bbd2b21c3e21c745" ] || { echo "404.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s about.html)" = "17265" || { echo "about.html size mismatch"; exit 1; }
+          [ "$(md5sum about.html | cut -d" " -f1)" = "1712fd0891f7ab4438b60a5ffd500282" ] || { echo "about.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s careers.html)" = "21861" || { echo "careers.html size mismatch"; exit 1; }
+          [ "$(md5sum careers.html | cut -d" " -f1)" = "1e0f16383abda60008eb25f956548094" ] || { echo "careers.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s chatbot.html)" = "12817" || { echo "chatbot.html size mismatch"; exit 1; }
+          [ "$(md5sum chatbot.html | cut -d" " -f1)" = "df6efb3bb17c6cd2ef783af6dc42365f" ] || { echo "chatbot.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s connection.html)" = "33844" || { echo "connection.html size mismatch"; exit 1; }
+          [ "$(md5sum connection.html | cut -d" " -f1)" = "03bbc30b31331cc8d37b6650f4d79704" ] || { echo "connection.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s contact.html)" = "26280" || { echo "contact.html size mismatch"; exit 1; }
+          [ "$(md5sum contact.html | cut -d" " -f1)" = "c2a2adbea639fa053f47c41bf3afdee8" ] || { echo "contact.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s hub.html)" = "17484" || { echo "hub.html size mismatch"; exit 1; }
+          [ "$(md5sum hub.html | cut -d" " -f1)" = "cb0ca087f6f31d1a0efcfcf6fa4d4b1e" ] || { echo "hub.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s index.html)" = "98883" || { echo "index.html size mismatch"; exit 1; }
+          [ "$(md5sum index.html | cut -d" " -f1)" = "c1754553d33862b76c93255e37af801c" ] || { echo "index.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s industries.html)" = "15433" || { echo "industries.html size mismatch"; exit 1; }
+          [ "$(md5sum industries.html | cut -d" " -f1)" = "441c61f23cc57af60a3bd7b710e55857" ] || { echo "industries.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s investors.html)" = "19792" || { echo "investors.html size mismatch"; exit 1; }
+          [ "$(md5sum investors.html | cut -d" " -f1)" = "12da9adbdec0b7e3c3d85066687d1547" ] || { echo "investors.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s news.html)" = "20727" || { echo "news.html size mismatch"; exit 1; }
+          [ "$(md5sum news.html | cut -d" " -f1)" = "49cd4091e19364465b6d0cf0bc6e1ddb" ] || { echo "news.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s privacy.html)" = "14130" || { echo "privacy.html size mismatch"; exit 1; }
+          [ "$(md5sum privacy.html | cut -d" " -f1)" = "278a5508f424d06ca68956b86101519e" ] || { echo "privacy.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s services.html)" = "20781" || { echo "services.html size mismatch"; exit 1; }
+          [ "$(md5sum services.html | cut -d" " -f1)" = "7adb870cddd715a434a138e76fdfeb78" ] || { echo "services.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s sitemap.xml)" = "1601" || { echo "sitemap.xml size mismatch"; exit 1; }
+          [ "$(md5sum sitemap.xml | cut -d" " -f1)" = "e6090bcec54a2bc38ad9cae04ca32027" ] || { echo "sitemap.xml MD5 mismatch"; exit 1; }
+          test "$(stat -c%s terms.html)" = "14314" || { echo "terms.html size mismatch"; exit 1; }
+          [ "$(md5sum terms.html | cut -d" " -f1)" = "3174e50fc4a4b14304c89acf5043bdb9" ] || { echo "terms.html MD5 mismatch"; exit 1; }
+          echo "All 15 files verified EXACT."
+
+      - name: Assert zero Koro references + AI Chat intact
+        run: |
+          set -e
+          if grep -ril "koro\|freemodels" *.html *.xml ; then
+            echo "FAIL: residual Koro/freemodels references found"; exit 1
+          fi
+          echo "OK: zero koro/freemodels references in all 15 files"
+          grep -q "app-i5a3R2bfu0OBYa3l4xTtfbHb" chatbot.html || { echo "FAIL: Dify AI Chat token missing from chatbot.html"; exit 1; }
+          grep -q "udify.app/embed.min.js" chatbot.html || { echo "FAIL: Dify embed script missing from chatbot.html"; exit 1; }
+          grep -q "frame-src 'self' https://www.openstreetmap.org https://udify.app" chatbot.html || { echo "FAIL: chatbot.html CSP frame-src not in expected state"; exit 1; }
+          grep -q 'href="chatbot.html"' index.html || { echo "FAIL: AI Chat nav link missing from index.html"; exit 1; }
+          echo "OK: AI Chat (Dify) intact - token, embed script, CSP and nav links present"
+
+      - name: Commit and push exact pages (delete koro.html)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git rm -f koro.html || echo "koro.html already absent"
+          git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git commit -m "Deploy v24: remove Koro AI section site-wide (delete koro.html, drop Koro nav/mobile/footer links, sitemap entry, 404 route, freemodels.pro CSP) - 15 files, exact bytes (MD5 verified), AI Chat kept intact"
+            git push origin main
+          fi
