@@ -45,6 +45,11 @@ jobs:
               print(p, "guard-stripped" if strip(p) else "no-guard")
           PYEOF
 
+      - name: Remove koro.html from working tree
+        run: |
+          rm -f koro.html
+          echo "koro.html removed from working tree (was: $(git ls-files koro.html || true))"
+
       - name: Verify exactness (fail build if any file differs)
         run: |
           set -e
@@ -83,10 +88,11 @@ jobs:
       - name: Assert zero Koro references + AI Chat intact
         run: |
           set -e
+          test ! -e koro.html || { echo "FAIL: koro.html still present"; exit 1; }
           if grep -ril "koro\|freemodels" *.html *.xml ; then
             echo "FAIL: residual Koro/freemodels references found"; exit 1
           fi
-          echo "OK: zero koro/freemodels references in all 15 files"
+          echo "OK: koro.html gone and zero koro/freemodels references in all 15 files"
           grep -q "app-i5a3R2bfu0OBYa3l4xTtfbHb" chatbot.html || { echo "FAIL: Dify AI Chat token missing from chatbot.html"; exit 1; }
           grep -q "udify.app/embed.min.js" chatbot.html || { echo "FAIL: Dify embed script missing from chatbot.html"; exit 1; }
           grep -q "frame-src 'self' https://www.openstreetmap.org https://udify.app" chatbot.html || { echo "FAIL: chatbot.html CSP frame-src not in expected state"; exit 1; }
@@ -99,7 +105,7 @@ jobs:
         run: |
           git config user.name "DADsync Deploy Bot"
           git config user.email "deploy@dadsync.in"
-          git rm -f koro.html || echo "koro.html already absent"
+          git rm -f --ignore-unmatch koro.html || true
           git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html
           if git diff --cached --quiet; then
             echo "No changes to commit"
