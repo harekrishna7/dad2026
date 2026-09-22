@@ -1,0 +1,143 @@
+name: Deploy DADSync v26 AI logo top bar (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact v26 files (18 files: 14 pages + sitemap + 3 logo assets)
+        run: |
+          B="https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v26"
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo.webp ai-logo-mark.png; do
+            curl -fsSL -o "$f" "$B/$f"
+            echo "fetched $f: $(stat -c%s "$f") bytes"
+          done
+
+      - name: Strip CDN-injected media-guard shim (restore exact bytes)
+        run: |
+          python3 - <<'PYEOF'
+          import glob, sys
+          def strip(p):
+              s = open(p, encoding="utf-8").read()
+              i = s.find('data-tmly-media-guard="1"')
+              if i == -1:
+                  return False
+              a = s.rfind("<script", 0, i)
+              b = s.find("</script>", i)
+              if a == -1 or b == -1:
+                  sys.exit("FAIL: malformed guard script in " + p)
+              b += len("</script>")
+              open(p, "w", encoding="utf-8").write(s[:a] + s[b:])
+              return True
+          for p in sorted(glob.glob("*.html")):
+              print(p, "guard-stripped" if strip(p) else "no-guard")
+          PYEOF
+
+      - name: Verify exactness (fail build if any file differs)
+        run: |
+          set -e
+          cat > /tmp/expected.txt <<'EOF'
+          5019 504038848ec29b0d2db0f6c5e3155fd4 404.html
+          18440 bd398a7006be9a3439c73d3fd0809672 about.html
+          23036 02915275160433619171553a26c51821 careers.html
+          13992 7ac3e48d4b151024fa38904d9d96a9e4 chatbot.html
+          35019 1a5f549869e91fed68ad0d22f7705e3c connection.html
+          27455 56b4e51246ca1d7eaecdb2b9f03f5554 contact.html
+          18659 740d0e36a02935d0536df0adf4065d01 hub.html
+          100058 a002899f15d0732ebb67a4fe64fd69e6 index.html
+          16608 abbfaeb593f7a68465d2ea23f3f0d300 industries.html
+          20967 2240bacf35c53031df3f5463da80d49c investors.html
+          21902 19477c3826b53ce8ea5a58e56f5115bc news.html
+          15305 42e65e954ee51eb4e206f92e75532e4f privacy.html
+          21956 6e5d9c16ad0e49185ab0b7ebedab6ef1 services.html
+          1601 e6090bcec54a2bc38ad9cae04ca32027 sitemap.xml
+          15489 e4ea2a8b618efba91986d619ec6cdcf4 terms.html
+          150066 3904bac87a7295e7b0074582c0996287 ai-logo.png
+          69632 6c3d36b6ef467041810ed9ccae0b3983 ai-logo.webp
+          57429 fb8831924acb52f8d2c06788599e772f ai-logo-mark.png
+          EOF
+          fail=0
+          while read -r sz md5 f; do
+            asz=$(stat -c%s "$f"); amd5=$(md5sum "$f" | cut -d' ' -f1)
+            if [ "$asz" != "$sz" ] || [ "$amd5" != "$md5" ]; then
+              echo "MISMATCH $f: expected $sz/$md5 got $asz/$amd5"; fail=1
+            else
+              echo "OK $f ($asz bytes)"
+            fi
+          done < /tmp/expected.txt
+          [ "$fail" = "0" ] || { echo "FAIL: exactness verification failed"; exit 1; }
+          echo "All 18 files verified EXACT."
+
+      - name: Assert AI logo top bar present on all 14 pages
+        run: |
+          set -e
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html terms.html; do
+            n=$(grep -c 'ai-topbar' "$f")
+            [ "$n" -ge 2 ] || { echo "FAIL: $f missing ai-topbar (count=$n)"; exit 1; }
+            grep -q 'ai-logo-mark.png' "$f" || { echo "FAIL: $f missing ai-logo-mark.png reference"; exit 1; }
+          done
+          echo "OK: ai-topbar + ai-logo-mark.png present on all 14 pages"
+
+      - name: Assert logo assets are valid images
+        run: |
+          set -e
+          python3 - <<'PYEOF'
+          png = open("ai-logo.png", "rb").read(8)
+          assert png == b"\x89PNG\r\n\x1a\n", "ai-logo.png is not a valid PNG"
+          png2 = open("ai-logo-mark.png", "rb").read(8)
+          assert png2 == b"\x89PNG\r\n\x1a\n", "ai-logo-mark.png is not a valid PNG"
+          w = open("ai-logo.webp", "rb").read(12)
+          assert w[:4] == b"RIFF" and w[8:12] == b"WEBP", "ai-logo.webp is not a valid WebP"
+          print("OK: ai-logo.png + ai-logo-mark.png (PNG) and ai-logo.webp (WebP) are valid")
+          PYEOF
+
+      - name: Assert Koro AI stays removed and AI Chat stays intact
+        run: |
+          set -e
+          test ! -e koro.html || { echo "FAIL: koro.html re-appeared"; exit 1; }
+          if grep -ril "koro\|freemodels" *.html *.xml ; then
+            echo "FAIL: residual Koro/freemodels references found"; exit 1
+          fi
+          echo "OK: koro.html absent and zero koro/freemodels references"
+          grep -q "app-i5a3R2bfu0OBYa3l4xTtfbHb" chatbot.html || { echo "FAIL: Dify AI Chat token missing from chatbot.html"; exit 1; }
+          grep -q "udify.app/embed.min.js" chatbot.html || { echo "FAIL: Dify embed script missing from chatbot.html"; exit 1; }
+          grep -q "frame-src 'self' https://www.openstreetmap.org https://udify.app" chatbot.html || { echo "FAIL: chatbot.html CSP frame-src not in expected state"; exit 1; }
+          grep -q 'href="chatbot.html"' index.html || { echo "FAIL: AI Chat nav link missing from index.html"; exit 1; }
+          echo "OK: AI Chat (Dify) intact - token, embed script, CSP and nav links present"
+
+      - name: Assert Why Choose Us numbering is unique 01-06
+        run: |
+          set -e
+          NUMS=$(grep -o 'why-num">[0-9][0-9]' index.html | sed 's/.*>//' | tr '\n' ' ')
+          echo "Why Choose Us numbering in index.html: [$NUMS]"
+          [ "$NUMS" = "01 02 03 04 05 06 " ] || { echo "FAIL: numbering is not the unique sequence 01..06"; exit 1; }
+          DUP=$(grep -o 'why-num">[0-9][0-9]' index.html | sed 's/.*>//' | sort | uniq -d)
+          [ -z "$DUP" ] || { echo "FAIL: duplicate numbering present: $DUP"; exit 1; }
+          echo "OK: numbering unique 01-06"
+
+      - name: Commit and push exact files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo.webp ai-logo-mark.png
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git commit -m "Deploy v26: add AI logo top bar above the header on all 14 pages. New white top bar (52px desktop / 44px mobile) with the DADSync AI logo mark at the LEFT, fixed headers offset below it so the layout is not broken and stays responsive. Adds ai-logo.png, ai-logo.webp and ai-logo-mark.png to the repo root. 18 files exact bytes (size+MD5 verified), AI Chat (Dify) intact, Koro AI stays removed, Why Choose Us numbering 01-06 unchanged."
+            git push origin main
+          fi
