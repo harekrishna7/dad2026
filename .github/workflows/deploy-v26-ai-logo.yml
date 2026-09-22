@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch exact v26 files (18 files: 14 pages + sitemap + 3 logo assets)
+      - name: Fetch exact v26 files (18 files - 14 pages + sitemap + 3 logo assets)
         run: |
           B="https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v26"
           for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo.webp ai-logo-mark.png; do
@@ -48,36 +48,42 @@ jobs:
       - name: Verify exactness (fail build if any file differs)
         run: |
           set -e
-          cat > /tmp/expected.txt <<'EOF'
-          5019 504038848ec29b0d2db0f6c5e3155fd4 404.html
-          18440 bd398a7006be9a3439c73d3fd0809672 about.html
-          23036 02915275160433619171553a26c51821 careers.html
-          13992 7ac3e48d4b151024fa38904d9d96a9e4 chatbot.html
-          35019 1a5f549869e91fed68ad0d22f7705e3c connection.html
-          27455 56b4e51246ca1d7eaecdb2b9f03f5554 contact.html
-          18659 740d0e36a02935d0536df0adf4065d01 hub.html
-          100058 a002899f15d0732ebb67a4fe64fd69e6 index.html
-          16608 abbfaeb593f7a68465d2ea23f3f0d300 industries.html
-          20967 2240bacf35c53031df3f5463da80d49c investors.html
-          21902 19477c3826b53ce8ea5a58e56f5115bc news.html
-          15305 42e65e954ee51eb4e206f92e75532e4f privacy.html
-          21956 6e5d9c16ad0e49185ab0b7ebedab6ef1 services.html
-          1601 e6090bcec54a2bc38ad9cae04ca32027 sitemap.xml
-          15489 e4ea2a8b618efba91986d619ec6cdcf4 terms.html
-          150066 3904bac87a7295e7b0074582c0996287 ai-logo.png
-          69632 6c3d36b6ef467041810ed9ccae0b3983 ai-logo.webp
-          57429 fb8831924acb52f8d2c06788599e772f ai-logo-mark.png
-          EOF
-          fail=0
-          while read -r sz md5 f; do
-            asz=$(stat -c%s "$f"); amd5=$(md5sum "$f" | cut -d' ' -f1)
-            if [ "$asz" != "$sz" ] || [ "$amd5" != "$md5" ]; then
-              echo "MISMATCH $f: expected $sz/$md5 got $asz/$amd5"; fail=1
-            else
-              echo "OK $f ($asz bytes)"
-            fi
-          done < /tmp/expected.txt
-          [ "$fail" = "0" ] || { echo "FAIL: exactness verification failed"; exit 1; }
+          test "$(stat -c%s 404.html)" = "5019" || { echo "404.html size mismatch"; exit 1; }
+          [ "$(md5sum 404.html | cut -d' ' -f1)" = "504038848ec29b0d2db0f6c5e3155fd4" ] || { echo "404.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s about.html)" = "18440" || { echo "about.html size mismatch"; exit 1; }
+          [ "$(md5sum about.html | cut -d' ' -f1)" = "bd398a7006be9a3439c73d3fd0809672" ] || { echo "about.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s careers.html)" = "23036" || { echo "careers.html size mismatch"; exit 1; }
+          [ "$(md5sum careers.html | cut -d' ' -f1)" = "02915275160433619171553a26c51821" ] || { echo "careers.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s chatbot.html)" = "13992" || { echo "chatbot.html size mismatch"; exit 1; }
+          [ "$(md5sum chatbot.html | cut -d' ' -f1)" = "7ac3e48d4b151024fa38904d9d96a9e4" ] || { echo "chatbot.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s connection.html)" = "35019" || { echo "connection.html size mismatch"; exit 1; }
+          [ "$(md5sum connection.html | cut -d' ' -f1)" = "1a5f549869e91fed68ad0d22f7705e3c" ] || { echo "connection.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s contact.html)" = "27455" || { echo "contact.html size mismatch"; exit 1; }
+          [ "$(md5sum contact.html | cut -d' ' -f1)" = "56b4e51246ca1d7eaecdb2b9f03f5554" ] || { echo "contact.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s hub.html)" = "18659" || { echo "hub.html size mismatch"; exit 1; }
+          [ "$(md5sum hub.html | cut -d' ' -f1)" = "740d0e36a02935d0536df0adf4065d01" ] || { echo "hub.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s index.html)" = "100058" || { echo "index.html size mismatch"; exit 1; }
+          [ "$(md5sum index.html | cut -d' ' -f1)" = "a002899f15d0732ebb67a4fe64fd69e6" ] || { echo "index.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s industries.html)" = "16608" || { echo "industries.html size mismatch"; exit 1; }
+          [ "$(md5sum industries.html | cut -d' ' -f1)" = "abbfaeb593f7a68465d2ea23f3f0d300" ] || { echo "industries.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s investors.html)" = "20967" || { echo "investors.html size mismatch"; exit 1; }
+          [ "$(md5sum investors.html | cut -d' ' -f1)" = "2240bacf35c53031df3f5463da80d49c" ] || { echo "investors.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s news.html)" = "21902" || { echo "news.html size mismatch"; exit 1; }
+          [ "$(md5sum news.html | cut -d' ' -f1)" = "19477c3826b53ce8ea5a58e56f5115bc" ] || { echo "news.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s privacy.html)" = "15305" || { echo "privacy.html size mismatch"; exit 1; }
+          [ "$(md5sum privacy.html | cut -d' ' -f1)" = "42e65e954ee51eb4e206f92e75532e4f" ] || { echo "privacy.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s services.html)" = "21956" || { echo "services.html size mismatch"; exit 1; }
+          [ "$(md5sum services.html | cut -d' ' -f1)" = "6e5d9c16ad0e49185ab0b7ebedab6ef1" ] || { echo "services.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s sitemap.xml)" = "1601" || { echo "sitemap.xml size mismatch"; exit 1; }
+          [ "$(md5sum sitemap.xml | cut -d' ' -f1)" = "e6090bcec54a2bc38ad9cae04ca32027" ] || { echo "sitemap.xml MD5 mismatch"; exit 1; }
+          test "$(stat -c%s terms.html)" = "15489" || { echo "terms.html size mismatch"; exit 1; }
+          [ "$(md5sum terms.html | cut -d' ' -f1)" = "e4ea2a8b618efba91986d619ec6cdcf4" ] || { echo "terms.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s ai-logo.png)" = "150066" || { echo "ai-logo.png size mismatch"; exit 1; }
+          [ "$(md5sum ai-logo.png | cut -d' ' -f1)" = "3904bac87a7295e7b0074582c0996287" ] || { echo "ai-logo.png MD5 mismatch"; exit 1; }
+          test "$(stat -c%s ai-logo.webp)" = "69632" || { echo "ai-logo.webp size mismatch"; exit 1; }
+          [ "$(md5sum ai-logo.webp | cut -d' ' -f1)" = "6c3d36b6ef467041810ed9ccae0b3983" ] || { echo "ai-logo.webp MD5 mismatch"; exit 1; }
+          test "$(stat -c%s ai-logo-mark.png)" = "57429" || { echo "ai-logo-mark.png size mismatch"; exit 1; }
+          [ "$(md5sum ai-logo-mark.png | cut -d' ' -f1)" = "fb8831924acb52f8d2c06788599e772f" ] || { echo "ai-logo-mark.png MD5 mismatch"; exit 1; }
           echo "All 18 files verified EXACT."
 
       - name: Assert AI logo top bar present on all 14 pages
