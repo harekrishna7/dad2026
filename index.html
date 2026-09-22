@@ -765,8 +765,29 @@ function pushRecord(node, record) {
   }
 }
 </script>
+<style>
+/* ===== DADSync v26: AI logo top bar (above header) ===== */
+.ai-topbar{position:fixed;top:0;left:0;right:0;height:52px;background:#fff;z-index:9999;display:flex;align-items:center;padding:0 20px;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.ai-topbar a{display:inline-flex;align-items:center;text-decoration:none;}
+.ai-topbar img{height:36px;width:auto;display:block;}
+body{padding-top:52px;}
+.navbar,#navbar,.site-header{top:52px !important;}
+.mobile-menu{top:52px !important;height:calc(100% - 52px) !important;}
+#progress-bar{top:52px !important;}
+@media (max-width:768px){.nav-links{top:52px !important;height:calc(100vh - 52px) !important;}}
+@media (max-width:480px){
+  .ai-topbar{height:44px;padding:0 12px;}
+  .ai-topbar img{height:28px;}
+  body{padding-top:44px;}
+  .navbar,#navbar,.site-header{top:44px !important;}
+  .mobile-menu{top:44px !important;height:calc(100% - 44px) !important;}
+  #progress-bar{top:44px !important;}
+  .nav-links{top:44px !important;height:calc(100vh - 44px) !important;}
+}
+</style>
 </head>
 <body>
+<div class="ai-topbar"><a href="index.html" aria-label="DADSync AI"><img src="ai-logo-mark.png" alt="DADSync AI Logo" width="36" height="36"></a></div>
 
 <div id="progress-bar" aria-hidden="true"></div>
 <div class="orb orb-1"></div>
