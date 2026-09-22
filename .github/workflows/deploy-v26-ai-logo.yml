@@ -17,10 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch exact v26 files (18 files - 14 pages + sitemap + 3 logo assets)
+      - name: Fetch exact v26 files (17 files - 14 pages + sitemap + 2 logo assets)
         run: |
           B="https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v26"
-          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo.webp ai-logo-mark.png; do
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo-mark.png; do
             curl -fsSL -o "$f" "$B/$f"
             echo "fetched $f: $(stat -c%s "$f") bytes"
           done
@@ -80,11 +80,9 @@ jobs:
           [ "$(md5sum terms.html | cut -d' ' -f1)" = "e4ea2a8b618efba91986d619ec6cdcf4" ] || { echo "terms.html MD5 mismatch"; exit 1; }
           test "$(stat -c%s ai-logo.png)" = "150066" || { echo "ai-logo.png size mismatch"; exit 1; }
           [ "$(md5sum ai-logo.png | cut -d' ' -f1)" = "3904bac87a7295e7b0074582c0996287" ] || { echo "ai-logo.png MD5 mismatch"; exit 1; }
-          test "$(stat -c%s ai-logo.webp)" = "69632" || { echo "ai-logo.webp size mismatch"; exit 1; }
-          [ "$(md5sum ai-logo.webp | cut -d' ' -f1)" = "6c3d36b6ef467041810ed9ccae0b3983" ] || { echo "ai-logo.webp MD5 mismatch"; exit 1; }
           test "$(stat -c%s ai-logo-mark.png)" = "57429" || { echo "ai-logo-mark.png size mismatch"; exit 1; }
           [ "$(md5sum ai-logo-mark.png | cut -d' ' -f1)" = "fb8831924acb52f8d2c06788599e772f" ] || { echo "ai-logo-mark.png MD5 mismatch"; exit 1; }
-          echo "All 18 files verified EXACT."
+          echo "All 17 files verified EXACT."
 
       - name: Assert AI logo top bar present on all 14 pages
         run: |
@@ -104,9 +102,7 @@ jobs:
           assert png == b"\x89PNG\r\n\x1a\n", "ai-logo.png is not a valid PNG"
           png2 = open("ai-logo-mark.png", "rb").read(8)
           assert png2 == b"\x89PNG\r\n\x1a\n", "ai-logo-mark.png is not a valid PNG"
-          w = open("ai-logo.webp", "rb").read(12)
-          assert w[:4] == b"RIFF" and w[8:12] == b"WEBP", "ai-logo.webp is not a valid WebP"
-          print("OK: ai-logo.png + ai-logo-mark.png (PNG) and ai-logo.webp (WebP) are valid")
+          print("OK: ai-logo.png + ai-logo-mark.png are valid PNGs")
           PYEOF
 
       - name: Assert Koro AI stays removed and AI Chat stays intact
@@ -139,11 +135,11 @@ jobs:
         run: |
           git config user.name "DADsync Deploy Bot"
           git config user.email "deploy@dadsync.in"
-          git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo.webp ai-logo-mark.png
+          git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo-mark.png
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-            git commit -m "Deploy v26: add AI logo top bar above the header on all 14 pages. New white top bar (52px desktop / 44px mobile) with the DADSync AI logo mark at the LEFT, fixed headers offset below it so the layout is not broken and stays responsive. Adds ai-logo.png, ai-logo.webp and ai-logo-mark.png to the repo root. 18 files exact bytes (size+MD5 verified), AI Chat (Dify) intact, Koro AI stays removed, Why Choose Us numbering 01-06 unchanged."
+            git commit -m "Deploy v26: add AI logo top bar above the header on all 14 pages. New white top bar (52px desktop / 44px mobile) with the DADSync AI logo mark at the LEFT, fixed headers offset below it so the layout is not broken and stays responsive. Adds ai-logo.png and ai-logo-mark.png to the repo root. 17 files exact bytes (size+MD5 verified), AI Chat (Dify) intact, Koro AI stays removed, Why Choose Us numbering 01-06 unchanged."
             git push origin main
           fi
