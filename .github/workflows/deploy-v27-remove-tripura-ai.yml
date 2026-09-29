@@ -1,0 +1,153 @@
+name: Deploy DADSync v27 remove Tripura AI Transformation (exact bytes)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch exact v27 files (17 files - 14 pages + sitemap + 2 logo assets)
+        run: |
+          B="https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v27"
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo-mark.png; do
+            curl -fsSL -o "$f" "$B/$f"
+            echo "fetched $f: $(stat -c%s "$f") bytes"
+          done
+
+      - name: Strip CDN-injected media-guard shim (restore exact bytes)
+        run: |
+          python3 - <<'PYEOF'
+          import glob, sys
+          def strip(p):
+              s = open(p, encoding="utf-8").read()
+              i = s.find('data-tmly-media-guard="1"')
+              if i == -1:
+                  return False
+              a = s.rfind("<script", 0, i)
+              b = s.find("</script>", i)
+              if a == -1 or b == -1:
+                  sys.exit("FAIL: malformed guard script in " + p)
+              b += len("</script>")
+              open(p, "w", encoding="utf-8").write(s[:a] + s[b:])
+              return True
+          for p in sorted(glob.glob("*.html")):
+              print(p, "guard-stripped" if strip(p) else "no-guard")
+          PYEOF
+
+      - name: Verify exactness (fail build if any file differs)
+        run: |
+          set -e
+          test "$(stat -c%s 404.html)" = "5019" || { echo "404.html size mismatch"; exit 1; }
+          [ "$(md5sum 404.html | cut -d' ' -f1)" = "504038848ec29b0d2db0f6c5e3155fd4" ] || { echo "404.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s about.html)" = "18440" || { echo "about.html size mismatch"; exit 1; }
+          [ "$(md5sum about.html | cut -d' ' -f1)" = "bd398a7006be9a3439c73d3fd0809672" ] || { echo "about.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s careers.html)" = "23036" || { echo "careers.html size mismatch"; exit 1; }
+          [ "$(md5sum careers.html | cut -d' ' -f1)" = "02915275160433619171553a26c51821" ] || { echo "careers.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s chatbot.html)" = "13992" || { echo "chatbot.html size mismatch"; exit 1; }
+          [ "$(md5sum chatbot.html | cut -d' ' -f1)" = "7ac3e48d4b151024fa38904d9d96a9e4" ] || { echo "chatbot.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s connection.html)" = "35019" || { echo "connection.html size mismatch"; exit 1; }
+          [ "$(md5sum connection.html | cut -d' ' -f1)" = "1a5f549869e91fed68ad0d22f7705e3c" ] || { echo "connection.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s contact.html)" = "27455" || { echo "contact.html size mismatch"; exit 1; }
+          [ "$(md5sum contact.html | cut -d' ' -f1)" = "56b4e51246ca1d7eaecdb2b9f03f5554" ] || { echo "contact.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s hub.html)" = "18659" || { echo "hub.html size mismatch"; exit 1; }
+          [ "$(md5sum hub.html | cut -d' ' -f1)" = "740d0e36a02935d0536df0adf4065d01" ] || { echo "hub.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s index.html)" = "98020" || { echo "index.html size mismatch"; exit 1; }
+          [ "$(md5sum index.html | cut -d' ' -f1)" = "d97b74634fac1b6e29e371ea3ccfc39b" ] || { echo "index.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s industries.html)" = "16608" || { echo "industries.html size mismatch"; exit 1; }
+          [ "$(md5sum industries.html | cut -d' ' -f1)" = "abbfaeb593f7a68465d2ea23f3f0d300" ] || { echo "industries.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s investors.html)" = "20967" || { echo "investors.html size mismatch"; exit 1; }
+          [ "$(md5sum investors.html | cut -d' ' -f1)" = "2240bacf35c53031df3f5463da80d49c" ] || { echo "investors.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s news.html)" = "21902" || { echo "news.html size mismatch"; exit 1; }
+          [ "$(md5sum news.html | cut -d' ' -f1)" = "19477c3826b53ce8ea5a58e56f5115bc" ] || { echo "news.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s privacy.html)" = "15305" || { echo "privacy.html size mismatch"; exit 1; }
+          [ "$(md5sum privacy.html | cut -d' ' -f1)" = "42e65e954ee51eb4e206f92e75532e4f" ] || { echo "privacy.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s services.html)" = "21956" || { echo "services.html size mismatch"; exit 1; }
+          [ "$(md5sum services.html | cut -d' ' -f1)" = "6e5d9c16ad0e49185ab0b7ebedab6ef1" ] || { echo "services.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s sitemap.xml)" = "1601" || { echo "sitemap.xml size mismatch"; exit 1; }
+          [ "$(md5sum sitemap.xml | cut -d' ' -f1)" = "e6090bcec54a2bc38ad9cae04ca32027" ] || { echo "sitemap.xml MD5 mismatch"; exit 1; }
+          test "$(stat -c%s terms.html)" = "15489" || { echo "terms.html size mismatch"; exit 1; }
+          [ "$(md5sum terms.html | cut -d' ' -f1)" = "e4ea2a8b618efba91986d619ec6cdcf4" ] || { echo "terms.html MD5 mismatch"; exit 1; }
+          test "$(stat -c%s ai-logo.png)" = "150066" || { echo "ai-logo.png size mismatch"; exit 1; }
+          [ "$(md5sum ai-logo.png | cut -d' ' -f1)" = "3904bac87a7295e7b0074582c0996287" ] || { echo "ai-logo.png MD5 mismatch"; exit 1; }
+          test "$(stat -c%s ai-logo-mark.png)" = "57429" || { echo "ai-logo-mark.png size mismatch"; exit 1; }
+          [ "$(md5sum ai-logo-mark.png | cut -d' ' -f1)" = "fb8831924acb52f8d2c06788599e772f" ] || { echo "ai-logo-mark.png MD5 mismatch"; exit 1; }
+          echo "All 17 files verified EXACT."
+
+      - name: Remove Tripura AI assets from the working tree before asserting
+        run: |
+          set -e
+          git rm -f --ignore-unmatch tripura-ai.css tads-app.js tads-data.js || true
+          rm -f tripura-ai.css tads-app.js tads-data.js
+          test ! -e tripura-ai.css || { echo "FAIL: tripura-ai.css still present"; exit 1; }
+          test ! -e tads-app.js || { echo "FAIL: tads-app.js still present"; exit 1; }
+          test ! -e tads-data.js || { echo "FAIL: tads-data.js still present"; exit 1; }
+          echo "OK: tripura-ai.css, tads-app.js, tads-data.js removed from working tree"
+
+      - name: Assert zero Tripura AI references remain
+        run: |
+          set -e
+          if grep -ril "tripura\|tads\|AI Transformation" *.html *.xml ; then
+            echo "FAIL: residual Tripura AI references found"; exit 1
+          fi
+          echo "OK: zero tripura / tads / AI Transformation references in all pages and sitemap"
+
+      - name: Assert AI logo top bar present on all 14 pages
+        run: |
+          set -e
+          for f in 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html terms.html; do
+            n=$(grep -c 'ai-topbar' "$f")
+            [ "$n" -ge 2 ] || { echo "FAIL: $f missing ai-topbar (count=$n)"; exit 1; }
+            grep -q 'ai-logo-mark.png' "$f" || { echo "FAIL: $f missing ai-logo-mark.png reference"; exit 1; }
+          done
+          echo "OK: ai-topbar + ai-logo-mark.png present on all 14 pages"
+
+      - name: Assert Koro AI stays removed and AI Chat stays intact
+        run: |
+          set -e
+          test ! -e koro.html || { echo "FAIL: koro.html re-appeared"; exit 1; }
+          if grep -ril "koro\|freemodels" *.html *.xml ; then
+            echo "FAIL: residual Koro/freemodels references found"; exit 1
+          fi
+          echo "OK: koro.html absent and zero koro/freemodels references"
+          grep -q "app-i5a3R2bfu0OBYa3l4xTtfbHb" chatbot.html || { echo "FAIL: Dify AI Chat token missing from chatbot.html"; exit 1; }
+          grep -q "udify.app/embed.min.js" chatbot.html || { echo "FAIL: Dify embed script missing from chatbot.html"; exit 1; }
+          grep -q "frame-src 'self' https://www.openstreetmap.org https://udify.app" chatbot.html || { echo "FAIL: chatbot.html CSP frame-src not in expected state"; exit 1; }
+          grep -q 'href="chatbot.html"' index.html || { echo "FAIL: AI Chat nav link missing from index.html"; exit 1; }
+          echo "OK: AI Chat (Dify) intact - token, embed script, CSP and nav links present"
+
+      - name: Assert Why Choose Us numbering is unique 01-06
+        run: |
+          set -e
+          NUMS=$(grep -o 'why-num">[0-9][0-9]' index.html | sed 's/.*>//' | tr '\n' ' ')
+          echo "Why Choose Us numbering in index.html: [$NUMS]"
+          [ "$NUMS" = "01 02 03 04 05 06 " ] || { echo "FAIL: numbering is not the unique sequence 01..06"; exit 1; }
+          DUP=$(grep -o 'why-num">[0-9][0-9]' index.html | sed 's/.*>//' | sort | uniq -d)
+          [ -z "$DUP" ] || { echo "FAIL: duplicate numbering present: $DUP"; exit 1; }
+          echo "OK: numbering unique 01-06"
+
+      - name: Commit and push exact files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add 404.html about.html careers.html chatbot.html connection.html contact.html hub.html index.html industries.html investors.html news.html privacy.html services.html sitemap.xml terms.html ai-logo.png ai-logo-mark.png
+          git add -A tripura-ai.css tads-app.js tads-data.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git commit -m "Deploy v27: remove the Tripura AI Transformation section site-wide. Removes the #/tripura-ai route, its nav link (desktop + mobile), its footer quick-link, the tads module markup + inline router script, the tads CSS block and the tripura-ai.css stylesheet link from index.html, and deletes the now-unused tripura-ai.css, tads-app.js and tads-data.js assets. 17 files exact bytes (size+MD5 verified), AI Chat (Dify) intact, AI logo top bar intact, Koro AI stays removed, Why Choose Us numbering 01-06 unchanged."
+            git push origin main
+          fi
