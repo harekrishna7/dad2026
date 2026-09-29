@@ -9,17 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tripura-ai.css?v=13">
 <script>document.documentElement.className += ' js';</script>
 <style>
 /* ============= RESET & TOKENS ============= */
-/* Tripura AI module (v13) — nav highlight & view switching */
-.nav-ai { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.92rem; color: var(--text-soft); border: 1px solid var(--card-border); border-radius: 999px; padding: 7px 14px; transition: all 0.25s; white-space: nowrap; }
-.nav-ai:hover { color: #fff; border-color: var(--accent); background: var(--primary-soft); box-shadow: 0 0 14px rgba(56,189,248,0.35); }
-.nav-ai.tads-nav-active { color: #fff; background: var(--primary); border-color: var(--primary); box-shadow: 0 0 18px rgba(37,99,235,0.55); }
-@media (max-width: 980px) { .nav-ai { margin: 6px 0; width: 100%; justify-content: center; } }
-/* While a Tripura AI route is active, hide the core site body/footer (navbar stays). */
-body.tads-view main, body.tads-view footer { display: none; }
 , *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -816,7 +808,6 @@ body{padding-top:52px;}
       <a href="#services">Services</a>
       <a href="#careers">Careers</a>
       <a href="#contact">Contact</a>
-      <a href="#/tripura-ai" class="nav-ai" data-tads-nav>AI Transformation</a>
       <a href="chatbot.html" class="nav-ai">AI Chat</a>
       <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
     </nav>
@@ -1178,7 +1169,7 @@ body{padding-top:52px;}
           </div>
           <h3>Cloud Architect</h3>
           <p class="job-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Dharmanagar / Remote
           </p>
           <p class="job-desc">Design secure, cost-optimized cloud infrastructure and lead migrations for clients on AWS, Azure and GCP.</p>
@@ -1360,9 +1351,8 @@ body{padding-top:52px;}
           <li><a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>About</a></li>
           <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Services</a></li>
           <li><a href="#why-us"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Why Us</a></li>
-          <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
-          <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
-          <li><a href="#/tripura-ai"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>Tripura AI Transformation</a></li>
+          <li><a href="#careers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Careers</a></li>
+          <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Contact</a></li>
           <li><a href="chatbot.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>AI Chat</a></li>
         </ul>
       </div>
@@ -1370,10 +1360,10 @@ body{padding-top:52px;}
         <h4>Services</h4>
         <ul>
           <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>AI Solutions</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Synchronization</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Analytics</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Cloud Integration</a></li>
-          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Automation &amp; Consulting</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Synchronization</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Data Analytics</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Cloud Integration</a></li>
+          <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>Automation &amp; Consulting</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1408,28 +1398,6 @@ body{padding-top:52px;}
     </div>
   </div>
 </footer>
-
-<!-- ============ TRIPURA AI TRANSFORMATION MODULE (v13) ============ -->
-<div id="tads-topbar" class="tads-top"></div>
-<div id="tads-app" class="tads" aria-live="polite"></div>
-<div id="tads-toast" class="tads-toast" role="status" aria-live="polite"></div>
-
-<script src="tads-data.js?v=13.3"></script>
-<script src="tads-app.js?v=13.3"></script>
-<script>
-(function () {
-  'use strict';
-  /* Tripura AI nav item — highlight when the module is active. */
-  var navAI = document.querySelector('[data-tads-nav]');
-  function syncTADSNav() {
-    var on = (window.location.hash || '').indexOf('/tripura-ai') !== -1;
-    if (navAI) navAI.classList.toggle('tads-nav-active', on);
-    if (on) document.body.classList.add('tads-view');
-  }
-  window.addEventListener('hashchange', syncTADSNav);
-  syncTADSNav();
-})();
-</script>
 
 </body>
 <button id="back-top" aria-label="Back to top">
