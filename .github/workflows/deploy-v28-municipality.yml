@@ -1,0 +1,86 @@
+name: Deploy v28 Municipality AI SaaS section
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Fetch v28 index.html from permanent URL
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --retry-delay 2 -o /tmp/raw.html "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-v28-deploy/index.html?tk=c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtdjI4LWRlcGxveToxNzkyNDE3MzAw.ZjE4MGEyNGU5ZGM3MDc2YTM5Njk2NDZjMTI1ZWUyNzg"
+          echo "raw bytes $(wc -c < /tmp/raw.html)"
+
+      - name: Strip CDN media guard shim
+        run: |
+          python3 - <<'PY'
+          s = open('/tmp/raw.html', encoding='utf-8').read()
+          i = s.find('data-tmly-media-guard="1"')
+          if i >= 0:
+              a = s.rfind('<script', 0, i)
+              b = s.find('</script>', i) + len('</script>')
+              s = s[:a] + s[b:]
+              print('shim stripped')
+          else:
+              print('no shim present')
+          open('/tmp/index.html', 'w', encoding='utf-8').write(s)
+          PY
+          echo "stripped bytes $(wc -c < /tmp/index.html)"
+
+      - name: Verify size and MD5
+        run: |
+          set -euo pipefail
+          SIZE=$(wc -c < /tmp/index.html)
+          MD5=$(md5sum /tmp/index.html | cut -d' ' -f1)
+          echo "size=$SIZE md5=$MD5"
+          test "$SIZE" = "120100"
+          test "$MD5" = "43118db0a441791604f85fd7eeeb5927"
+          echo "size and MD5 verified"
+
+      - name: Assert content invariants
+        run: |
+          set -euo pipefail
+          F=/tmp/index.html
+          grep -q "Municipality AI SaaS" "$F"
+          grep -q "Towards Smarter, Paperless Governance" "$F"
+          grep -q "https://municipality-saa-s.vercel.app/login" "$F"
+          grep -q 'target="_blank" rel="noopener"' "$F"
+          grep -q "Explore Municipality Demo" "$F"
+          grep -q "Discuss a Pilot" "$F"
+          grep -q "Contact DADSync" "$F"
+          grep -q "Have a project in mind?" "$F"
+          grep -q "ai-topbar" "$F"
+          grep -q "app-i5a3R2bfu0OBYa3l4xTtfbHb" "$F"
+          SC=$(grep -c 'class="service-card' "$F" || true)
+          WN=$(grep -o '>0[1-6]<' "$F" | wc -l)
+          KO=$(grep -ci 'koro' "$F" || true)
+          echo "service-cards=$SC why-nums=$WN koro=$KO"
+          test "$SC" = "6"
+          test "$WN" = "6"
+          test "$KO" = "0"
+          echo "all invariants OK"
+
+      - name: Commit index.html
+        run: |
+          set -euo pipefail
+          cp /tmp/index.html index.html
+          git config user.name "DADsync Deploy Bot"
+          git config user.email "deploy-bot@dadsync.in"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "no change to commit"
+          else
+            git commit -m "Deploy v28: add Municipality AI SaaS section to homepage (exact bytes)"
+            git push origin main
+            echo "pushed commit $(git rev-parse HEAD)"
+          fi
