@@ -1,0 +1,103 @@
+name: Deploy v29 hero rotator
+
+# v29 - homepage hero: rotating phrase animation + overlap/spacing fix.
+# Only index.html changes. All other pages are untouched by this deploy.
+#
+# Method: fetch the exact stored bytes from the permanent static.teamily.ai
+# URL, strip the CDN-injected tmly-media-guard shim, then gate the commit on a
+# hard size + MD5 assertion. Nothing is committed unless the bytes match.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fetch exact v29 index.html
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --retry-delay 5 \
+            -o /tmp/index.raw.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v29/index.html"
+          echo "downloaded bytes: $(wc -c < /tmp/index.raw.html)"
+
+      - name: Strip CDN media-guard shim
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          raw = open('/tmp/index.raw.html', 'rb').read().decode('utf-8', 'surrogateescape')
+          i = raw.find('data-tmly-media-guard="1"')
+          if i != -1:
+              a = raw.rfind('<script', 0, i)
+              b = raw.find('</script>', i) + len('</script>')
+              raw = raw[:a] + raw[b:]
+              print('shim stripped at offset', a)
+          else:
+              print('no shim present')
+          open('/tmp/index.html', 'wb').write(raw.encode('utf-8', 'surrogateescape'))
+          PY
+          echo "clean bytes: $(wc -c < /tmp/index.html)"
+
+      - name: Assert exact size and MD5
+        run: |
+          set -euo pipefail
+          EXPECTED_SIZE=125747
+          EXPECTED_MD5=bd6748e1c8ec95adc7fcfd4381d7762c
+          ACTUAL_SIZE=$(wc -c < /tmp/index.html | tr -d ' ')
+          ACTUAL_MD5=$(md5sum /tmp/index.html | cut -d' ' -f1)
+          echo "expected size=$EXPECTED_SIZE md5=$EXPECTED_MD5"
+          echo "actual   size=$ACTUAL_SIZE md5=$ACTUAL_MD5"
+          test "$ACTUAL_SIZE" = "$EXPECTED_SIZE" || { echo "::error::size mismatch"; exit 1; }
+          test "$ACTUAL_MD5" = "$EXPECTED_MD5" || { echo "::error::md5 mismatch"; exit 1; }
+
+      - name: Assert hero rotator invariants
+        run: |
+          set -euo pipefail
+          F=/tmp/index.html
+          for p in "Real-Time Synchronization" "AI-Powered Data Intelligence" \
+                   "Intelligent Cloud Infrastructure" "Secure Data &amp; AI Solutions"; do
+            grep -qF "$p" "$F" || { echo "::error::missing phrase: $p"; exit 1; }
+          done
+          grep -qF "Powering Northeast India" "$F" || { echo "::error::missing phrase 5"; exit 1; }
+          grep -q 'data-rotator' "$F" || { echo "::error::missing data-rotator"; exit 1; }
+          test "$(grep -o 'class="rot-frame' "$F" | wc -l | tr -d ' ')" = "5" \
+            || { echo "::error::expected 5 rot-frames"; exit 1; }
+          grep -q 'prefers-reduced-motion' "$F" || { echo "::error::missing reduced-motion"; exit 1; }
+          echo "rotator invariants OK"
+
+      - name: Assert protected features survive
+        run: |
+          set -euo pipefail
+          F=/tmp/index.html
+          grep -qF "app-i5a3R2bfu0OBYa3l4xTtfbHb" "$F" || { echo "::error::Dify token missing"; exit 1; }
+          grep -qF "udify.app/embed.min.js" "$F"       || { echo "::error::Dify embed missing"; exit 1; }
+          grep -qF "chatbot.html" "$F"                 || { echo "::error::chatbot link missing"; exit 1; }
+          grep -qF "ai-topbar" "$F"                    || { echo "::error::AI logo top bar missing"; exit 1; }
+          grep -qF "Municipality" "$F"                 || { echo "::error::v28 Municipality section missing"; exit 1; }
+          if grep -qi "koro" "$F"; then echo "::error::Koro must stay removed"; exit 1; fi
+          echo "protected features OK"
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          cp /tmp/index.html index.html
+          git config user.name "DADSync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No change to index.html - nothing to commit"
+            exit 0
+          fi
+          git commit -m "feat(hero): rotating headline phrase animation with no overlap (v29)"
+          git push origin HEAD:main
+          echo "pushed commit: $(git rev-parse HEAD)"
