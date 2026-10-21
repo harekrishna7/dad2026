@@ -3,9 +3,9 @@ name: Deploy v29 hero rotator
 # v29 - homepage hero: rotating phrase animation + overlap/spacing fix.
 # Only index.html changes. All other pages are untouched by this deploy.
 #
-# Method: fetch the exact stored bytes from the permanent static.teamily.ai
-# URL, strip the CDN-injected tmly-media-guard shim, then gate the commit on a
-# hard size + MD5 assertion. Nothing is committed unless the bytes match.
+# The CDN is token-gated for Actions runners, so the fetch carries the signed
+# ?tk= access token. Bytes are still gated on a hard size + MD5 assertion, so
+# nothing is committed unless the fetched file is byte-identical to the build.
 
 on:
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
           set -euo pipefail
           curl -fsSL --retry 3 --retry-delay 5 \
             -o /tmp/index.raw.html \
-            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v29/index.html"
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v29/index.html?tk=c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtZ2hwYWdlcy1kZXBsb3ktdjI5OjE3OTI2MDQ2OTg.ZjY5ZTgzOWViZDkxN2I0NDEyZWI2MjRhYzg1YjJiOGM"
           echo "downloaded bytes: $(wc -c < /tmp/index.raw.html)"
 
       - name: Strip CDN media-guard shim
