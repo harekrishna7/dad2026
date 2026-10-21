@@ -240,31 +240,40 @@ h1, h2, h3, h4, .logo, .btn { font-family: var(--font-display); }
 }
 .h1-static { display: block; }
 
-/* ---- v29: rotating hero phrase ----
+/* ---- v30: rotating hero phrase (3.0s hold, 260ms out-then-in, scale-in) ----
    All phrases are stacked in ONE grid cell, so the box is always exactly as
    tall as the tallest phrase at the current width. The rotation therefore
-   cannot move the sub-paragraph or CTAs (no layout shift, no min-height guess). */
+   cannot move the sub-paragraph or CTAs (no layout shift, no min-height guess).
+   The incoming phrase also scales 0.97 -> 1; a transform never affects layout,
+   so the reserved grid-stack height and the surrounding flow stay fixed. */
 .hero-rotator {
   display: grid; align-items: center;
   margin-top: 0.12em;
   font-size: 0.92em;            /* a touch smaller than the static line */
   letter-spacing: -0.028em;
+  /* no overflow rule here on purpose: the box must never clip the phrase */
 }
 .rot-frame {
   grid-area: 1 / 1;             /* all phrases share the same cell */
   display: flex; align-items: center;
-  opacity: 0; visibility: hidden; transform: translateY(0.38em);
-  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.45s;
+  /* anchor the left edge so the scale-in reads as a subtle growth of the line
+     rather than a horizontal slide away from the static headline above */
+  transform-origin: left center;
+  opacity: 0; visibility: hidden;
+  transform: translateY(0.38em) scale(0.97);
+  transition: opacity 0.26s ease, transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.26s;
 }
 .rot-frame.is-active {
-  opacity: 1; visibility: visible; transform: none;
-  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0s;
+  opacity: 1; visibility: visible;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.26s ease, transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0s;
 }
 /* the exit finishes BEFORE the next phrase enters, so two phrases are never
    on screen at the same time and can never appear merged or crowded */
 .rot-frame.is-exit {
-  opacity: 0; visibility: hidden; transform: translateY(-0.38em);
-  transition: opacity 0.26s ease, transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.3s;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-0.38em) scale(0.985);
+  transition: opacity 0.26s ease, transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.26s;
 }
 .rot-frame .rot-grad {
   display: block; width: 100%; max-width: 100%;
@@ -835,6 +844,8 @@ footer { background: #040a17; border-top: 1px solid var(--card-border); padding:
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
+  /* v30: no scale, no slide — the first phrase simply sits at its resting size */
+  .rot-frame { transform: none !important; }
 }
 
 /* ============ RESPONSIVE ============ */
@@ -2240,8 +2251,9 @@ body{padding-top:52px;}
        App token: app-i5a3R2bfu0OBYa3l4xTtfbHb (client-side publish token).
        Loads from the official Dify Cloud CDN: https://udify.app/embed.min.js -->
 
-  <!-- ===== v29: hero rotating phrase =====
+  <!-- ===== v30: hero rotating phrase =====
        One phrase at a time in the reserved .hero-rotator box.
+       3.0s hold; 260ms fade/slide out, then 260ms fade/slide/scale in.
        Native-ES5, no dependency. Honours prefers-reduced-motion by not starting. -->
   <script>
   (function () {
@@ -2253,7 +2265,9 @@ body{padding-top:52px;}
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
     if (reduce && reduce.matches) return; /* keep phrase 1 static, no motion */
 
-    var i = 0, HOLD = 3600, OUT = 300, timer = null, paused = false, busy = false;
+    /* v30: 3.0s per phrase; OUT is the length of the two-stage transition
+       halves (260ms out, 260ms in) so the next tick can never collide. */
+    var i = 0, HOLD = 3000, OUT = 260, timer = null, paused = false, busy = false;
 
     function show(next) {
       var cur = frames[i];
@@ -2268,7 +2282,7 @@ body{padding-top:52px;}
         cur.classList.remove('is-exit');
         nxt.classList.add('is-active');
         i = next;
-        window.setTimeout(function () { busy = false; }, 420);
+        window.setTimeout(function () { busy = false; }, 300);
       }, OUT);
     }
 
