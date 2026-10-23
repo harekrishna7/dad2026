@@ -1,0 +1,113 @@
+name: Deploy v31 services showcase
+
+# v31 - homepage Services section upgrade (premium AI services showcase).
+# Only index.html changes. Every other page is untouched by this deploy.
+#
+# Method: fetch the exact stored bytes from the permanent static.teamily.ai
+# URL (tokenized, since the CDN is access-gated), strip the CDN-injected
+# tmly-media-guard shim, then gate the commit on a hard size + MD5 assertion.
+# Nothing is committed unless the bytes match.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fetch exact v31 index.html
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --retry-delay 5 \
+            -o /tmp/index.raw.html \
+            "https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-ghpages-deploy-v31/index.html?tk=c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtZ2hwYWdlcy1kZXBsb3ktdjMxOjE3OTI3Nzg1MjA.Y2E1N2IwMDEzN2I2ZjI4ZGU4NDJhZmU0ZjM5ZDE2OGQ"
+          echo "downloaded bytes: $(wc -c < /tmp/index.raw.html)"
+
+      - name: Strip CDN media-guard shim
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          raw = open('/tmp/index.raw.html', 'rb').read().decode('utf-8', 'surrogateescape')
+          i = raw.find('data-tmly-media-guard="1"')
+          if i != -1:
+              a = raw.rfind('<script', 0, i)
+              b = raw.find('</script>', i) + len('</script>')
+              raw = raw[:a] + raw[b:]
+              print('shim stripped at offset', a)
+          else:
+              print('no shim present')
+          open('/tmp/index.html', 'wb').write(raw.encode('utf-8', 'surrogateescape'))
+          PY
+          echo "clean bytes: $(wc -c < /tmp/index.html)"
+
+      - name: Assert exact size and MD5
+        run: |
+          set -euo pipefail
+          EXPECTED_SIZE=122168
+          EXPECTED_MD5=d4eaddd61b5daf4eec1bcd80bc14f4ea
+          ACTUAL_SIZE=$(wc -c < /tmp/index.html | tr -d ' ')
+          ACTUAL_MD5=$(md5sum /tmp/index.html | cut -d' ' -f1)
+          echo "expected size=$EXPECTED_SIZE md5=$EXPECTED_MD5"
+          echo "actual   size=$ACTUAL_SIZE md5=$ACTUAL_MD5"
+          test "$ACTUAL_SIZE" = "$EXPECTED_SIZE" || { echo "::error::size mismatch"; exit 1; }
+          test "$ACTUAL_MD5" = "$EXPECTED_MD5" || { echo "::error::md5 mismatch"; exit 1; }
+
+      - name: Assert new v31 services section
+        run: |
+          set -euo pipefail
+          F=/tmp/index.html
+          grep -qF 'id="services"' "$F" || { echo "::error::services section id missing"; exit 1; }
+          grep -qF 'Our <em>Services</em>' "$F" || { echo "::error::services heading missing"; exit 1; }
+          grep -qF "What We Build" "$F" || { echo "::error::services eyebrow missing"; exit 1; }
+          test "$(grep -o 'class="service-card' "$F" | wc -l | tr -d ' ')" = "6" \
+            || { echo "::error::expected 6 service cards"; exit 1; }
+          grep -qF "Explore Municipality Demo" "$F" || { echo "::error::spotlight CTA missing"; exit 1; }
+          grep -qF "Build Your AI Solution" "$F" || { echo "::error::CTA band heading missing"; exit 1; }
+          grep -qF "Discuss Your Project" "$F" || { echo "::error::CTA band button missing"; exit 1; }
+          echo "v31 services section OK"
+
+      - name: Assert protected features survive
+        run: |
+          set -euo pipefail
+          F=/tmp/index.html
+          grep -qF "app-i5a3R2bfu0OBYa3l4xTtfbHb" "$F" || { echo "::error::Dify token missing"; exit 1; }
+          grep -qF "udify.app/embed.min.js" "$F"       || { echo "::error::Dify embed missing"; exit 1; }
+          grep -qF "chatbot.html" "$F"                 || { echo "::error::chatbot link missing"; exit 1; }
+          grep -qF "ai-topbar" "$F"                    || { echo "::error::AI logo top bar missing"; exit 1; }
+          grep -q 'data-rotator' "$F"                  || { echo "::error::hero rotator missing"; exit 1; }
+          test "$(grep -o 'class="rot-frame' "$F" | wc -l | tr -d ' ')" = "5" \
+            || { echo "::error::expected 5 rot-frames"; exit 1; }
+          grep -qF "HOLD = 3000" "$F"                  || { echo "::error::hero hold timing lost"; exit 1; }
+          grep -qF "OUT = 260" "$F"                    || { echo "::error::hero out timing lost"; exit 1; }
+          grep -qF "Why Choose Us" "$F"                || { echo "::error::Why Choose Us missing"; exit 1; }
+          for n in 01 02 03 04 05 06; do
+            grep -qF ">$n<" "$F" || { echo "::error::numbering $n missing"; exit 1; }
+          done
+          grep -qF 'id="municipality-ai-saas"' "$F"    || { echo "::error::municipality spotlight id missing"; exit 1; }
+          grep -qF "municipality-saa-s.vercel.app/login" "$F" || { echo "::error::municipality demo link missing"; exit 1; }
+          if grep -qi "koro" "$F"; then echo "::error::Koro must stay removed"; exit 1; fi
+          echo "protected features OK"
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          cp /tmp/index.html index.html
+          git config user.name "DADSync Deploy Bot"
+          git config user.email "deploy@dadsync.in"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No change to index.html - nothing to commit"
+            exit 0
+          fi
+          git commit -m "feat(services): premium AI services showcase on homepage (v31)"
+          git push origin HEAD:main
+          echo "pushed commit: $(git rev-parse HEAD)"
