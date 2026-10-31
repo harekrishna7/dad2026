@@ -845,6 +845,10 @@ button.job-apply:hover svg { transform: translateX(4px); }
 .field input::placeholder, .field textarea::placeholder { color: #51617f; }
 .form-note { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-top: 14px; }
 .form-note svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
+/* Concise privacy notice placed directly above the submit control. */
+.privacy-notice { font-size: 0.78rem; line-height: 1.55; color: var(--muted); margin: 12px 0 0; }
+.privacy-notice a { color: inherit; text-decoration: underline; }
+.privacy-notice a:hover { color: var(--primary); }
 
 /* ============ FOOTER ============= */
 footer { background: #040a17; border-top: 1px solid var(--card-border); padding: 72px 0 0; position: relative; z-index: 1; }
@@ -1730,6 +1734,7 @@ body{padding-top:52px;}
             <button type="submit" class="btn btn-primary btn-block">Send Message
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             </button>
+            <p class="privacy-notice">We use the details you submit only to respond to your enquiry. They are stored in our Google Firebase database (Singapore region) or, if that is unavailable, sent to us by email from your own mail app. Our <a href="privacy-policy.html">Privacy Policy</a> explains what we collect, who processes it, how long we keep it and your rights. Please do not send sensitive information.</p>
             <p class="form-note">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
               Your information stays private &mdash; we never share it.
@@ -1809,6 +1814,11 @@ body{padding-top:52px;}
     <div class="footer-bottom">
       <span>&copy; <span id="year">2026</span> Dharmanagar AI DataSync Private Limited. All rights reserved.</span>
       <span>Crafted with <span class="heart">&hearts;</span> in Dharmanagar, North Tripura &mdash; by <strong>Shivom Debnath</strong> (Founder &amp; CEO)</span>
+      <div class="legal-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html#grievance">Privacy Requests</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -1852,6 +1862,7 @@ body{padding-top:52px;}
       <button type="submit" class="btn btn-primary btn-block">Send Application
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
       </button>
+      <p class="privacy-notice">We use your application only to assess you for this role. It is stored in our Google Firebase database (Singapore region) or, if that is unavailable, sent to us by email from your own mail app. Our <a href="privacy-policy.html">Privacy Policy</a> explains what we collect, who processes it, how long we keep it and your rights.</p>
     </form>
   </div>
 </div>

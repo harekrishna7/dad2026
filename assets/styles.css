@@ -363,6 +363,15 @@ h1, h2, h3, h4, h5 { line-height: 1.2; letter-spacing: -.02em; font-weight: 700;
 .form-status p { color: var(--muted-foreground); margin-bottom: 22px; }
 .form-error { color: var(--red); font-size: .88rem; margin-top: 10px; display: none; }
 .form-error.show { display: block; }
+/* Concise privacy notice placed directly above the submit control. */
+.privacy-notice { font-size: .8rem; line-height: 1.55; color: var(--muted-foreground); margin: 0 0 14px; }
+.privacy-notice a { color: inherit; text-decoration: underline; }
+.privacy-notice a:hover { color: var(--primary); }
+/* Contact page: the two-column split is set inline for desktop, which would otherwise
+   override the responsive .grid-2 rule and force horizontal scroll on phones. */
+@media (max-width: 760px) {
+  .contact-split { grid-template-columns: 1fr !important; gap: 36px !important; }
+}
 .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
 
 /* ---------- Contact info ---------- */
