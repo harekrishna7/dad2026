@@ -1,0 +1,169 @@
+name: Phase 1 CSP fix (staging only)
+
+# Applies the unified least-permissive CSP to the 14 site pages on the
+# `staging` branch ONLY, then proves the result byte-for-byte against the
+# MD5 + size recorded from the verified local build.
+#
+# This workflow never touches `main`. It is dispatched manually.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply-csp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          fetch-depth: 0
+
+      - name: Apply unified CSP and verify exact bytes
+        shell: python
+        run: |
+          import hashlib, re, sys
+          from pathlib import Path
+
+          POLICY = (
+              "default-src 'self'; "
+              "script-src 'self' 'unsafe-inline' https://www.gstatic.com https://udify.app; "
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+              "img-src 'self' data:; "
+              "font-src 'self' https://fonts.gstatic.com; "
+              "frame-src 'self' https://www.openstreetmap.org https://udify.app; "
+              "connect-src 'self' https://firestore.googleapis.com "
+              "https://dadsync2026-7e20f-default-rtdb.asia-southeast1.firebasedatabase.app "
+              "wss://dadsync2026-7e20f-default-rtdb.asia-southeast1.firebasedatabase.app "
+              "https://formspree.io; "
+              "object-src 'none'; "
+              "base-uri 'self'; "
+              "form-action 'self' mailto: https://formspree.io"
+          )
+          META = '<meta http-equiv="Content-Security-Policy" content="%s" />' % POLICY
+
+          CSP_RE = re.compile(
+              r'[ \t]*<meta\s+http-equiv=["\']Content-Security-Policy["\'][^>]*>[ \t]*\r?\n?',
+              re.IGNORECASE,
+          )
+          VIEWPORT_RE = re.compile(
+              r'[ \t]*<meta\s+name=["\']viewport["\'][^>]*>[ \t]*\r?\n?',
+              re.IGNORECASE,
+          )
+
+          def insert_after_viewport(text, meta_line):
+              m = VIEWPORT_RE.search(text)
+              if m:
+                  return text[: m.end()] + meta_line + "\n" + text[m.end():]
+              m = re.search(r'<head[^>]*>\s*\r?\n?', text, re.IGNORECASE)
+              if m:
+                  return text[: m.end()] + meta_line + "\n" + text[m.end():]
+              raise SystemExit("no <head> found")
+
+          # md5, size, filename - recorded from the verified local build
+          EXPECTED = """383ebcaa973c6e0044a032537eb2f06b 5433 404.html
+          61e9cbbefe336086c0f888a9995bbf22 18644 about.html
+          499280c80b62ec6c671e06ca5babc448 23240 careers.html
+          a33efc80518132b6d56fea278d953347 14124 chatbot.html
+          56d3435163160c2d25ef63b420f2f928 35223 connection.html
+          63bc80a4a83e644b1c980bf27e539d06 27659 contact.html
+          7bc30b47133dbcb11182ef5a23872b59 18863 hub.html
+          d5fe5f3928d4b31258545102c0845229 122823 index.html
+          d3bd9b14e0eaefb2dc6e42fae406278e 16812 industries.html
+          09b599f0c8bebe8294982cf331e52018 21171 investors.html
+          6a0cb77cfbe47d7f7c8ba75055bfb53b 22106 news.html
+          38cf314a8f9f9e2ababf53d669e4420e 15509 privacy.html
+          fed4ef6b3360b3620dee85399ccac04c 22160 services.html
+          57c58e843ed4d1c2544d31806a70909e 15693 terms.html"""
+
+          expected = {}
+          for line in EXPECTED.strip().splitlines():
+              md5, size, name = line.split()
+              expected[name] = (md5, int(size))
+
+          failures = []
+          for name, (want_md5, want_size) in expected.items():
+              p = Path(name)
+              if not p.exists():
+                  failures.append("%s MISSING" % name)
+                  continue
+              text = p.read_text(encoding="utf-8")
+              stripped = CSP_RE.sub("", text)
+              new_text = insert_after_viewport(stripped, META)
+              p.write_text(new_text, encoding="utf-8")
+
+              data = p.read_bytes()
+              got_md5 = hashlib.md5(data).hexdigest()
+              got_size = len(data)
+              status = "OK" if (got_md5 == want_md5 and got_size == want_size) else "MISMATCH"
+              print("%-18s %s md5=%s size=%d" % (name, status, got_md5, got_size))
+              if status != "OK":
+                  failures.append("%s expected md5=%s size=%d got md5=%s size=%d"
+                                  % (name, want_md5, want_size, got_md5, got_size))
+
+          if failures:
+              print("\nFAILURES:")
+              for f in failures:
+                  print(" -", f)
+              sys.exit(1)
+          print("\nAll 14 files match the verified build exactly.")
+
+      - name: Assert single CSP per page and no unsafe-eval
+        run: |
+          set -e
+          for f in 404.html about.html careers.html chatbot.html connection.html \
+                   contact.html hub.html index.html industries.html investors.html \
+                   news.html privacy.html services.html terms.html; do
+            n=$(grep -c 'Content-Security-Policy' "$f")
+            if [ "$n" != "1" ]; then echo "FAIL $f has $n CSP tags"; exit 1; fi
+            if grep -q "unsafe-eval" "$f"; then echo "FAIL $f has unsafe-eval"; exit 1; fi
+          done
+          u=$(grep -oh 'content="default-src[^"]*"' *.html | sort -u | wc -l)
+          if [ "$u" != "1" ]; then echo "FAIL $u distinct policies"; exit 1; fi
+          echo "PASS single CSP per page, one identical policy, no unsafe-eval"
+
+      - name: Assert features preserved
+        run: |
+          set -e
+          for f in 404.html about.html careers.html chatbot.html connection.html \
+                   contact.html hub.html index.html industries.html investors.html \
+                   news.html privacy.html services.html terms.html; do
+            grep -q 'udify.app/embed.min.js' "$f" || { echo "FAIL $f lost Dify embed"; exit 1; }
+            grep -q 'app-i5a3R2bfu0OBYa3l4xTtfbHb' "$f" || { echo "FAIL $f lost Dify token"; exit 1; }
+          done
+          grep -q 'firebasejs/10.12.2' contact.html || { echo "FAIL contact lost Firebase SDK"; exit 1; }
+          grep -q 'data-contact-form' contact.html || { echo "FAIL contact lost form"; exit 1; }
+          grep -q 'fonts.googleapis.com' index.html || { echo "FAIL index lost fonts"; exit 1; }
+          echo "PASS Dify, Firebase, contact form and fonts all preserved"
+
+      - name: Commit to staging
+        run: |
+          set -e
+          git config user.name "DADsync Webpage Developer"
+          git config user.email "dharmanagaraidatasync@zohomail.in"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "fix(csp): unified least-permissive CSP across all 14 pages (staging only)
+
+          Phase 1 CSP remediation. Staging branch only - main untouched.
+
+          - Add CSP to index.html (previously had none)
+          - Replace 13 divergent CSP policies with one identical policy
+          - 404.html previously omitted udify.app while loading the Dify embed
+          - Narrow wildcards: *.googleapis.com -> firestore.googleapis.com;
+            *.firebaseio.com / *.firebasedatabase.app -> the single real RTDB host
+          - No unsafe-eval (verified: zero eval/new Function in any page or asset)
+          - unsafe-inline retained for script-src/style-src (inline JSON-LD, config,
+            hero rotator, Dify config, inline style blocks and style attributes)
+          - Add fonts.googleapis.com (style-src) and fonts.gstatic.com (font-src)
+          - Add formspree.io to connect-src and form-action
+
+          Verified: 0 CSP violations on all 14 pages, Dify bubble renders on all 14,
+          contact form handler intact, no mobile layout regression."
+          git push origin HEAD:staging
