@@ -1,0 +1,213 @@
+name: Legal pages v33 (staging only)
+
+# Commits the Legal pages change set to the `staging` branch ONLY.
+# Fetches each file byte-for-byte from its stored /sites/ URL, strips the CDN
+# media-guard shim the CDN injects into HTML, and refuses to commit unless every
+# file reproduces the recorded size + MD5 exactly.
+#
+# Triggered by the push that adds this file (GitHub only registers dispatchable
+# workflows from the default branch, which this change must not touch).
+# It never writes to `main`, never edits a CSP tag, never deletes a file.
+
+on:
+  push:
+    branches: [staging]
+
+permissions:
+  contents: write
+
+jobs:
+  apply-legal-v33:
+    # Never re-run on the commit this workflow itself creates.
+    if: ${{ !startsWith(github.event.head_commit.message, 'feat(legal):') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          fetch-depth: 0
+
+      - name: Fetch exact bytes and verify size and MD5
+        shell: python
+        run: |
+          import hashlib, json, subprocess, sys
+          from pathlib import Path
+
+          BASE = ("https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab"
+                  "/documents/dadsync-legal-v33")
+          TK = "c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtbGVnYWwtdjMzOjE3OTM0NjkzOTI.MjM4NmZhYzRkYjllNTFmZTMzYTU4NzMyZTU1YzAwMWM"
+
+          FILES = json.loads("""[
+            {"path":"404.html","md5":"aabfa1fd8b8b420424d421f49156fda8","size":6074},
+            {"path":"about.html","md5":"432b3d0bcbb0aa1ec4da97ee4fc7b854","size":18743},
+            {"path":"assets/page-template.html","md5":"51198bb6b58873a96007ad4bc0381030","size":4214},
+            {"path":"careers.html","md5":"e655d547a24df14941bb2af6495f944b","size":23790},
+            {"path":"chatbot.html","md5":"d62bcfea7d9778fa336fecbc821d2e53","size":14223},
+            {"path":"connection.html","md5":"b3acb6ae80163bde82d4820204f0b250","size":35322},
+            {"path":"contact.html","md5":"2988af674c7e9f6a18e0bf074be2e4e7","size":28194},
+            {"path":"hub.html","md5":"d7cb6a2a1431f527c0ebd3ecd7bdf78a","size":18962},
+            {"path":"index.html","md5":"fcb7cb411439306fe3c13f67e1edf469","size":124135},
+            {"path":"industries.html","md5":"c2d2d434d19a44c639a08fa4d02908c3","size":16911},
+            {"path":"investors.html","md5":"225339344d41c9d42d5fc33caa3fd22f","size":21270},
+            {"path":"news.html","md5":"0a4e090d3d0df8b876f036f9b52269b8","size":22205},
+            {"path":"privacy-policy.html","md5":"1029c41ad98693b71b87dd6b608d93fa","size":53566},
+            {"path":"privacy.html","md5":"767a6f3e056ab59db32eb5c2e84acffb","size":15608},
+            {"path":"services.html","md5":"7d4c558b0fea05e0a13dfaee6077b901","size":22259},
+            {"path":"sitemap.xml","md5":"1a250bf5c9a3b2423ef9ba98ac498570","size":1853},
+            {"path":"terms-and-conditions.html","md5":"b597196e859542a3ec176be1c105c96d","size":39408},
+            {"path":"terms.html","md5":"100e959dcc56630c54f3d12b84aafba8","size":15792}
+          ]""")
+
+          # assets/styles.css: the CDN MINIFIES CSS on serve, so it cannot be fetched
+          # byte-exact. It is re-derived from the branch's own file by inserting the two
+          # blocks at the same anchor, then gated against the recorded MD5 and size.
+          CSS_ANCHOR = ".form-error.show { display: block; }\n"
+          CSS_INSERT = "\n".join([
+              "/* Concise privacy notice placed directly above the submit control. */",
+              ".privacy-notice { font-size: .8rem; line-height: 1.55; color: var(--muted-foreground); margin: 0 0 14px; }",
+              ".privacy-notice a { color: inherit; text-decoration: underline; }",
+              ".privacy-notice a:hover { color: var(--primary); }",
+              "/* Contact page: the two-column split is set inline for desktop, which would otherwise",
+              "   override the responsive .grid-2 rule and force horizontal scroll on phones. */",
+              "@media (max-width: 760px) {",
+              "  .contact-split { grid-template-columns: 1fr !important; gap: 36px !important; }",
+              "}",
+              "",
+          ])
+          CSS_MD5 = "16e2b72e08e976bd6654f68af63fc3d5"
+          CSS_SIZE = 39678
+
+          failures = []
+
+          css_path = Path("assets/styles.css")
+          css = css_path.read_text(encoding="utf-8")
+          if ".privacy-notice { font-size: .8rem;" not in css:
+              if css.count(CSS_ANCHOR) != 1:
+                  print("FAIL styles.css anchor found %d times (expected 1)" % css.count(CSS_ANCHOR))
+                  sys.exit(1)
+              css = css.replace(CSS_ANCHOR, CSS_ANCHOR + CSS_INSERT, 1)
+              css_path.write_text(css, encoding="utf-8")
+          cb = css_path.read_bytes()
+          got_css = hashlib.md5(cb).hexdigest()
+          css_ok = got_css == CSS_MD5 and len(cb) == CSS_SIZE
+          print("%-30s %s md5=%s size=%d" % ("assets/styles.css", "OK" if css_ok else "MISMATCH", got_css, len(cb)))
+          if not css_ok:
+              failures.append("assets/styles.css expected md5=%s size=%d got md5=%s size=%d"
+                              % (CSS_MD5, CSS_SIZE, got_css, len(cb)))
+
+          def strip_shim(s):
+              i = s.find('data-tmly-media-guard="1"')
+              if i == -1:
+                  return s
+              a = s.rfind("<script", 0, i)
+              b = s.find("</script>", i) + len("</script>")
+              return s[:a] + s[b:]
+
+          for f in FILES:
+              path = f["path"]
+              url = "%s/%s?tk=%s" % (BASE, path, TK)
+              out = subprocess.run(["curl", "-sSL", "--fail", "--retry", "3",
+                                    "--retry-delay", "2", "-o", "/tmp/dl", url],
+                                   capture_output=True)
+              if out.returncode != 0:
+                  failures.append("%s FETCH FAILED %s" % (path, out.stderr.decode()[:200]))
+                  continue
+              raw = Path("/tmp/dl").read_bytes().decode("utf-8")
+              text = strip_shim(raw) if path.endswith(".html") else raw
+              data = text.encode("utf-8")
+              Path(path).parent.mkdir(parents=True, exist_ok=True)
+              Path(path).write_bytes(data)
+
+              got = hashlib.md5(data).hexdigest()
+              ok = got == f["md5"] and len(data) == f["size"]
+              print("%-30s %s md5=%s size=%d" % (path, "OK" if ok else "MISMATCH", got, len(data)))
+              if not ok:
+                  failures.append("%s expected md5=%s size=%d got md5=%s size=%d"
+                                  % (path, f["md5"], f["size"], got, len(data)))
+
+          if failures:
+              print("\nFAILURES:")
+              for x in failures:
+                  print(" -", x)
+              sys.exit(1)
+          print("\nAll %d fetched files plus styles.css match the verified build exactly." % len(FILES))
+
+      - name: Assert CSP untouched
+        run: |
+          set -e
+          PAGES="404.html about.html careers.html chatbot.html connection.html index.html industries.html investors.html news.html services.html contact.html hub.html privacy.html terms.html privacy-policy.html terms-and-conditions.html"
+          for f in $PAGES; do
+            n=$(grep -c 'Content-Security-Policy' "$f")
+            if [ "$n" != "1" ]; then echo "FAIL $f has $n CSP tags"; exit 1; fi
+            if grep -q "unsafe-eval" "$f"; then echo "FAIL $f has unsafe-eval"; exit 1; fi
+          done
+          u=$(grep -oh 'content="default-src[^"]*"' $PAGES | sort -u | wc -l)
+          if [ "$u" != "1" ]; then echo "FAIL $u distinct CSP policies"; exit 1; fi
+          echo "PASS single CSP per page, one identical policy, no unsafe-eval"
+          if git cat-file -e 0bc6f6b12983e5547b8075458c5d7719ec88f18b 2>/dev/null; then
+            for f in 404.html about.html careers.html chatbot.html connection.html index.html industries.html investors.html news.html services.html contact.html hub.html privacy.html terms.html; do
+              o=$(git show 0bc6f6b12983e5547b8075458c5d7719ec88f18b:$f | grep -o 'content="default-src[^"]*"')
+              n2=$(grep -o 'content="default-src[^"]*"' $f)
+              if [ "$o" != "$n2" ]; then echo "FAIL $f CSP changed vs 0bc6f6b"; exit 1; fi
+            done
+            echo "PASS every pre-existing page keeps its approved CSP byte-for-byte"
+          else
+            echo "WARN base commit absent - skipped CSP-vs-base comparison"
+          fi
+
+      - name: Assert no deletion and features preserved
+        run: |
+          set -e
+          for f in privacy.html terms.html index.html contact.html careers.html chatbot.html sitemap.xml assets/app.js assets/styles.css assets/firebase-config.js privacy-policy.html terms-and-conditions.html; do
+            test -e "$f" || { echo "FAIL missing $f"; exit 1; }
+          done
+          for f in 404.html about.html careers.html chatbot.html connection.html index.html industries.html investors.html news.html services.html contact.html hub.html privacy.html terms.html privacy-policy.html terms-and-conditions.html; do
+            grep -q 'udify.app/embed.min.js' "$f" || { echo "FAIL $f lost Dify embed"; exit 1; }
+            grep -q 'app-i5a3R2bfu0OBYa3l4xTtfbHb' "$f" || { echo "FAIL $f lost Dify token"; exit 1; }
+          done
+          grep -q 'firebasejs/10.12.2' contact.html || { echo "FAIL contact lost Firebase SDK"; exit 1; }
+          grep -q 'data-contact-form' contact.html || { echo "FAIL contact lost form"; exit 1; }
+          grep -q 'data-form-error' contact.html || { echo "FAIL contact lost error node"; exit 1; }
+          grep -q 'id="cf-first"' contact.html || { echo "FAIL contact lost fields"; exit 1; }
+          grep -q 'id="contact-form"' index.html || { echo "FAIL index lost contact form"; exit 1; }
+          grep -q 'id="apply-form"' index.html || { echo "FAIL index lost apply form"; exit 1; }
+          grep -q 'fonts.googleapis.com' index.html || { echo "FAIL index lost fonts"; exit 1; }
+          for f in 404.html about.html careers.html chatbot.html connection.html index.html industries.html investors.html news.html services.html contact.html hub.html privacy.html terms.html; do
+            grep -q 'privacy-policy.html' "$f" || { echo "FAIL $f lacks privacy-policy link"; exit 1; }
+            grep -q 'terms-and-conditions.html' "$f" || { echo "FAIL $f lacks terms link"; exit 1; }
+            grep -q '#grievance' "$f" || { echo "FAIL $f lacks grievance link"; exit 1; }
+          done
+          echo "PASS no deletions, Dify/Firebase/forms/fonts preserved, legal links on all pages"
+
+      - name: Commit to staging
+        run: |
+          set -e
+          git config user.name "DADsync Webpage Developer"
+          git config user.email "dharmanagaraidatasync@zohomail.in"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "feat(legal): add Terms and Conditions and Privacy Policy pages, footer links and form privacy notices (staging only)
+
+          - New terms-and-conditions.html - acceptable use, IP and branding, a four-way
+            service-status taxonomy (live / prototype / available on engagement / planned),
+            third-party and AI content, availability, liability, Indian law, separate
+            client agreements.
+          - New privacy-policy.html - verified data-flow inventory (Firestore and Realtime
+            Database in asia-southeast1, mailto fallback, Dify chat, Zoho Mail, Google
+            Fonts, OpenStreetMap), DPDP Act 2023 and DPDP Rules 2025 alignment with
+            commencement dates, Data Principal rights, consent withdrawal, and an
+            anchored grievance section.
+          - Footer legal links updated on all pages, 404 clean-URL routes added, sitemap
+            updated.
+          - Concise privacy notices added above the submit control on contact, home
+            contact, home careers-application and careers pages. No consent checkboxes
+            added. No form logic changed.
+          - Fix contact page inline two-column grid that forced horizontal scroll on
+            phones. Fix careers mailto and JSON-LD address to lowercase.
+          - CSP unchanged and byte-identical to 0bc6f6b on every pre-existing page.
+          - No file deleted. Staging branch only - main untouched."
+          git push origin HEAD:staging
