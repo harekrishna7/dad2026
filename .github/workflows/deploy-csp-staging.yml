@@ -4,9 +4,12 @@ name: Phase 1 CSP fix (staging only)
 # `staging` branch ONLY, then proves the result byte-for-byte against the
 # MD5 + size recorded from the verified local build.
 #
-# This workflow never touches `main`. It is dispatched manually.
+# This workflow never touches `main`. It runs on a push to `staging` and
+# skips its own follow-up commit (guarded by the commit-message check).
 
 on:
+  push:
+    branches: [staging]
   workflow_dispatch:
 
 permissions:
@@ -14,6 +17,8 @@ permissions:
 
 jobs:
   apply-csp:
+    # Do not re-run on the commit this workflow itself creates.
+    if: ${{ !startsWith(github.event.head_commit.message, 'fix(csp):') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout staging
