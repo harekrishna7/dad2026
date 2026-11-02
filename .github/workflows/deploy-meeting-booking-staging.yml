@@ -1,0 +1,134 @@
+name: deploy-meeting-booking-staging
+
+# STAGING ONLY. This workflow commits to the `staging` branch and never to `main`.
+# It fetches the verified build from permanent storage, strips the CDN media-guard
+# shim, and refuses to commit unless every file matches its recorded size + MD5.
+
+on:
+  push:
+    branches: [staging]
+    paths:
+      - '.github/workflows/deploy-meeting-booking-staging.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Never re-run on the commit this workflow itself creates.
+    if: ${{ !startsWith(github.event.head_commit.message, 'feat(meeting-booking):') }}
+    steps:
+      - name: Checkout staging
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          fetch-depth: 0
+
+      - name: Fetch verified build and gate on size plus MD5
+        env:
+          BASE: https://static.teamily.ai/sites/77759200-3a04-402a-80a3-1c1ed69376ab/documents/dadsync-meeting-booking-v34
+          TK: c2l0ZTo3Nzc1OTIwMC0zYTA0LTQwMmEtODBhMy0xYzFlZDY5Mzc2YWIvZG9jdW1lbnRzL2RhZHN5bmMtbWVldGluZy1ib29raW5nLXYzNDoxNzkzNjA1Nzkx.MTk4Y2FjNTgzZDZhMzRhNDQxN2ZiMDg3Zjc5MTU1ODQ
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, sys, urllib.request
+
+          BASE = os.environ["BASE"]
+          TK = os.environ["TK"]
+
+          EXPECTED = json.loads("""[{"path":"404.html","md5":"48bfc56e05459c6cd48fee9ddd4d52f9","size":6219},{"path":"about.html","md5":"c7274ddaf9a9d1581b9d8757b6aaddd4","size":18868},{"path":"careers.html","md5":"2eb77a2db02d035b7e92cb1385a028b1","size":23915},{"path":"chatbot.html","md5":"16781ea8eb0da286c12cb689768c81bd","size":14348},{"path":"connection.html","md5":"dac2ea2c6df18d45b195b5befefff5bc","size":35447},{"path":"contact.html","md5":"18b89134f37b58e39667814de99811d7","size":28418},{"path":"hub.html","md5":"9c0b39e67bab9573569962a187e645ba","size":19087},{"path":"index.html","md5":"610567e883b6314936e7ea7584cd90eb","size":124277},{"path":"industries.html","md5":"419c528b50154c3e993e25e9e83525c9","size":17036},{"path":"investors.html","md5":"dd5de2a42dc2dd219b345c7ad021de15","size":21395},{"path":"meeting-booking.html","md5":"c73f0688fa42e94500d71add75178bf9","size":37569},{"path":"news.html","md5":"b57900bf9c36a8ac90b2b68ae9843e8c","size":22330},{"path":"privacy-policy.html","md5":"9bc49dca95ddaf52b705b58152c55c53","size":53691},{"path":"privacy.html","md5":"da241bfbfb2088cff3a8dcdf83a27fa0","size":15733},{"path":"services.html","md5":"68dda2c8ab33870f5baffec17065c308","size":22384},{"path":"sitemap.xml","md5":"d4464809589ae5ebb8dddea97c6d4638","size":1995},{"path":"terms-and-conditions.html","md5":"6f109eb631b218c11772d216faf442e8","size":39533},{"path":"terms.html","md5":"249c7656f31f76a7bbb9afe7dd3fd391","size":15917}]""")
+
+          def strip_shim(text):
+              i = text.find('data-tmly-media-guard="1"')
+              if i == -1:
+                  return text
+              a = text.rfind("<script", 0, i)
+              b = text.find("</script>", i) + len("</script>")
+              return text[:a] + text[b:]
+
+          failures = []
+          for item in EXPECTED:
+              path = item["path"]
+              url = "%s/%s?tk=%s" % (BASE, path, TK)
+              raw = urllib.request.urlopen(url, timeout=60).read()
+              body = strip_shim(raw.decode("utf-8")).encode("utf-8")
+              got_md5 = hashlib.md5(body).hexdigest()
+              if len(body) != item["size"] or got_md5 != item["md5"]:
+                  failures.append(
+                      "%s: got %d/%s want %d/%s"
+                      % (path, len(body), got_md5, item["size"], item["md5"])
+                  )
+                  continue
+              with open(path, "wb") as fh:
+                  fh.write(body)
+              print("OK   %-28s %7d  %s" % (path, len(body), got_md5))
+
+          if failures:
+              print("\nMD5/SIZE GATE FAILED:")
+              for f in failures:
+                  print("  " + f)
+              sys.exit(1)
+          print("\nAll %d files verified byte-exact." % len(EXPECTED))
+          PY
+
+      - name: Assert protected invariants
+        run: |
+          set -e
+          # The new page must exist and carry the Calendly CSP delta.
+          test -f meeting-booking.html
+          grep -q 'assets.calendly.com' meeting-booking.html
+          grep -q 'frame-src .*https://calendly.com' meeting-booking.html
+          grep -q 'CALENDLY_EVENTS' meeting-booking.html
+          grep -q 'YOUR-HANDLE' meeting-booking.html
+          # Existing functionality must survive.
+          grep -q 'udify.app/embed.min.js' index.html
+          grep -q 'firebase-config.js' contact.html
+          grep -q 'meeting-booking.html' 404.html
+          # No pre-existing page may have gained the Calendly origins.
+          for f in index.html about.html services.html hub.html connection.html \
+                   industries.html careers.html investors.html contact.html \
+                   news.html privacy.html terms.html chatbot.html \
+                   privacy-policy.html terms-and-conditions.html 404.html; do
+            if grep -q 'calendly' "$f"; then
+              echo "FAIL: $f unexpectedly references calendly"
+              exit 1
+            fi
+          done
+          echo "Invariants OK"
+
+      - name: Commit to staging
+        run: |
+          set -e
+          git config user.name "DADsync Webpage Developer"
+          git config user.email "dharmanagaraidatasync@zohomail.in"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          python3 - <<'PY'
+          msg = "\n".join([
+              "feat(meeting-booking): add Calendly meeting booking page (staging only)",
+              "",
+              "Adds /meeting-booking.html with four meeting types (Investor, Municipality",
+              "SaaS, Government/PPP, Business Partnerships), each with its own Calendly",
+              "event slot in a single CALENDLY_EVENTS config block. Uses Calendly's",
+              "official widget.js (initInlineWidget); switching type swaps the event in",
+              "place with no page reload.",
+              "",
+              "Calendly event URLs are placeholders (YOUR-HANDLE) pending owner input;",
+              "the page renders an honest 'booking link not yet configured' panel rather",
+              "than a broken embed.",
+              "",
+              "CSP delta on this page only: script-src +https://assets.calendly.com,",
+              "frame-src +https://calendly.com. No other directive weakened. All 16",
+              "pre-existing pages keep their CSP byte-identical.",
+              "",
+              "Also adds nav/CTA links, 404 clean-URL routes (book-a-meeting, schedule)",
+              "and a sitemap entry. No production, main, DNS, hosting or Firebase change.",
+          ])
+          open("/tmp/commit-msg.txt", "w").write(msg)
+          PY
+          git commit -F /tmp/commit-msg.txt
+          git push origin HEAD:staging
